@@ -1,0 +1,16 @@
+import React from "react";
+import HeroSection from "@/components/Sections/hero-section";
+const Home = () => {
+  return (
+    <div className="red flex h-screen w-full flex-col items-center justify-center">
+      <div
+        id="container"
+        className="redd container flex flex-col items-start justify-center px-[15%]"
+      >
+        <HeroSection />
+      </div>
+    </div>
+  );
+};
+
+export default Home;
