@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AppBaseUrl } from "@/data/const";
+import { AppBaseUrl, AppMBaseUrl } from "@/data/const";
 import Icon from "../Global/Icon";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
@@ -13,7 +13,7 @@ const HeroSection = () => {
           <Icon.Activity className="size-4 text-green-600" /> Coming soon
         </Badge>
       </div>
-      <div id="content" className="space-y-3 redd">
+      <div id="content" className="redd space-y-3">
         <h1 id="headline" className="text-2xl font-semibold desktop:text-5xl">
           Streamline Hospital Management with a Centralized Real-Time Platform
         </h1>
@@ -41,7 +41,7 @@ const HeroSection = () => {
             Demo <Icon.AppWindow />
           </Button>
         </Link>
-        <Link target="_blank" href={AppBaseUrl}>
+        <Link target="_blank" href={AppMBaseUrl}>
           <Button>
             Demo <Icon.Smartphone />
           </Button>
