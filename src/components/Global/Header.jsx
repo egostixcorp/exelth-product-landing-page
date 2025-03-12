@@ -23,7 +23,7 @@ const Header = () => {
           })}
         </div>
         <div id="menu-mobile" className="tablet:hidden block">
-          =
+        
         </div>
       </div>
     </div>
