@@ -15,7 +15,10 @@ const HeroSection = () => {
         </Badge>
       </div>
       <div id="content" className="redd space-y-3">
-        <h1 id="headline" className="text-2xl font-semibold desktop:text-5xl laptop:text-3xl">
+        <h1
+          id="headline"
+          className="text-2xl font-semibold laptop:text-3xl desktop:text-5xl"
+        >
           Streamline Hospital Management with a Centralized Real-Time Platform
         </h1>
         <p id="desc" className="text-sm desktop:text-xl">

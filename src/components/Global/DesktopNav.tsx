@@ -62,7 +62,7 @@ const DesktopNav = () => {
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
-                    className="line-clamp-2 flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none"
+                    className="from-bg-green-50 to-bg-white line-clamp-2 flex h-full w-full select-none flex-col justify-end rounded-md bg-green-50 bg-gradient-to-b p-6 no-underline outline-none"
                     href="/product"
                   >
                     {/* <Icons.logo className="h-6 w-6" /> */}
