@@ -12,7 +12,7 @@ const Waitlist = () => {
           placeholder="Email address.."
           type="email"
           required
-          className="h-12 w-72 focus:border-green-500 focus-visible:ring-green-500"
+          className="h-12 w-72 focus:border-green-500 focus-visible:ring-green-500 laptop:w-96"
         ></Input>
         <Button
           variant={""}

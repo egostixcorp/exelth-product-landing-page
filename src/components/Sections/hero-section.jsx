@@ -8,20 +8,20 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <div className="redd flex h-full w-full flex-col items-start justify-center gap-5 desktop:gap-10">
+    <div className="redd flex h-[80vh] w-full flex-col items-center justify-center gap-5 desktop:gap-10">
       <div id="badge">
-        <Badge variant={"outline"} className="gap-3 text-sm">
+        <Badge variant={"outline"} className="gap-3 rounded-xl text-sm">
           <Icon.Activity className="size-4 text-green-600" /> Coming soon
         </Badge>
       </div>
-      <div id="content" className="redd space-y-3">
+      <div id="content" className="redd space-y-3 text-center laptop:px-[10%]">
         <h1
           id="headline"
-          className="text-2xl font-semibold laptop:text-3xl desktop:text-5xl"
+          className="text-xl font-semibold laptop:text-3xl desktop:text-5xl tablet:text-2xl"
         >
           Streamline Hospital Management with a Centralized Real-Time Platform
         </h1>
-        <p id="desc" className="text-sm desktop:text-xl">
+        <p id="desc" className="text-xs tablet:text-sm desktop:text-xl">
           Optimize <span className="text-blue-400">operations</span>, enhance{" "}
           <span className="redd text-green-400">communication</span>, and
           simplify <span className="text-red-400">workflows</span> across{" "}
@@ -29,7 +29,7 @@ const HeroSection = () => {
           <span>Insurance providers</span>, and <span>patients</span> — all in
           one seamless system.
         </p>
-        <p id="desc" className="text-sm desktop:text-xl">
+        <p id="desc" className="text-xs tablet:text-sm desktop:text-xl">
           Empower patients with a mobile app for{" "}
           <span className="text-red-400">real-time updates</span>,{" "}
           <span className="text-green-400">billing</span>, and{" "}

@@ -14,7 +14,7 @@ const MobileNav = ({ children }) => {
   return (
     <Sheet>
       <SheetTrigger>{children}</SheetTrigger>
-      <SheetContent className="w-80">
+      <SheetContent className="w-80 z-[9999]">
         <SheetHeader>
           <SheetTitle hidden>Are you absolutely sure?</SheetTitle>
           <SheetDescription hidden>
