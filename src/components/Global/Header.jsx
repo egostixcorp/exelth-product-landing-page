@@ -1,6 +1,7 @@
 import React from "react";
 import { navigation } from "@/data/navigation";
 import MobileNav from "@/components/Global/MobileNav";
+import DesktopNav from "@/components/Global/DesktopNav";
 import Link from "next/link";
 import Icon from "./Icon";
 const Header = () => {
@@ -16,13 +17,14 @@ const Header = () => {
           id="menu-desktop"
           className="hidden items-center justify-center gap-5 tablet:flex"
         >
-          {navigation.map((data, i) => {
+          {/* {navigation.map((data, i) => {
             return (
               <Link key={i} href={data.route} className="capitalize">
                 {data.label}
               </Link>
             );
-          })}
+          })} */}
+          <DesktopNav />
         </div>
         <div
           id="menu-mobile"
