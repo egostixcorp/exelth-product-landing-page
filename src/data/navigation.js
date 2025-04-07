@@ -13,6 +13,7 @@ export const navigation = [
       },
     ],
   },
+  { label: "About", route: "/about" },
   {
     label: "Features",
     route: "/feature",

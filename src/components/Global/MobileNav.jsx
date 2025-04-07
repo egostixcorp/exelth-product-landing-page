@@ -8,12 +8,13 @@ import {
   SheetTrigger,
 } from "../ui/sheet";
 import { navigation } from "../../data/navigation";
+import Waitlist from "./Waitlist";
 import Link from "next/link";
 const MobileNav = ({ children }) => {
   return (
     <Sheet>
       <SheetTrigger>{children}</SheetTrigger>
-      <SheetContent>
+      <SheetContent className="w-80">
         <SheetHeader>
           <SheetTitle hidden>Are you absolutely sure?</SheetTitle>
           <SheetDescription hidden>
@@ -29,6 +30,9 @@ const MobileNav = ({ children }) => {
               </Link>
             );
           })}
+          <div>
+            <Waitlist />
+          </div>
         </div>
       </SheetContent>
     </Sheet>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AppBaseUrl, AppMBaseUrl } from "@/data/const";
-import Icon from "../Global/Icon";
+import Waitlist from "@/components/Global/Waitlist";
+import Icon from "@/components/Global/Icon";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import React from "react";
@@ -36,7 +37,7 @@ const HeroSection = () => {
         id="action-button"
         className="flex flex-wrap items-center justify-center gap-5"
       >
-        <Link target="_blank" href={AppBaseUrl}>
+        {/* <Link target="_blank" href={AppBaseUrl}>
           <Button>
             Demo <Icon.AppWindow />
           </Button>
@@ -45,10 +46,8 @@ const HeroSection = () => {
           <Button>
             Demo <Icon.Smartphone />
           </Button>
-        </Link>
-        <Button>
-          Waitlist <Icon.Mailbox />{" "}
-        </Button>
+        </Link> */}
+        <Waitlist />
       </div>
     </div>
   );

@@ -84,7 +84,14 @@ const DesktopNav = () => {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-
+        {/* About */}
+        <NavigationMenuItem>
+          <Link href="/about" passHref legacyBehavior>
+            <NavigationMenuLink className="px-4 py-2 text-sm font-medium">
+              About
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
         {/* Features */}
         <NavigationMenuItem>
           <NavigationMenuTrigger>Features</NavigationMenuTrigger>

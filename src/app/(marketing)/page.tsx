@@ -5,7 +5,7 @@ const Home = () => {
     <div className="redd flex h-screen w-full flex-col items-center justify-center">
       <div
         id="container"
-        className="redd container flex flex-col items-start justify-center px-[15%]"
+        className="redd container flex flex-col items-start justify-center px-[5%] laptop:px-[15%]"
       >
         <HeroSection />
       </div>

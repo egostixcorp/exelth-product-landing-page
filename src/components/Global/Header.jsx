@@ -7,7 +7,7 @@ import Icon from "./Icon";
 const Header = () => {
   return (
     <div className="fixed right-0 top-0 flex h-16 w-full items-center justify-center">
-      <div className="redd container relative flex h-full items-center justify-between bg-white p-1 px-[15%]">
+      <div className="redd container relative flex h-full items-center justify-between bg-white p-1 px-[5%] laptop:px-[15%]">
         <div id="logo">
           <Link href={"/"}>
             <h1 className="text-2xl font-extrabold text-green-600">Exelth</h1>
