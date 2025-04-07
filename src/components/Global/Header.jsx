@@ -1,6 +1,8 @@
 import React from "react";
 import { navigation } from "@/data/navigation";
+import MobileNav from "@/components/Global/MobileNav";
 import Link from "next/link";
+import Icon from "./Icon";
 const Header = () => {
   return (
     <div className="fixed right-0 top-0 flex h-16 w-full items-center justify-center">
@@ -12,7 +14,7 @@ const Header = () => {
         </div>
         <div
           id="menu-desktop"
-          className="tablet:flex hidden items-center justify-center gap-5"
+          className="hidden items-center justify-center gap-5 tablet:flex"
         >
           {navigation.map((data, i) => {
             return (
@@ -22,8 +24,13 @@ const Header = () => {
             );
           })}
         </div>
-        <div id="menu-mobile" className="tablet:hidden block">
-        
+        <div
+          id="menu-mobile"
+          className="redd flex items-center justify-center tablet:hidden"
+        >
+          <MobileNav>
+            <Icon.Menu />
+          </MobileNav>
         </div>
       </div>
     </div>
