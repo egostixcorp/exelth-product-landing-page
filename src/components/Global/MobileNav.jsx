@@ -8,13 +8,13 @@ import {
   SheetTrigger,
 } from "../ui/sheet";
 import { navigation } from "../../data/navigation";
-import Waitlist from "./Waitlist";
+import Waitlist from "../Waitlist/Waitlist";
 import Link from "next/link";
 const MobileNav = ({ children }) => {
   return (
     <Sheet>
       <SheetTrigger>{children}</SheetTrigger>
-      <SheetContent className="w-80 z-[9999]">
+      <SheetContent className="z-[9999] w-80">
         <SheetHeader>
           <SheetTitle hidden>Are you absolutely sure?</SheetTitle>
           <SheetDescription hidden>

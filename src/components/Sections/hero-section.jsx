@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { AppBaseUrl, AppMBaseUrl } from "@/data/const";
-import Waitlist from "@/components/Global/Waitlist";
+import Waitlist from "@/components/Waitlist/Waitlist";
 import Icon from "@/components/Global/Icon";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
@@ -17,7 +17,7 @@ const HeroSection = () => {
       <div id="content" className="redd space-y-3 text-center laptop:px-[10%]">
         <h1
           id="headline"
-          className="text-xl font-semibold laptop:text-3xl desktop:text-5xl tablet:text-2xl"
+          className="text-xl font-semibold tablet:text-2xl laptop:text-3xl desktop:text-5xl"
         >
           Streamline Hospital Management with a Centralized Real-Time Platform
         </h1>
