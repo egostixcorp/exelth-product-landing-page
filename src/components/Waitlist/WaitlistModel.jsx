@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -11,32 +12,67 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
 const WaitlistModel = ({ children }) => {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus("");
+
+    const res = await fetch("/api/waitlist", {
+      method: "POST",
+      body: JSON.stringify({ email }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      setStatus("Successfully joined the waitlist!");
+      setEmail("");
+    } else {
+      setStatus(data.error);
+    }
+
+    setLoading(false);
+  };
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="tablet:max-w-md max-w-80 rounded-md">
+      <DialogContent className="max-w-80 rounded-md tablet:max-w-md">
         <DialogHeader>
           <DialogTitle className="text-center text-xl font-semibold">
             Join Our Waitlist
           </DialogTitle>
           <DialogDescription className="text-center">
-            Be the first to know when we launch. Enter your email below to get notified.
+            Be the first to know when we launch. Enter your email below to get
+            notified.
           </DialogDescription>
         </DialogHeader>
 
-        <form className="mt-4 flex flex-col items-center gap-4">
+        <form
+          onSubmit={handleSubmit}
+          className="mt-4 flex flex-col items-center gap-4"
+        >
           <Input
             placeholder="Enter your email address"
             type="email"
             required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="h-12 w-full focus:border-green-500 focus-visible:ring-green-500"
           />
           <Button
             type="submit"
+            disabled={loading}
             className="w-full bg-green-500 hover:bg-green-600"
           >
-            Join Waitlist
+            {loading ? "Joining..." : "Join Waitlist"}
           </Button>
+          {status && <p className="mt-2 text-center text-sm">{status}</p>}
         </form>
       </DialogContent>
     </Dialog>
