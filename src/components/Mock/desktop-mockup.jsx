@@ -3,9 +3,10 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 const images = [
-  "/mock/mock-patient.png",
+  "/mock/mock-calendar.png",
+  "/mock/mock-patients.png",
   "/mock/mock-apps.png",
-  "/mock/mock-staff.png",
+  "/mock/mock-staffs.png",
 ];
 
 const DesktopMockUp = () => {
