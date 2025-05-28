@@ -1,7 +1,7 @@
 export const ExelthBlogs = [
   {
     slug: "introducing-exelth",
-    title: "Hello World to Healthcare – Exelth",
+    title: "Hello World to HealthCare – Exelth",
     description: "Why are we doing this? What problem are we solving? Why now?",
     publishDate: "2025-06-01",
     writer: "Titas Ghosh",
