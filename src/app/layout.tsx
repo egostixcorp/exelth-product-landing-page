@@ -7,7 +7,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://exelth.com/"),
-  title: "Exelth | Centralized Digital Health Platform",
+  title: {
+    template: "%s | Exelth",
+    default: "Exelth | Centralized Digital Health Platform",
+  },
   description: "Build by Egostix",
 };
 
