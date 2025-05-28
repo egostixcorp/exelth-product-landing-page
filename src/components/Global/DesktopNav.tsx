@@ -15,7 +15,7 @@ import {
 // Navigation Data
 const productItems = [
   {
-    title: "Hospital OS",
+    title: "HealthCare Infrastructure",
     href: "/product/",
     description:
       "Streamline operations, staff coordination, and patient workflows with real-time data and automation.",
