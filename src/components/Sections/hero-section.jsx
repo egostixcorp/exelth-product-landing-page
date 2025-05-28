@@ -14,10 +14,11 @@ const HeroSection = () => {
         delay: 1,
         autoAlpha: 1, // combines opacity + visibility
       });
-      tl.from("#badge", {
-        opacity: 0,
-        y: "50%",
-        filter: "blur(10px)",
+      tl.to("#badge", {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 0.5,
       });
       tl.from("#headline", {
         opacity: 0,
@@ -44,7 +45,7 @@ const HeroSection = () => {
   }, []);
   return (
     <div className="redd flex h-[80vh] w-full flex-col items-center justify-center gap-5 desktop:gap-10">
-      <div id="badge">
+      <div id="badge" className="translate-y-[50%] opacity-0 blur-sm">
         <Badge variant={"outline"} className="gap-3 rounded-xl text-sm">
           <Icon.Activity className="size-4 text-green-600" /> Coming soon
         </Badge>
