@@ -19,9 +19,9 @@ const DesktopMockUp = () => {
         delay: 3,
       });
       tl.from("#desktop-mock", {
-        opacity: 0,
-        y: "50%",
-        filter: "blur(10px)",
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
       });
     });
     return () => Gctx.revert();
@@ -35,7 +35,10 @@ const DesktopMockUp = () => {
   }, []);
 
   return (
-    <div id="desktop-mock" className="borderr w-full desktop:h-[85vh]">
+    <div
+      id="desktop-mock"
+      className="borderr w-full translate-y-[50%] opacity-0 blur-sm desktop:h-[85vh]"
+    >
       <Link href={"/product/exelth-infrastructure-platform"}>
         <div
           id="frame"
