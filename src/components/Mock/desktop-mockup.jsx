@@ -1,6 +1,7 @@
 "use client";
+import gsap from "gsap";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 
 const images = [
   "/mock/mock-calendar.png",
@@ -11,7 +12,19 @@ const images = [
 
 const DesktopMockUp = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  useLayoutEffect(() => {
+    const Gctx = gsap.context(() => {
+      let tl = gsap.timeline({
+        delay: 3,
+      });
+      tl.from("#desktop-mock", {
+        opacity: 0,
+        y: "50%",
+        filter: "blur(10px)",
+      });
+    });
+    return () => Gctx.revert();
+  }, []);
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -21,7 +34,7 @@ const DesktopMockUp = () => {
   }, []);
 
   return (
-    <div className="borderr w-full desktop:h-[85vh]">
+    <div id="desktop-mock" className="borderr w-full desktop:h-[85vh]">
       <div
         id="frame"
         className="redd grid size-full overflow-hidden rounded-lg border-[5px] border-green-200 shadow-xl"

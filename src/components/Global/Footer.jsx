@@ -27,11 +27,6 @@ const Footer = () => {
             <li>
               <Link href="/about">About</Link>
             </li>
-            <li>
-              <Link href="https://egostix.com" target="_blank">
-                Company Site
-              </Link>
-            </li>
           </ul>
         </div>
 
@@ -40,7 +35,7 @@ const Footer = () => {
           <h3 className="text-sm font-semibold text-gray-800">Contact</h3>
           <ul className="mt-3 space-y-2 text-sm text-gray-600">
             <li className="flex items-center gap-2">
-              <Mail size={16} /> contact@egostix.com
+              <Mail size={16} /> contact@exelth.com
             </li>
             {/* <li className="flex items-center gap-2">
               <Phone size={16} /> +91 98765 43210
@@ -78,7 +73,9 @@ const Footer = () => {
       </div>
 
       <div className="mt-5 border-t py-2 text-center text-xs text-gray-500">
-        © 2025 Egostix Engineering. All rights reserved.
+        <Link href={"https://egostix.com/"}>
+          © 2025 Egostix Engineering. All rights reserved.
+        </Link>
       </div>
     </footer>
   );
