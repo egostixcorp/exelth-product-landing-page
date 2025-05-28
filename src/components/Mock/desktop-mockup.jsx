@@ -18,7 +18,7 @@ const DesktopMockUp = () => {
       let tl = gsap.timeline({
         delay: 3,
       });
-      tl.from("#desktop-mock", {
+      tl.to("#desktop-mock", {
         opacity: 1,
         y: 0,
         filter: "blur(0px)",
