@@ -19,9 +19,10 @@ const BlogListsPage = () => {
           id="grid"
           className="redd grid h-full w-full gap-5 desktop:grid-cols-3"
         >
-          {ExelthBlogs.map((data, i) => {
+          {/* {ExelthBlogs.map((data, i) => {
             return <BlogCard key={i} data={data} />;
-          })}
+          })} */}
+          <p>Writing please wait</p>
         </div>
       </Container>
     </div>
