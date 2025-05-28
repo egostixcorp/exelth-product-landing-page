@@ -8,11 +8,11 @@ const Home = () => {
     <div className="redd flex min-h-full w-full flex-col items-center justify-center">
       <div
         id="container"
-        className="redd flex w-full flex-col items-start justify-center gap-5 px-[5%] laptop:px-[15%]"
+        className="redd flex w-full flex-col items-start justify-center gap-5 overflow-hidden px-[5%] laptop:px-[15%]"
       >
         <HeroSection />
         <DemoSection />
-        <MobileDemoSection />
+        {/* <MobileDemoSection /> */}
         <GridLayout />
       </div>
     </div>
