@@ -19,7 +19,8 @@ const HeroSection = () => {
           id="headline"
           className="text-xl font-semibold tablet:text-2xl laptop:text-3xl desktop:text-5xl"
         >
-          Streamline Hospital Management with a Centralized Real-Time Platform
+          Streamline Health Care Infrastructure with a Centralized Real-Time
+          Platform
         </h1>
         <p id="desc" className="text-xs tablet:text-sm desktop:text-xl">
           Optimize <span className="text-blue-400">operations</span>, enhance{" "}
