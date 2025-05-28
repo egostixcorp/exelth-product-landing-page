@@ -12,6 +12,7 @@ const HeroSection = () => {
     const Gctx = gsap.context(() => {
       let tl = gsap.timeline({
         delay: 1,
+        autoAlpha: 1, // combines opacity + visibility
       });
       tl.from("#badge", {
         opacity: 0,
