@@ -8,9 +8,9 @@ const Footer = () => {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 tablet:grid-cols-2 desktop:grid-cols-4">
         {/* Brand Column */}
         <div>
-          <h2 className="text-green-600 text-xl font-bold ">Exelth</h2>
+          <h2 className="text-xl font-bold text-green-600">Exelth</h2>
           <p className="mt-2 text-sm text-gray-600">
-            A connected health infrastructure platform by Egostix Engineering.
+            A connected health infrastructure platform
           </p>
         </div>
 
@@ -25,7 +25,7 @@ const Footer = () => {
               <Link href="/pricing">Pricing</Link>
             </li>
             <li>
-              <Link href="/build">Our Vision</Link>
+              <Link href="/about">About</Link>
             </li>
             <li>
               <Link href="https://egostix.com" target="_blank">
@@ -42,9 +42,9 @@ const Footer = () => {
             <li className="flex items-center gap-2">
               <Mail size={16} /> contact@egostix.com
             </li>
-            <li className="flex items-center gap-2">
+            {/* <li className="flex items-center gap-2">
               <Phone size={16} /> +91 98765 43210
-            </li>
+            </li> */}
           </ul>
         </div>
 
