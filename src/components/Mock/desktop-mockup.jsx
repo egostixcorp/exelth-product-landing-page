@@ -1,6 +1,7 @@
 "use client";
 import gsap from "gsap";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 
 const images = [
@@ -35,20 +36,22 @@ const DesktopMockUp = () => {
 
   return (
     <div id="desktop-mock" className="borderr w-full desktop:h-[85vh]">
-      <div
-        id="frame"
-        className="redd grid size-full overflow-hidden rounded-lg border-[5px] border-green-200 shadow-xl"
-      >
-        <Image
-          src={images[currentImageIndex]}
-          alt={`Mockup ${currentImageIndex + 1}`}
-          width={1920}
-          height={1080}
-          priority
-          quality={100}
-          className="redd size-full object-contain transition-opacity duration-500"
-        />
-      </div>
+      <Link href={"/product/exelth-infrastructure-platform"}>
+        <div
+          id="frame"
+          className="redd grid size-full overflow-hidden rounded-lg border-[5px] border-green-200 shadow-xl"
+        >
+          <Image
+            src={images[currentImageIndex]}
+            alt={`Mockup ${currentImageIndex + 1}`}
+            width={1920}
+            height={1080}
+            priority
+            quality={100}
+            className="redd size-full object-contain transition-opacity duration-500"
+          />
+        </div>
+      </Link>
     </div>
   );
 };

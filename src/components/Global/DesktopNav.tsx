@@ -16,13 +16,13 @@ import {
 const productItems = [
   {
     title: "HealthCare Infrastructure",
-    href: "/product/",
+    href: "/product/exelth-infrastructure-platform",
     description:
       "Streamline operations, staff coordination, and patient workflows with real-time data and automation.",
   },
   {
     title: "Patient App",
-    href: "/product/",
+    href: "/product/exelth-care-app",
     description:
       "Empower patients with real-time updates, appointment booking, and transparent billing.",
   },
