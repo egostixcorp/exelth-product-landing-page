@@ -82,6 +82,7 @@ const DesktopNav = () => {
                 </ListItem>
               ))}
             </ul>
+            {/* <div className="red w-full px-3">changelog</div> */}
           </NavigationMenuContent>
         </NavigationMenuItem>
         {/* About */}
@@ -106,11 +107,11 @@ const DesktopNav = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        {/* Changelog */}
+        {/* Blog */}
         <NavigationMenuItem>
-          <Link href="/changelog" passHref legacyBehavior>
+          <Link href="/blog" passHref legacyBehavior>
             <NavigationMenuLink className="px-4 py-2 text-sm font-medium">
-              Changelog
+              Blog
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

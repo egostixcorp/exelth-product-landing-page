@@ -5,7 +5,7 @@ import { Mail, Phone, Linkedin, Twitter, Globe } from "lucide-react";
 const Footer = () => {
   return (
     <footer className="w-full border-t bg-gray-50 px-6 pt-12 tablet:px-12 desktop:px-24">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 tablet:grid-cols-2 desktop:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 tablet:grid-cols-5 laptop:grid-cols-5 desktop:grid-cols-5">
         {/* Brand Column */}
         <div>
           <h2 className="text-xl font-bold text-green-600">Exelth</h2>
@@ -14,19 +14,46 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Navigation Column */}
+        {/* Product Column */}
         <div>
           <h3 className="text-sm font-semibold text-gray-800">Product</h3>
           <ul className="mt-3 space-y-2 text-sm text-gray-600">
             <li>
-              <Link href="/features">Features</Link>
+              <Link href="/product">For Facilities</Link>
             </li>
             <li>
-              <Link href="/pricing">Pricing</Link>
+              <Link href="/product">For Patients</Link>
             </li>
+            <li>
+              <Link href="/changelog">Changelog</Link>
+            </li>
+          </ul>
+        </div>
+        {/* Comapany Column */}
+        <div>
+          <h3 className="text-sm font-semibold text-gray-800">Company</h3>
+          <ul className="mt-3 space-y-2 text-sm text-gray-600">
             <li>
               <Link href="/about">About</Link>
             </li>
+            <li>
+              <Link href="/blog">Blog</Link>
+            </li>
+          </ul>
+        </div>
+        {/* Legal Column */}
+        <div>
+          <h3 className="text-sm font-semibold text-gray-800">Legal</h3>
+          <ul className="mt-3 space-y-2 text-sm text-gray-600">
+            <li>
+              <Link href="">Terms of Service</Link>
+            </li>
+            <li>
+              <Link href="">Privacy Policy</Link>
+            </li>
+            {/* <li>
+              <Link href="">About</Link>
+            </li> */}
           </ul>
         </div>
 
@@ -35,41 +62,20 @@ const Footer = () => {
           <h3 className="text-sm font-semibold text-gray-800">Contact</h3>
           <ul className="mt-3 space-y-2 text-sm text-gray-600">
             <li className="flex items-center gap-2">
-              <Mail size={16} /> contact@exelth.com
+              <Link href={"mailto:contact@exelth.com"}>contact@exelth.com</Link>
             </li>
-            {/* <li className="flex items-center gap-2">
-              <Phone size={16} /> +91 98765 43210
-            </li> */}
+            <li className="flex items-center gap-2">
+              <Link href={"/contact"}>Contact</Link>
+            </li>
+            <li className="flex items-center gap-2">
+              <Link target="_blank" href={"https://x.com/exelthcare"}>
+                X/Twitter
+              </Link>
+            </li>
           </ul>
         </div>
 
         {/* Social Media */}
-        <div>
-          <h3 className="text-sm font-semibold text-gray-800">Follow Us</h3>
-          <div className="mt-3 flex space-x-4 text-gray-600">
-            <a
-              href="https://linkedin.com/company/egostix"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Linkedin size={20} />
-            </a>
-            <a
-              href="https://twitter.com/exelth"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Twitter size={20} />
-            </a>
-            <a
-              href="https://egostix.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Globe size={20} />
-            </a>
-          </div>
-        </div>
       </div>
 
       <div className="mt-5 border-t py-2 text-center text-xs text-gray-500">

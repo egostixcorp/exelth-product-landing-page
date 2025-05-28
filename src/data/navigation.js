@@ -33,8 +33,8 @@ export const navigation = [
     ],
   },
   {
-    label: "Changelog",
-    route: "/changelog",
+    label: "Blog",
+    route: "/blog",
   },
   {
     label: "Pricing",
