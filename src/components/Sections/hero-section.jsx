@@ -20,25 +20,25 @@ const HeroSection = () => {
         filter: "blur(0px)",
         duration: 0.5,
       });
-      tl.from("#headline", {
-        opacity: 0,
-        y: "50%",
-        filter: "blur(10px)",
+      tl.to("#headline", {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
       });
-      tl.from("#desc1", {
-        opacity: 0,
-        y: "50%",
-        filter: "blur(10px)",
+      tl.to("#desc1", {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
       });
-      tl.from("#desc2", {
-        opacity: 0,
-        y: "50%",
-        filter: "blur(10px)",
+      tl.to("#desc2", {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
       });
-      tl.from("#action-button", {
-        opacity: 0,
-        y: "50%",
-        filter: "blur(10px)",
+      tl.to("#action-button", {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
       });
     });
     return () => Gctx.revert();
@@ -53,12 +53,15 @@ const HeroSection = () => {
       <div id="content" className="redd space-y-3 text-center laptop:px-[10%]">
         <h1
           id="headline"
-          className="text-xl font-semibold tablet:text-2xl laptop:text-3xl desktop:text-5xl"
+          className="translate-y-[50%] text-xl font-semibold opacity-0 blur-sm tablet:text-2xl laptop:text-3xl desktop:text-5xl"
         >
           Streamline Health Care Infrastructure with a Centralized Real-Time
           Platform
         </h1>
-        <p id="desc1" className="text-xs tablet:text-sm desktop:text-xl">
+        <p
+          id="desc1"
+          className="translate-y-[50%] text-xs opacity-0 blur-sm tablet:text-sm desktop:text-xl"
+        >
           Optimize <span className="text-blue-400">operations</span>, enhance{" "}
           <span className="redd text-green-400">communication</span>, and
           simplify <span className="text-red-400">workflows</span> across{" "}
@@ -66,7 +69,10 @@ const HeroSection = () => {
           <span>Insurance providers</span>, and <span>patients</span> — all in
           one seamless system.
         </p>
-        <p id="desc2" className="text-xs tablet:text-sm desktop:text-xl">
+        <p
+          id="desc2"
+          className="translate-y-[50%] text-xs opacity-0 blur-sm tablet:text-sm desktop:text-xl"
+        >
           Empower patients with a mobile app for{" "}
           <span className="text-red-400">real-time updates</span>,{" "}
           <span className="text-green-400">billing</span>, and{" "}
@@ -75,7 +81,7 @@ const HeroSection = () => {
       </div>
       <div
         id="action-button"
-        className="flex flex-wrap items-center justify-center gap-5"
+        className="flex translate-y-[50%] flex-wrap items-center justify-center gap-5 opacity-0 blur-sm"
       >
         <Waitlist />
       </div>
