@@ -60,3 +60,62 @@ export const features = [
   //       "Facilitate post-discharge services like home care, follow-up appointments, and feedback collection through the mobile app. Strengthen patient care beyond the hospital stay.",
   //   },
 ];
+export const Mobilefeatures = [
+  {
+    title: "Smart Appointment Scheduling",
+    icon: <Icon.CalendarClock />,
+    image: "/assets/mobile/feature_home.png",
+    description:
+      "Book, reschedule, or cancel appointments effortlessly. Stay informed with real-time queue updates and estimated wait times to minimize delays.",
+  },
+  {
+    title: "Unified Patient Inbox",
+    icon: <Icon.MailOpen />,
+    image: "/assets/mobile/feature_inbox_notify.png",
+    description:
+      "Access all your health communications in one place—appointments, lab results, prescriptions, and follow-ups—with swipe-to-manage support.",
+  },
+  {
+    title: "Discover Nearby Care Centers",
+    icon: <Icon.Hospital />,
+    image: "/assets/mobile/feature_search_centers.png",
+    description:
+      "Easily find hospitals, clinics, and specialty care centers within the Exelth network. Get directions, services, and contact details instantly.",
+  },
+  {
+    title: "Healthcare Journey Tracker",
+    icon: <Icon.ListTodo />,
+    image: "/assets/mobile/feature_appointments.png",
+    description:
+      "Monitor your full care experience—from appointments and room allocation to medications, meals, and medical records—all in one timeline.",
+  },
+  {
+    title: "Secure Medical Records Vault",
+    icon: <Icon.FileLock />,
+    image: "/assets/mobile/feature_activities.png",
+    description:
+      "Access and manage your medical history and lab reports anytime. Protected with end-to-end encryption and privacy-first architecture.",
+  },
+  {
+    title: "Switch Between Patient & Doctor Mode",
+    icon: <Icon.User />,
+    image: "/assets/mobile/feature_switch_doctor.png",
+    description:
+      "Seamlessly toggle between patient and doctor profiles on the same mobile app. Access the right features, appointments, and tools based on your role—secure and effortless.",
+  },
+  {
+    title: "Smart Search with Filters",
+    image: "/assets/mobile/feature_filter_option.png",
+    icon: <Icon.Filter />,
+    description:
+      "Quickly find doctors, departments, hospitals, or services using powerful search with filters. Sort by specialty, availability, or proximity to get what you need instantly.",
+  },
+
+  {
+    title: "Real-Time Health Notifications",
+    icon: <Icon.BellRing />,
+    image: "/assets/mobile/feature_inbox_unread.png",
+    description:
+      "Get instant alerts for every important update—from appointment reminders to new prescriptions and lab results.",
+  },
+];

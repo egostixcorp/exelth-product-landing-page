@@ -15,28 +15,28 @@ const PhoneMockUp = ({ ref }) => {
     "/mock/mobile-mock-profile.jpg",
     "/mock/mobile-mock-search.jpg",
   ];
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ref,
-          start: "40% 80%", // Trigger when element enters 80% from top
-          end: "50% 40%",
-          //   scrub: 1,
-          //   markers: true, // Enable this for debugging
-        },
-      });
+  //   useLayoutEffect(() => {
+  //     const ctx = gsap.context(() => {
+  //       const tl = gsap.timeline({
+  //         scrollTrigger: {
+  //           trigger: ref,
+  //           start: "40% 80%", // Trigger when element enters 80% from top
+  //           end: "50% 40%",
+  //           //   scrub: 1,
+  //           //   markers: true, // Enable this for debugging
+  //         },
+  //       });
 
-      tl.from("#phone-mock", {
-        x: "200%",
-        // opacity: 0,
-        duration: 1.2,
-        ease: "power4.out",
-      });
-    }, ref);
+  //       tl.from("#phone-mock", {
+  //         x: "200%",
+  //         // opacity: 0,
+  //         duration: 1.2,
+  //         ease: "power4.out",
+  //       });
+  //     }, ref);
 
-    return () => ctx.revert(); // Clean up on unmount
-  }, [ref]);
+  //     return () => ctx.revert(); // Clean up on unmount
+  //   }, [ref]);
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -47,7 +47,7 @@ const PhoneMockUp = ({ ref }) => {
   return (
     <div
       id="phone-mock"
-      className="absolute -bottom-7 right-0 z-30 w-[80px] overflow-hidden tablet:-right-10 tablet:w-[190px] laptop:-bottom-5 laptop:w-[201px] desktop:-bottom-5 desktop:h-[550px] desktop:w-[291px]"
+      className="absolute -bottom-7 right-0 z-30 w-[80px] overflow-hidden tablet:-right-10 tablet:w-[190px] laptop:-bottom-5 laptop:w-[201px] desktop:bottom-0 desktop:h-[550px] desktop:w-[291px]"
     >
       <Image
         src="/iphoneMockup.png"
