@@ -1,32 +1,6 @@
 import React from "react";
-import { Stethoscope, Users, ShieldCheck, ActivitySquare } from "lucide-react";
-
-const features = [
-  {
-    title: "Connected Care",
-    description:
-      "Seamlessly unify hospitals, clinics, and health workers into a single interoperable ecosystem.",
-    icon: Stethoscope,
-  },
-  {
-    title: "Collaborative Teams",
-    description:
-      "Enable real-time collaboration between care teams, departments, and facilities for better outcomes.",
-    icon: Users,
-  },
-  {
-    title: "Privacy-First Architecture",
-    description:
-      "Built with end-to-end encryption, granular access control, and full compliance with data laws.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Insight-Driven Workflows",
-    description:
-      "Leverage analytics, wait-time optimization, and actionable alerts to streamline operations.",
-    icon: ActivitySquare,
-  },
-];
+import { features } from "@/data/features";
+import Image from "next/image";
 
 const GridLayout = () => {
   return (
@@ -44,15 +18,30 @@ const GridLayout = () => {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="h-96 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:shadow-md"
+            className="flex h-96 flex-col items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:shadow-md"
           >
-            <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-green-50 text-green-600">
-              <feature.icon size={24} />
+            <div className="redd flex w-full items-center justify-start">
+              <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-green-50 text-green-600">
+                {/* <feature.icon size={24} /> */}
+                {feature.icon}
+              </div>
+              <h3 className="text-lg font-semibold text-gray-800">
+                {feature.title}
+              </h3>
             </div>
-            <h3 className="text-lg font-semibold text-gray-800">
-              {feature.title}
-            </h3>
             <p className="mt-2 text-sm text-gray-600">{feature.description}</p>
+            <div className="redd flex size-full items-center justify-end overflow-hidden">
+              {feature.image && (
+                <Image
+                  src={feature.image}
+                  width={1980}
+                  height={1080}
+                  quality={100}
+                  alt={feature.title}
+                  className="redd mt-28 h-full w-fit scale-150 rounded-md border border-green-200 object-contain"
+                />
+              )}
+            </div>
           </div>
         ))}
       </div>

@@ -8,11 +8,11 @@ import {
   CardTitle,
 } from "../ui/card";
 import Icon from "../Global/Icon";
-const FeatureCard = ({ title, desc ,icon}) => {
+const FeatureCard = ({ title, desc, icon }) => {
   return (
     <Card className="h-52 w-80 border-[5px] border-green-200">
       <CardHeader>
-        <CardTitle className="flex items-center gap-3">
+        <CardTitle className="redf flex items-center justify-center gap-3">
           {icon}
           {title}
         </CardTitle>
