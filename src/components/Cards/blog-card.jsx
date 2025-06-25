@@ -1,8 +1,13 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { TeamTooltip } from "@/components/Cards/team-card";
 import { format } from "date-fns";
+import { useRouter } from "next/navigation";
+import { Button } from "../ui/button";
 const BlogCard = ({ data }) => {
+ 
   const { slug, title, desc, publishDate, writer, thumbnail } = data;
   return (
     <Link href={`/blog/${slug}`}>
@@ -17,7 +22,12 @@ const BlogCard = ({ data }) => {
           {title}
         </div>
         <div id="info" className="flex w-full items-center gap-2">
-          <span>{writer}</span>
+          <TeamTooltip name={writer}>
+            <span className="hover:underline hover:underline-offset-2">
+              {writer}
+            </span>
+          </TeamTooltip>
+
           <span>{format(publishDate, "PP")}</span>
         </div>
       </div>
@@ -26,3 +36,4 @@ const BlogCard = ({ data }) => {
 };
 
 export default BlogCard;
+

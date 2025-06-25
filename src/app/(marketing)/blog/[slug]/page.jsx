@@ -2,6 +2,7 @@ import React from "react";
 import { notFound } from "next/navigation";
 import { ExelthBlogs } from "@/data/blogs";
 import Image from "next/image";
+import BlogBackButton from "@/components/Buttons/blog-back-button";
 import { MDXRemote } from "next-mdx-remote/rsc";
 // ✅ Dynamic metadata function
 export async function generateMetadata({ params }) {
@@ -18,7 +19,12 @@ const Blog = ({ params }) => {
   if (!blog) return notFound();
 
   return (
-    <main className="min-h-screen w-full dark:bg-black dark:text-white">
+    <main className="relative min-h-screen w-full dark:bg-black dark:text-white">
+      <div className="redd absolute right-0 flex items-center justify-center top-28 mx-auto w-full">
+        <div className="max-w-5xl w-full redd">
+          <BlogBackButton />
+        </div>
+      </div>
       <section className="mx-auto max-w-3xl px-4 pb-10 pt-28 text-center">
         {/* Date */}
         <p className="mb-2 text-sm text-gray-400">
