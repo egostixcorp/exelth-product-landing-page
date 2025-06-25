@@ -16,7 +16,7 @@ export const navigation = [
   { label: "About", route: "/about" },
   {
     label: "Features",
-    route: "/feature",
+    route: "/features",
     features: [
       {
         label: "Real-Time Patient Tracking",

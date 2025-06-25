@@ -12,7 +12,7 @@ const ExelthMobileProductPage = () => {
         id="container"
         className="redd flex w-full flex-col items-start justify-center gap-5 overflow-hidden px-[5%] laptop:px-[15%]"
       >
-        <MobileProductAppLayout />
+        <MobileProductThumbnail />
       </div>
 
       <div className="flex min-h-[55vh] w-full flex-col items-center justify-center text-center">

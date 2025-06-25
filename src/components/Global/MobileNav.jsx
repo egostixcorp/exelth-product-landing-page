@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import {
   Sheet,
   SheetContent,
@@ -11,8 +12,9 @@ import { navigation } from "../../data/navigation";
 import Waitlist from "../Waitlist/Waitlist";
 import Link from "next/link";
 const MobileNav = ({ children }) => {
+  const [close, setClose] = useState(false);
   return (
-    <Sheet>
+    <Sheet open={close} onOpenChange={setClose}>
       <SheetTrigger>{children}</SheetTrigger>
       <SheetContent className="z-[9999] w-80">
         <SheetHeader>
@@ -25,7 +27,12 @@ const MobileNav = ({ children }) => {
         <div className="flex flex-col items-start justify-center gap-4 text-xl">
           {navigation.map((data, i) => {
             return (
-              <Link key={i} href={data.route} className="capitalize">
+              <Link
+                onClick={() => setClose(false)}
+                key={i}
+                href={data.route}
+                className="capitalize"
+              >
                 {data.label}
               </Link>
             );
