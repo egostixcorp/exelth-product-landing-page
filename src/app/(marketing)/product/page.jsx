@@ -1,8 +1,10 @@
-import React from "react";
+"use client";
+import React, { useLayoutEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import Container from "@/components/Global/Container";
 import Image from "next/image";
 import Link from "next/link";
+import gsap from "gsap";
 const ProductPage = () => {
   const Products = [
     {
@@ -20,7 +22,41 @@ const ProductPage = () => {
         "Manage appointments, records, and billing from a single, patient-first mobile app.",
     },
   ];
-
+  useLayoutEffect(() => {
+    const Gctx = gsap.context(() => {
+      let tl = gsap.timeline({
+        delay: 1,
+        autoAlpha: 1, // combines opacity + visibility
+      });
+      tl.from("#badge", {
+        opacity: 0,
+        x: -80,
+        filter: "blur(10px)",
+        duration: 0.5,
+      });
+      tl.from("#header-title", {
+        opacity: 0,
+        y: 10,
+        filter: "blur(10px)",
+      });
+      tl.from("#header-desc", {
+        opacity: 0,
+        y: 10,
+        filter: "blur(50px)",
+      });
+      tl.from("#product-0", {
+        opacity: 0,
+        y: 10,
+        filter: "blur(10px)",
+      });
+      tl.from("#product-1", {
+        opacity: 0,
+        y: 10,
+        filter: "blur(10px)",
+      });
+    });
+    return () => Gctx.revert();
+  }, []);
   return (
     <div className="flex min-h-screen w-full items-center justify-center">
       <Container className={"redd"}>
@@ -37,7 +73,10 @@ const ProductPage = () => {
               id="header-image"
               className="redd flex h-80 items-center justify-center"
             >
-              <h1 className="text-6xl font-extrabold text-green-600 laptop:text-8xl">
+              <h1
+                id="badge"
+                className="text-6xl font-black text-green-600 laptop:text-8xl"
+              >
                 Exelth
               </h1>
             </div>
@@ -65,7 +104,7 @@ const ProductPage = () => {
           >
             {Products.map((data, i) => {
               return (
-                <Link key={i} href={data.route}>
+                <Link id={`product-${i}`} key={i} href={data.route}>
                   <ProductCard {...data} />
                 </Link>
               );
