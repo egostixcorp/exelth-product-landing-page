@@ -4,6 +4,8 @@ import Image from "next/image";
 import React, { useLayoutEffect } from "react";
 import { FaApple, FaGooglePlay } from "react-icons/fa";
 import { MdArrowOutward } from "react-icons/md";
+import { Button } from "../ui/button";
+import Link from "next/link";
 const MobileThumbnailLayout = () => {
   useLayoutEffect(() => {
     const Gctx = gsap.context(() => {
@@ -60,7 +62,7 @@ const MobileThumbnailLayout = () => {
               height={1080}
               quality={100}
               alt=""
-              className="redd size-full -translate-x-5 translate-y-20 scale-[2] object-contain tablet:translate-y-10 tablet:scale-110 laptop:scale-150 desktop:-translate-x-14 desktop:translate-y-32 desktop:scale-105"
+              className="redd size-full -translate-x-5 translate-y-20 scale-[2] object-contain tablet:translate-y-10 tablet:scale-110 laptop:scale-150 desktop:-translate-x-8 desktop:translate-y-32 desktop:scale-105"
             ></Image>
           </div>
         </div>
@@ -84,6 +86,11 @@ const MobileThumbnailLayout = () => {
             Track appointments, bills, prescriptions, and real-time updates —
             all from your phone. Available for iOS and Android.
           </p>
+          <Link id="action-button" href={""}>
+            <Button variant={"exelth"}>
+              <FaGooglePlay /> Open Play Store
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
