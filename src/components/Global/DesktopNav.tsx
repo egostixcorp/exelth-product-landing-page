@@ -119,13 +119,13 @@ const DesktopNav = () => {
         </NavigationMenuItem>
 
         {/* Pricing */}
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
           <Link href="/pricing" passHref legacyBehavior>
             <NavigationMenuLink className="px-4 py-2 text-sm font-medium">
               Pricing
             </NavigationMenuLink>
           </Link>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
       </NavigationMenuList>
     </NavigationMenu>
   );

@@ -36,8 +36,8 @@ export const navigation = [
     label: "Blog",
     route: "/blog",
   },
-  {
-    label: "Pricing",
-    route: "/pricing",
-  },
+  // {
+  //   label: "Pricing",
+  //   route: "/pricing",
+  // },
 ];

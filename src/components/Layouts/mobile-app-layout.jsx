@@ -96,7 +96,7 @@ const MobileAppLayout = () => {
           </div>
         </div>
       </div>
-      <div className="redd relative mt-16 flex size-full items-center justify-center tablet:mt-0">
+      <div className="redd relative mt-16 flex size-full items-center laptop:justify-end justify-center tablet:mt-0">
         <div
           id="phone-mock"
           className="redd h-96 w-fit translate-x-[50%] overflow-hidden opacity-0 blur-sm desktop:h-[35rem]"
