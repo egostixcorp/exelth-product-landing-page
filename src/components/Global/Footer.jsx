@@ -19,10 +19,12 @@ const Footer = () => {
           <h3 className="text-sm font-semibold text-gray-800">Product</h3>
           <ul className="mt-3 space-y-2 text-sm text-gray-600">
             <li>
-              <Link href="/product">For Facilities</Link>
+              <Link href="/product/exelth-infrastructure-platform">
+                For Facilities
+              </Link>
             </li>
             <li>
-              <Link href="/product">For Patients</Link>
+              <Link href="/product/exelth-care-app">For Patients</Link>
             </li>
             <li>
               <Link href="/changelog">Changelog</Link>
