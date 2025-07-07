@@ -46,10 +46,10 @@ const Footer = () => {
           <h3 className="text-sm font-semibold text-gray-800">Legal</h3>
           <ul className="mt-3 space-y-2 text-sm text-gray-600">
             <li>
-              <Link href="">Terms of Service</Link>
+              <Link href="/terms">Terms of Conditions</Link>
             </li>
             <li>
-              <Link href="">Privacy Policy</Link>
+              <Link href="/privacy-policy">Privacy Policy</Link>
             </li>
             {/* <li>
               <Link href="">About</Link>
