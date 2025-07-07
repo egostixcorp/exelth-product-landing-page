@@ -28,7 +28,7 @@ const ProductPage = () => {
         delay: 1,
         autoAlpha: 1, // combines opacity + visibility
       });
-      tl.from("#badge", {
+      tl.from("#logo", {
         opacity: 0,
         x: -80,
         filter: "blur(10px)",
@@ -58,7 +58,7 @@ const ProductPage = () => {
     return () => Gctx.revert();
   }, []);
   return (
-    <div className="flex min-h-screen w-full items-center justify-center">
+    <div className="my-20 flex min-h-screen w-full items-center justify-center">
       <Container className={"redd"}>
         <div
           id="content"
@@ -71,20 +71,25 @@ const ProductPage = () => {
             <div class="absolute -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
             <div
               id="header-image"
-              className="redd flex h-80 items-center justify-center"
+              className="redd flex items-center justify-center"
             >
-              <h1
-                id="badge"
-                className="text-6xl font-black text-green-600 laptop:text-8xl"
+              <div
+                id="logo"
+                className="mt-14 rounded-2xl border border-neutral-100 bg-white p-2 shadow-inner"
               >
-                Exelth
-              </h1>
+                <Image
+                  src={"/brand/exelth-green.png"}
+                  width={100}
+                  height={100}
+                  alt="Exelth"
+                />
+              </div>
             </div>
             <h1
               id="header-title"
-              className="text-center text-3xl font-semibold laptop:text-6xl"
+              className="text-center text-3xl pt-2 font-semibold laptop:text-6xl"
             >
-              The new standard for modern healthcare coordination
+              Seamless Care Coordination <br /> that Puts People First
             </h1>
             <p
               id="header-desc"
