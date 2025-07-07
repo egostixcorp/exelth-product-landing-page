@@ -26,9 +26,9 @@ const Footer = () => {
             <li>
               <Link href="/product/exelth-care-app">For Patients</Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/changelog">Changelog</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
         {/* Comapany Column */}

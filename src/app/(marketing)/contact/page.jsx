@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 const ContactPage = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-10">
+    <div className="flex min-h-screen items-center justify-center  px-4 py-10">
       <div className="w-full max-w-2xl space-y-6 mt-10 tablet:mt-0 rounded-lg bg-white p-8 shadow-md">
         <div>
           <h1 className="text-3xl font-bold text-neutral-800">Get in Touch</h1>
