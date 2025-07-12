@@ -4,6 +4,7 @@ import React from "react";
 const Container = ({ children, className }) => {
   return (
     <div
+      id="container-legal"
       className={cn(
         "redd container flex h-full items-center justify-center px-[5%] pt-20 laptop:px-[15%]",
         className,
