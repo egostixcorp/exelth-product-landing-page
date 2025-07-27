@@ -84,7 +84,7 @@ const MobileThumbnailLayout = () => {
           </h1>
           <p id="desc" className="text-base text-neutral-500 tablet:text-lg">
             Track appointments, bills, prescriptions, and real-time updates —
-            all from your phone. Available for iOS and Android.
+            all from your phone.
           </p>
           <Link id="action-button" href={""}>
             <Button variant={"exelth"}>

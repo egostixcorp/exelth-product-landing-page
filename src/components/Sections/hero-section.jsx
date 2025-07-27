@@ -62,15 +62,15 @@ const HeroSection = () => {
           id="desc1"
           className="translate-y-[50%] text-xs opacity-0 blur-sm tablet:text-sm desktop:text-xl"
         >
-          Optimize <span className="text-blue-400">operations</span>, enhance{" "}
-          <span className="redd text-green-400">communication</span>, and
-          simplify <span className="text-red-400">workflows</span> across{" "}
-          <span className="text-purple-400">departments</span>.{" "}
-          <span>Insurance providers</span>, and <span>patients</span> — all in
-          one seamless system.
+          Built for <strong>clinics and hospitals</strong> to manage
+          appointments, staff, and care coordination —{" "}
+          <br className="hidden md:block" />
+          and for <strong>patients</strong> to book visits, track health, and
+          stay connected in real time.
         </p>
         <p
           id="desc2"
+          hidden
           className="translate-y-[50%] text-xs opacity-0 blur-sm tablet:text-sm desktop:text-xl"
         >
           Empower patients with a mobile app for{" "}

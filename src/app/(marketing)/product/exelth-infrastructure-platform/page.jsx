@@ -64,19 +64,16 @@ const HeroSection = () => {
             id="headline"
             className="translate-y-[50%] text-xl font-semibold opacity-0 blur-sm tablet:text-2xl laptop:text-3xl desktop:text-5xl"
           >
-            Streamline Health Care Infrastructure with a Centralized Real-Time
-            Platform
+            Manage appointments, streamline staff workflows, and coordinate care
+            — <br className="hidden md:block" /> all in one platform.
           </h1>
+
           <p
             id="desc1"
-            className="translate-y-[50%] px-[15%] text-xs opacity-0 blur-sm tablet:text-sm desktop:text-xl"
+            className="mx-auto mt-6 max-w-2xl translate-y-[50%] text-lg text-gray-600 opacity-0 blur-sm md:text-xl"
           >
-            Optimize <span className="text-blue-400">operations</span>, enhance{" "}
-            <span className="redd text-green-400">communication</span>, and
-            simplify <span className="text-red-400">workflows</span> across{" "}
-            <span className="text-purple-400">departments</span>.{" "}
-            <span>Insurance providers</span>, and <span>patients</span> — all in
-            one seamless system.
+            Built for modern clinics and hospitals to simplify daily operations
+            and deliver better care.
           </p>
         </div>
         <div className="redd relative flex w-full flex-col items-center justify-start gap-5">
