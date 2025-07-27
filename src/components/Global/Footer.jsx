@@ -1,4 +1,5 @@
 import React from "react";
+import LogoType from "@/components/Global/logo-type";
 import Link from "next/link";
 import { Mail, Phone, Linkedin, Twitter, Globe } from "lucide-react";
 
@@ -7,8 +8,8 @@ const Footer = () => {
     <footer className="w-full border-t bg-gray-50 px-6 pt-12 tablet:px-12 desktop:px-24">
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 tablet:grid-cols-5 laptop:grid-cols-5 desktop:grid-cols-5">
         {/* Brand Column */}
-        <div>
-          <h2 className="text-xl font-bold text-green-600">Exelth</h2>
+        <div className="redd flex flex-col items-start justify-center text-left">
+          <LogoType />
           <p className="mt-2 text-sm text-gray-600">
             A connected health infrastructure platform
           </p>

@@ -3,6 +3,7 @@ import { navigation } from "@/data/navigation";
 import MobileNav from "@/components/Global/MobileNav";
 import DesktopNav from "@/components/Global/DesktopNav";
 import WaitlistModel from "@/components/Waitlist/WaitlistModel";
+import LogoType from "@/components/Global/logo-type";
 import Link from "next/link";
 import Icon from "./Icon";
 import { Button } from "../ui/button";
@@ -12,7 +13,7 @@ const Header = () => {
       <div className="redd relative flex h-full w-full items-center justify-between p-1 px-[5%] laptop:px-[15%]">
         <div id="logo">
           <Link href={"/"}>
-            <h1 className="text-2xl font-extrabold text-green-600">Exelth</h1>
+            <LogoType />
           </Link>
         </div>
         <div

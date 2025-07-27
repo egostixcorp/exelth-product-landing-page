@@ -30,6 +30,7 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        exelth_logo: "#2ab95a",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

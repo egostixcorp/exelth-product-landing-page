@@ -28,7 +28,7 @@ const ProductPage = () => {
         delay: 1,
         autoAlpha: 1, // combines opacity + visibility
       });
-      tl.from("#logo", {
+      tl.from("#logo_product", {
         opacity: 0,
         x: -80,
         filter: "blur(10px)",
@@ -74,7 +74,7 @@ const ProductPage = () => {
               className="redd flex items-center justify-center"
             >
               <div
-                id="logo"
+                id="logo_product"
                 className="mt-14 rounded-2xl border border-neutral-100 bg-white p-2 shadow-inner"
               >
                 <Image
@@ -87,7 +87,7 @@ const ProductPage = () => {
             </div>
             <h1
               id="header-title"
-              className="text-center text-3xl pt-2 font-semibold laptop:text-6xl"
+              className="pt-2 text-center text-3xl font-semibold laptop:text-6xl"
             >
               Seamless Care Coordination <br /> that Puts People First
             </h1>
