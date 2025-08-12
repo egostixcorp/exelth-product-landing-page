@@ -11,6 +11,10 @@ const TermsConditionsPage = () => {
           <p className="mt-1 text-sm font-semibold text-gray-500">
             Last Updated: {TermsDate}
           </p>
+          <p className="mt-1 text-sm font-semibold">
+            Welcome to Exelth. By using our mobile app or web platform, you
+            agree to these Terms and Conditions. Please read them carefully.
+          </p>
         </div>
 
         <section className="mb-6">
@@ -18,12 +22,10 @@ const TermsConditionsPage = () => {
             1. Introduction
           </h2>
           <p className="text-gray-700">
-            Welcome to Exelth. By using our mobile application or web-based
-            platform, you agree to be bound by the following terms and
-            conditions. Exelth is a digital healthcare platform that enables
-            patients to book appointments, access medical records, and receive
-            real-time updates from listed hospitals and clinics. We also provide
-            hospital management tools to clinics and hospitals.
+            Exelth is a digital healthcare platform that helps patients book
+            appointments, access medical records, and get real-time updates from
+            participating hospitals and clinics. We also provide hospital
+            management tools to these facilities.
           </p>
         </section>
 
@@ -32,8 +34,9 @@ const TermsConditionsPage = () => {
             2. User Eligibility
           </h2>
           <p className="text-gray-700">
-            You must be at least 4+ years old to use Exelth. If you are under
-            4+, use must be under the supervision of a parent or legal guardian.
+            You must be at least 4+ years old to use Exelth. If you are under 4+
+            years old, use must be under the supervision of a parent or legal
+            guardian.
           </p>
         </section>
 
@@ -41,11 +44,13 @@ const TermsConditionsPage = () => {
           <h2 className="mb-2 text-xl font-semibold text-neutral-800">
             3. Use of the Platform
           </h2>
-          <p className="text-gray-700">
-            You agree to use Exelth only for lawful purposes. You must not
-            misuse, interfere with, or attempt to gain unauthorized access to
-            any part of our system.
-          </p>
+          <ul className="list-inside list-disc space-y-1 text-gray-700">
+            <li>Use Exelth only for lawful purposes.</li>
+            <li>
+              Do not misuse, disrupt, or attempt unauthorized access to any part
+              of the platform.
+            </li>
+          </ul>
         </section>
 
         <section className="mb-6">
@@ -53,11 +58,16 @@ const TermsConditionsPage = () => {
             4. Account Security
           </h2>
           <ul className="list-inside list-disc space-y-1 text-gray-700">
-            <li>
-              You are responsible for keeping your login credentials
-              confidential.
-            </li>
+            <li>You are responsible for keeping your login details private.</li>
             <li>Notify us immediately of any unauthorized access or breach.</li>
+            <li>
+              All payments for bookings, lab tests, or other services on Exelth
+              are processed through secure third-party payment gateways.
+            </li>
+            <li>
+              Exelth does not store your payment card or banking details on its
+              servers.
+            </li>
           </ul>
         </section>
 
@@ -78,20 +88,17 @@ const TermsConditionsPage = () => {
           </h2>
           <ul className="list-inside list-disc space-y-1 text-gray-700">
             <li>
-              All financial transactions are processed through secure
-              third-party gateways.
+              Payments for bookings, lab tests, and other services are processed
+              through secure third-party gateways.
+            </li>
+            <li>We do not store your payment card or banking details.</li>
+            <li>
+              We are not responsible for failed payments, delays, or chargebacks
+              unless caused by a confirmed platform error.
             </li>
             <li>
-              Exelth does not store your payment card or banking details on its
-              servers.
-            </li>
-            <li>
-              Exelth is not responsible for payment failures or chargebacks
-              unless caused by platform error.
-            </li>
-            <li>
-              Exelth Wallet is available only for partnered clinics and
-              hospitals. Patients do not have wallet balances on Exelth.
+              The Exelth Wallet is available only to partnered clinics and
+              hospitals. Patients do not hold wallet balances on Exelth.
             </li>
           </ul>
         </section>
@@ -101,7 +108,7 @@ const TermsConditionsPage = () => {
             7. Data Handling
           </h2>
           <p className="text-gray-700">
-            Data shared on Exelth is handled in accordance with our{" "}
+            Data shared on Exelth is handled in according to our{" "}
             <a href="/privacy-policy" className="text-green-600 underline">
               Privacy Policy
             </a>
@@ -124,8 +131,8 @@ const TermsConditionsPage = () => {
             9. Limitation of Liability
           </h2>
           <p className="text-gray-700">
-            We are not liable for any indirect or consequential losses resulting
-            from your use of Exelth.
+            We are not liable for any indirect, incidental, or consequential
+            damages resulting from your use of Exelth.
           </p>
         </section>
 
