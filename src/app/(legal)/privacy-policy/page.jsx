@@ -86,11 +86,13 @@ const PrivacyPolicyPage = () => {
 
         <section className="mb-6">
           <h2 className="mb-2 text-xl font-semibold text-neutral-800">
-            6. Children’s Privacy
+            6. Children&apos;s Privacy
           </h2>
           <p className="text-gray-700">
-            We do not knowingly collect data from individuals under 16 without
-            parental consent.
+            Exelth is not intended for use by minors. We encourage parents and
+            guardians to supervise their children&apos;s online activities. If
+            we discover that a minor has provided personal information, we will
+            delete it promptly.
           </p>
         </section>
 
