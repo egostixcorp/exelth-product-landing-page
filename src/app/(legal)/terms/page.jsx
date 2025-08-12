@@ -32,8 +32,8 @@ const TermsConditionsPage = () => {
             2. User Eligibility
           </h2>
           <p className="text-gray-700">
-            You must be at least 16 years old to use Exelth. If you are under
-            16, use must be under the supervision of a parent or legal guardian.
+            You must be at least 4+ years old to use Exelth. If you are under
+            4+, use must be under the supervision of a parent or legal guardian.
           </p>
         </section>
 
@@ -82,8 +82,16 @@ const TermsConditionsPage = () => {
               third-party gateways.
             </li>
             <li>
+              Exelth does not store your payment card or banking details on its
+              servers.
+            </li>
+            <li>
               Exelth is not responsible for payment failures or chargebacks
               unless caused by platform error.
+            </li>
+            <li>
+              Exelth Wallet is available only for partnered clinics and
+              hospitals. Patients do not have wallet balances on Exelth.
             </li>
           </ul>
         </section>

@@ -20,8 +20,11 @@ const PrivacyPolicyPage = () => {
           <ul className="list-inside list-disc space-y-1 text-gray-700">
             <li>Personal Info (Name, Phone, Email)</li>
             <li>Health Data (Medical Records, Prescriptions, Lab Reports)</li>
-            <li>Location (for ambulance/emergency services)</li>
             <li>Device Information (for analytics)</li>
+            <li>
+              Location – We use your location to help you find nearby hospitals
+              and clinics
+            </li>
           </ul>
         </section>
 
