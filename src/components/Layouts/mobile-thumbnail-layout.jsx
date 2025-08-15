@@ -6,6 +6,7 @@ import { FaApple, FaGooglePlay } from "react-icons/fa";
 import { MdArrowOutward } from "react-icons/md";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import Icon from "../Global/Icon";
 const MobileThumbnailLayout = () => {
   useLayoutEffect(() => {
     const Gctx = gsap.context(() => {
@@ -86,10 +87,15 @@ const MobileThumbnailLayout = () => {
             Track appointments, bills, prescriptions, and real-time updates —
             all from your phone.
           </p>
-          <Link id="action-button" href={""}>
+          <Link id="action-button" href={""} className="space-x-4">
             <Button variant={"exelth"}>
               <FaGooglePlay /> Open Play Store
             </Button>
+            <Link href={"/product/exelth-care-app/download"}>
+              <Button variant={"exelth"}>
+                <Icon.Smartphone /> Download Apk
+              </Button>
+            </Link>
           </Link>
         </div>
       </div>
