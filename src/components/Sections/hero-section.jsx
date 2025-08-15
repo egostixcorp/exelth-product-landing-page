@@ -81,9 +81,14 @@ const HeroSection = () => {
       </div>
       <div
         id="action-button"
-        className="flex translate-y-[50%] flex-wrap items-center justify-center gap-5 opacity-0 blur-sm"
+        className="flex translate-y-[50%] flex-col items-center justify-center gap-5 opacity-0 blur-sm laptop:flex-row"
       >
         <Waitlist />
+        <Link href={"/product/exelth-care-app/download"}>
+          <Button variant={"exelth"} className="h-11 w-72 tablet:w-72 laptop:w-fit">
+            <Icon.Smartphone /> Download Apk
+          </Button>
+        </Link>
       </div>
     </div>
   );

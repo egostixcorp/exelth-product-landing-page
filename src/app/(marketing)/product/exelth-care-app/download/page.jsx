@@ -22,6 +22,7 @@ const screenshots = [
   "/apk/preview/screen5.png",
   "/apk/preview/screen6.png",
   "/apk/preview/screen7.png",
+  "/apk/preview/screen8.png",
 ];
 
 export default function DownloadPage() {
