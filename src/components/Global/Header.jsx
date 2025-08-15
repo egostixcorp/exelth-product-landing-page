@@ -9,7 +9,7 @@ import Icon from "./Icon";
 import { Button } from "../ui/button";
 const Header = () => {
   return (
-    <div className="site-header fixed right-0 top-0 z-[9999] flex h-16 w-full items-center justify-center bg-white shadow-sm">
+    <div className="site-header fixed right-0 top-0 z-[99] flex h-16 w-full items-center justify-center bg-white shadow-sm">
       <div className="redd relative flex h-full w-full items-center justify-between p-1 px-[5%] laptop:px-[15%]">
         <div id="logo">
           <Link href={"/"}>
