@@ -4,6 +4,12 @@ import { AppBaseUrl, AppMBaseUrl } from "@/data/const";
 import Waitlist from "@/components/Waitlist/Waitlist";
 import Icon from "@/components/Global/Icon";
 import { Button } from "../ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Badge } from "../ui/badge";
 import React, { useLayoutEffect } from "react";
 import gsap from "gsap";
@@ -83,12 +89,48 @@ const HeroSection = () => {
         id="action-button"
         className="flex translate-y-[50%] flex-col items-center justify-center gap-5 opacity-0 blur-sm laptop:flex-row"
       >
-        <Waitlist />
-        <Link href={"/product/exelth-care-app/download"}>
-          <Button variant={"exelth"} className="h-11 w-72 tablet:w-72 laptop:w-fit">
-            <Icon.Smartphone /> Download Apk
-          </Button>
-        </Link>
+        {/* Waitlist Button with Tooltip */}
+        <div className="flex items-center gap-2">
+          <Waitlist />
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <Icon.Info className="size-4 cursor-pointer text-gray-500" />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>
+                  Join the waitlist to get early access to the Exelth platform
+                  for clinics & hospitals.
+                </p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
+
+        {/* Mobile App Button with Tooltip */}
+        <div className="flex items-center gap-2">
+          <Link href={"/product/exelth-care-app/download"}>
+            <Button
+              variant={"exelth"}
+              className="h-11 w-72 tablet:w-72 laptop:w-fit"
+            >
+              <Icon.Smartphone /> Exelth Mobile App
+            </Button>
+          </Link>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <Icon.Info className="size-4 cursor-pointer text-gray-500" />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>
+                  Download the Exelth mobile app to book visits, track
+                  appointments, and stay connected.
+                </p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
       </div>
     </div>
   );

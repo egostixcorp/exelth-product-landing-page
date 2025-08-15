@@ -48,8 +48,8 @@ const WaitlistModel = ({ children }) => {
             Join Our Waitlist
           </DialogTitle>
           <DialogDescription className="text-center">
-            Be the first to know when we launch. Enter your email below to get
-            notified.
+            For clinics & hospitals — be the first to get early access to the
+            Exelth platform.
           </DialogDescription>
         </DialogHeader>
 
