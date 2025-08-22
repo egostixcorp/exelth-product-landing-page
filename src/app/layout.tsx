@@ -6,7 +6,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://exelth.com/"),
+  metadataBase: new URL("https://www.exelth.com/"),
   title: {
     template: "%s | Exelth",
     default: "Exelth | Centralized Digital Health Platform",

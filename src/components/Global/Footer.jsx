@@ -42,6 +42,9 @@ const Footer = () => {
             <li>
               <Link href="/blog">Blog</Link>
             </li>
+            <li>
+              <Link href="/changelog">Changelog</Link>
+            </li>
           </ul>
         </div>
         {/* Legal Column */}
