@@ -1,4 +1,7 @@
 import Container from "@/components/Layouts/container-wrapper";
+import { promises as fs } from "fs";
+import path from "path";
+import { compileMDX } from "next-mdx-remote/rsc";
 import React from "react";
 import BlogCard from "@/components/Cards/blog-card";
 import { ExelthBlogs } from "@/data/blogs";
@@ -6,7 +9,25 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 export const metadata = {
   title: "Blog",
 };
-const BlogListsPage = () => {
+const BlogListsPage = async () => {
+  const dir = path.join(process.cwd(), "src/contents");
+  const files = await fs.readdir(dir);
+
+  const Blogs = await Promise.all(
+    files.map(async (filename) => {
+      const filePath = path.join(dir, filename);
+      const content = await fs.readFile(filePath, "utf8");
+      const { frontmatter } = await compileMDX({
+        source: content,
+        options: { parseFrontmatter: true },
+      });
+
+      return {
+        slug: filename.replace(".mdx", ""),
+        ...frontmatter,
+      };
+    }),
+  );
   return (
     <TooltipProvider>
       <div className="redd mt-24 flex h-screen w-full flex-col items-center justify-center">
@@ -21,8 +42,8 @@ const BlogListsPage = () => {
             id="grid"
             className="redd grid h-full w-full gap-5 desktop:grid-cols-3"
           >
-            {ExelthBlogs.length > 0 ? (
-              ExelthBlogs.map((data, i) => <BlogCard key={i} data={data} />)
+            {Blogs.length > 0 ? (
+              Blogs.map((data, i) => <BlogCard key={i} data={data} />)
             ) : (
               <BlogCardSoon />
             )}

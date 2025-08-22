@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -7,7 +6,6 @@ import { format } from "date-fns";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 const BlogCard = ({ data }) => {
- 
   const { slug, title, desc, publishDate, writer, thumbnail } = data;
   return (
     <Link href={`/blog/${slug}`}>
@@ -36,4 +34,3 @@ const BlogCard = ({ data }) => {
 };
 
 export default BlogCard;
-

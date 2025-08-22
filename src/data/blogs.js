@@ -20,7 +20,7 @@ export const ExelthBlogs = [
   //   },
   //   {
   //     slug: "why-healthcare-needs-human-centered-design",
-  //     title: "Why Healthcare Needs Human-Centered Design",
+  //     title: "Why Healthcare Needs Human-Centered Design",a
   //     description:
   //       "Exploring how design thinking can reshape patient care, empower providers, and reduce system complexity.",
   //     publishDate: "2025-06-10",
