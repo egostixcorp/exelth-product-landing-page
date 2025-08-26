@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ConsoleEasterEgg from "@/components/Global/ConsoleLogEgg";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -53,6 +54,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <ConsoleEasterEgg />
         </ThemeProvider>
       </body>
     </html>
