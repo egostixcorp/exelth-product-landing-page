@@ -17,7 +17,7 @@ const HeroSection = () => {
   useLayoutEffect(() => {
     const Gctx = gsap.context(() => {
       let tl = gsap.timeline({
-        delay: 1,
+        delay: 0.8,
         autoAlpha: 1, // combines opacity + visibility
       });
       tl.to("#badge", {
