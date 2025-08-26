@@ -17,14 +17,14 @@ const HeroSection = () => {
   useLayoutEffect(() => {
     const Gctx = gsap.context(() => {
       let tl = gsap.timeline({
-        delay: 0.8,
+        delay: 0.5, // update delay here
         autoAlpha: 1, // combines opacity + visibility
       });
       tl.to("#badge", {
         opacity: 1,
         y: 0,
         filter: "blur(0px)",
-        duration: 0.5,
+        duration: 0.1,
       });
       tl.to("#headline", {
         opacity: 1,

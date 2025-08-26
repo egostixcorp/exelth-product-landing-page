@@ -87,16 +87,16 @@ const MobileThumbnailLayout = () => {
             Track appointments, bills, prescriptions, and real-time updates —
             all from your phone.
           </p>
-          <Link id="action-button" href={""} className="space-x-4">
-            <Button variant={"exelth"}>
+          <div id="action-button" className="space-x-4">
+            {/* <Button variant={"exelth"}>
               <FaGooglePlay /> Open Play Store
-            </Button>
+            </Button> */}
             <Link href={"/product/exelth-care-app/download"}>
               <Button variant={"exelth"}>
                 <Icon.Smartphone /> Download Apk
               </Button>
             </Link>
-          </Link>
+          </div>
         </div>
       </div>
     </div>

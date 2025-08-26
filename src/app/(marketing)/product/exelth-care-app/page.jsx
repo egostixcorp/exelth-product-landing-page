@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { useRef } from "react";
 import MobileProductThumbnail from "@/components/Layouts/mobile-thumbnail-layout";
-import MobileProductAppLayout from "@/components/Layouts/mobile-app-layout";
+// import MobileProductAppLayout from "@/components/Layouts/mobile-app-layout";
 import MobileFeatureSection from "@/components/Sections/mobile-feature-section";
 const ExelthMobileProductPage = () => {
   // const container = useRef(null);
