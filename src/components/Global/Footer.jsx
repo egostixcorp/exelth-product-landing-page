@@ -8,9 +8,9 @@ const Footer = () => {
     <footer className="w-full border-t bg-gray-50 px-6 pt-12 tablet:px-12 desktop:px-24">
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 tablet:grid-cols-5 laptop:grid-cols-5 desktop:grid-cols-5">
         {/* Brand Column */}
-        <div className="redd flex flex-col items-start justify-center text-left">
+        <div className="redd flex flex-col items-start justify-start text-left">
           <LogoType />
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-1 text-sm text-gray-600">
             A connected health infrastructure platform
           </p>
         </div>
@@ -68,7 +68,7 @@ const Footer = () => {
           <h3 className="text-sm font-semibold text-gray-800">Contact</h3>
           <ul className="mt-3 space-y-2 text-sm text-gray-600">
             <li className="flex items-center gap-2">
-              <Link href={"mailto:contact@exelth.com"}>contact@exelth.com</Link>
+              <Link href={"mailto:support@exelth.com"}>support@exelth.com</Link>
             </li>
             <li className="flex items-center gap-2">
               <Link href={"/contact"}>Contact</Link>
