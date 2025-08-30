@@ -9,7 +9,7 @@ const BlogCard = ({ data }) => {
   const { slug, title, desc, publishDate, writer, thumbnail } = data;
   return (
     <Link href={`/blog/${slug}`}>
-      <div className="flex h-72 w-96 flex-col items-center justify-between gap-1 rounded-md border p-2">
+      <div className="flex h-72 w-80 flex-col items-center justify-between gap-1 rounded-md border p-2 tablet:w-96">
         <div
           id="thumbnail"
           className="redd h-48 w-full overflow-hidden rounded-md border p-2"
