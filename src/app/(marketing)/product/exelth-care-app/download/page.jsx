@@ -9,9 +9,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from "react";
 
 // Example screenshots array
 const screenshots = [
@@ -28,7 +35,18 @@ const screenshots = [
 export default function DownloadPage() {
   const [open, setOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [api, setApi] = useState(null);
+  const [count, setCount] = React.useState(0);
+  React.useEffect(() => {
+    if (!api) return;
 
+    setCount(api.scrollSnapList().length);
+    setCurrentIndex(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrentIndex(api.selectedScrollSnap());
+    });
+  }, [api]);
   const nextImage = () =>
     setCurrentIndex((prev) => (prev + 1) % screenshots.length);
   const prevImage = () =>
@@ -141,40 +159,46 @@ export default function DownloadPage() {
             </DialogTitle>
           </DialogHeader>
 
+          {/* Carousel Section */}
           <div className="relative flex w-full flex-col items-center justify-center">
-            <Image
-              src={screenshots[currentIndex]}
-              alt={`Screenshot ${currentIndex + 1}`}
-              width={1000} // We'll use responsive sizes
-              height={1000}
-              quality={100}
-              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 50vw, 280px"
-              className="h-auto w-[80%] max-w-[280px] rounded-lg shadow-lg sm:w-[60%] md:w-[280px]"
-            />
-
-            {/* Prev Button */}
-            <Button
-              onClick={prevImage}
-              variant={"outline"}
-              size={"icon"}
-              className="absolute -left-5 top-1/2 -translate-y-1/2 px-2 py-1 text-lg sm:left-4"
+            <Carousel
+              setApi={setApi}
+              // onSelect={handleSelect}
+              className="w-full max-w-[320px] sm:max-w-[400px]"
             >
-              ◀
-            </Button>
+              <CarouselContent>
+                {screenshots.map((src, index) => (
+                  <CarouselItem key={index} className="flex justify-center">
+                    <Image
+                      src={src}
+                      alt={`Screenshot ${index + 1}`}
+                      width={1000}
+                      height={1000}
+                      priority={index === 0}
+                      quality={100}
+                      sizes="(max-width: 640px) 80vw, (max-width: 1024px) 50vw, 280px"
+                      className="h-auto w-[80%] max-w-[280px] rounded-lg shadow-lg sm:w-[60%] md:w-[280px]"
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
 
-            {/* Next Button */}
-            <Button
-              onClick={nextImage}
-              variant={"outline"}
-              size={"icon"}
-              className="absolute -right-5 top-1/2 -translate-y-1/2 px-2 py-1 text-lg sm:right-4"
-            >
-              ▶
-            </Button>
+              {/* Built-in navigation buttons */}
+              <CarouselPrevious
+                className="absolute -left-6 top-1/2 -translate-y-1/2"
+                // onClick={prevImage}
+              />
+              <CarouselNext
+                className="absolute -right-6 top-1/2 -translate-y-1/2"
+                // onClick={nextImage}
+              />
+            </Carousel>
           </div>
-
+          {/* Counter */}
           <div className="mt-2 text-center text-xs text-gray-500 sm:text-sm">
+            {/* If you want currentIndex, use Carousel's API */}
             {currentIndex + 1} / {screenshots.length}
+            {/* Use arrows to navigate through {screenshots.length} screenshots */}
           </div>
         </DialogContent>
       </Dialog>
