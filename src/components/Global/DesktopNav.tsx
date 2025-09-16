@@ -72,7 +72,7 @@ const DesktopNav = () => {
                       Exelth
                     </div>
                     <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                      Streamline Hospital Management with a Centralized
+                      Streamline Health Care Infrastructure with a Centralized
                       Real-Time Platform
                     </p>
                   </a>

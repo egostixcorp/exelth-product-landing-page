@@ -58,12 +58,21 @@ const AboutPage = () => {
             informed—on mobile.
           </p>
         </div>
-        <div className="rounded-xl border p-6 shadow-sm tablet:col-span-2">
+        <div className="rounded-xl border p-6 text-center shadow-sm tablet:col-span-2">
           <h3 className="text-lg font-semibold">Bridging Gaps in Care</h3>
           <p className="mt-2 text-sm text-gray-600">
             From the front desk to the bedside, Exelth makes information
             accessible and timely.
           </p>
+          <video
+            src="/Exelth-product-demo.webm"
+            muted
+            autoPlay
+            loop
+            // controls
+            download={false}
+            className="redd mt-4 size-fit w-full rounded-lg borderr"
+          ></video>
         </div>
       </section>
 
