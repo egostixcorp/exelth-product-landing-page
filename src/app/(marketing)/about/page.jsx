@@ -1,7 +1,7 @@
 import React from "react";
 import AboutPage from "@/components/Pages/about-page";
 export const metadata = {
-  title: "About",
+  title: "Why we built Exelth",
 };
 const page = () => {
   return (
