@@ -1,6 +1,7 @@
 import React from "react";
 import LogoType from "@/components/Global/logo-type";
 import Link from "next/link";
+import { FaFacebook, FaInstagram, FaXTwitter } from "react-icons/fa6";
 import { Mail, Phone, Linkedin, Twitter, Globe } from "lucide-react";
 
 const Footer = () => {
@@ -75,7 +76,19 @@ const Footer = () => {
             </li>
             <li className="flex items-center gap-2">
               <Link target="_blank" href={"https://x.com/exelthcare"}>
-                X/Twitter
+                <FaXTwitter />
+              </Link>
+              <Link
+                target="_blank"
+                href={"https://www.instagram.com/exelthcare/?hl=en"}
+              >
+                <FaInstagram />
+              </Link>
+              <Link
+                target="_blank"
+                href={"https://www.facebook.com/people/Exelth/61581196864018/"}
+              >
+                <FaFacebook />
               </Link>
             </li>
           </ul>
