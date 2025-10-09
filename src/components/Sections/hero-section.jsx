@@ -61,8 +61,7 @@ const HeroSection = () => {
           id="headline"
           className="translate-y-[50%] text-xl font-semibold opacity-0 blur-sm tablet:text-2xl laptop:text-3xl desktop:text-5xl"
         >
-          Streamline Health Care Infrastructure with a Centralized Real-Time
-          Platform
+          Bringing Healthcare Facilities and Patients Together — Seamlessly.
         </h1>
         <p
           id="desc1"
