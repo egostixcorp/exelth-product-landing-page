@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import MobileProductThumbnail from "@/components/Layouts/mobile-thumbnail-layout";
 // import MobileProductAppLayout from "@/components/Layouts/mobile-app-layout";
 import MobileFeatureSection from "@/components/Sections/mobile-feature-section";
+import TranslatableText from "@/components/Global/TranslatableText";
 const ExelthMobileProductPage = () => {
   // const container = useRef(null);
   return (
@@ -17,7 +18,11 @@ const ExelthMobileProductPage = () => {
 
       <div className="flex min-h-[55vh] w-full flex-col items-center justify-center text-center">
         <div className="mb-2 text-xl font-semibold text-gray-800 laptop:text-5xl">
-          Stay up to date of Your Care Journey
+          {/* Stay up to date of Your Care Journey */}
+          <TranslatableText
+            en=" Stay up to date of Your Care Journey"
+            bn="আপনার যত্নের যাত্রা সম্পর্কে আপ টু ডেট থাকুন"
+          />
         </div>
         <div className="mb-6 max-w-xl px-4 text-sm text-gray-600 laptop:px-0 laptop:text-lg">
           Your inbox keeps you in the loop with essential health

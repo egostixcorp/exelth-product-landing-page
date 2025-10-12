@@ -13,6 +13,7 @@ import {
 import { Badge } from "../ui/badge";
 import React, { useLayoutEffect } from "react";
 import gsap from "gsap";
+import TranslatableText from "../Global/TranslatableText";
 const HeroSection = () => {
   useLayoutEffect(() => {
     const Gctx = gsap.context(() => {
@@ -61,17 +62,31 @@ const HeroSection = () => {
           id="headline"
           className="translate-y-[50%] text-xl font-semibold opacity-0 blur-sm tablet:text-2xl laptop:text-3xl desktop:text-5xl"
         >
-          Bringing Healthcare Facilities and Patients Together — Seamlessly.
+          <TranslatableText
+            en="Bringing Healthcare Centers and Patients Together — Seamlessly."
+            bn="স্বাস্থ্যসেবা কেন্দ্র এবং রোগীদের একত্রিত করা — নির্বিঘ্নে।"
+          />
         </h1>
         <p
           id="desc1"
           className="translate-y-[50%] text-xs opacity-0 blur-sm tablet:text-sm desktop:text-xl"
         >
-          Built for <strong>clinics and hospitals</strong> to manage
+          <TranslatableText
+            en="Built for clinics and hospitals to manage
+          appointments, staff, and care coordination —
+          and for patients to book visits, track health, and
+          stay connected in real time."
+            bn="ক্লিনিক এবং হাসপাতালগুলির জন্য তৈরি করা হয়েছে
+
+অ্যাপয়েন্টমেন্ট, কর্মী এবং যত্ন সমন্বয় পরিচালনা করার জন্য —
+এবং রোগীদের ভিজিট বুক করার জন্য, স্বাস্থ্য ট্র্যাক করার জন্য এবং
+রিয়েল টাইমে সংযুক্ত থাকার জন্য।"
+          />
+          {/* Built for <strong>clinics and hospitals</strong> to manage
           appointments, staff, and care coordination —{" "}
           <br className="hidden md:block" />
           and for <strong>patients</strong> to book visits, track health, and
-          stay connected in real time.
+          stay connected in real time. */}
         </p>
         <p
           id="desc2"

@@ -7,6 +7,7 @@ import { MdArrowOutward } from "react-icons/md";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Icon from "../Global/Icon";
+import TranslatableText from "../Global/TranslatableText";
 const MobileThumbnailLayout = () => {
   useLayoutEffect(() => {
     const Gctx = gsap.context(() => {
@@ -81,11 +82,18 @@ const MobileThumbnailLayout = () => {
             id="headline"
             className="text-3xl font-semibold leading-tight tablet:text-4xl desktop:text-5xl"
           >
-            The mobile companion to your healthcare journey
+            <TranslatableText
+              en="The mobile companion to your healthcare journey"
+              bn="আপনার স্বাস্থ্যসেবা যাত্রার মোবাইল সঙ্গী"
+            />
+            {/* The mobile companion to your healthcare journey */}
           </h1>
           <p id="desc" className="text-base text-neutral-500 tablet:text-lg">
-            Track appointments, bills, prescriptions, and real-time updates —
-            all from your phone.
+            <TranslatableText
+              en="Track appointments, bills, prescriptions, and real-time updates —
+            all from your phone."
+              bn="অ্যাপয়েন্টমেন্ট, বিল, প্রেসক্রিপশন এবং রিয়েল-টাইম আপডেট ট্র্যাক করুন — সবই আপনার ফোন থেকে।"
+            />
           </p>
           <div id="action-button" className="space-x-4">
             {/* <Button variant={"exelth"}>

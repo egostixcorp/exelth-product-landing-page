@@ -5,6 +5,7 @@ import Container from "@/components/Global/Container";
 import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
+import TranslatableText from "@/components/Global/TranslatableText";
 const ProductPage = () => {
   const Products = [
     {
@@ -89,18 +90,33 @@ const ProductPage = () => {
               id="header-title"
               className="pt-2 text-center text-3xl font-semibold laptop:text-6xl"
             >
-              Seamless Care Coordination <br /> that Puts People First
+              {/* Seamless Care Coordination <br /> that Puts People First */}
+              <TranslatableText
+                en="Seamless Care Coordination
+that Puts People First"
+                bn="নির্বিঘ্নে যত্ন সমন্বয়
+যা মানুষকে প্রথমে রাখে"
+              />
             </h1>
             <p
               id="header-desc"
               className="text-center text-xs font-medium text-neutral-700 laptop:px-[15%] laptop:text-base"
             >
-              With a patient-centered design, real-time coordination, and
+              {/* With a patient-centered design, real-time coordination, and
               intelligent role-based workflows, Exelth helps hospitals and
               clinics deliver faster, more efficient, and connected care. Built
               for modern healthcare teams, it streamlines operations, enhances
               collaboration, and drives better outcomes at every stage of the
-              care journey.
+              care journey. */}
+              <TranslatableText
+                en="With a patient-centered design, real-time coordination, and
+              intelligent role-based workflows, Exelth helps hospitals and
+              clinics deliver faster, more efficient, and connected care. Built
+              for modern healthcare teams, it streamlines operations, enhances
+              collaboration, and drives better outcomes at every stage of the
+              care journey."
+                bn="রোগী-কেন্দ্রিক নকশা, রিয়েল-টাইম সমন্বয় এবং বুদ্ধিমান ভূমিকা-ভিত্তিক কর্মপ্রবাহের মাধ্যমে, এক্সেল্ট হাসপাতাল এবং ক্লিনিকগুলিকে দ্রুত, আরও দক্ষ এবং সংযুক্ত যত্ন প্রদানে সহায়তা করে। আধুনিক স্বাস্থ্যসেবা দলগুলির জন্য তৈরি, এটি কার্যক্রমকে সুবিন্যস্ত করে, সহযোগিতা বৃদ্ধি করে এবং যত্ন যাত্রার প্রতিটি পর্যায়ে আরও ভাল ফলাফল অর্জন করে।"
+              />
             </p>
           </div>
           <div

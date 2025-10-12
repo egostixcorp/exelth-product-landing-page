@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import ConsoleEasterEgg from "@/components/Global/ConsoleLogEgg";
+import TranslateToggle from "@/components/Global/TranslateToggle";
+import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -47,15 +49,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <ConsoleEasterEgg />
-        </ThemeProvider>
+        <LanguageProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <ConsoleEasterEgg />
+            <TranslateToggle />
+          </ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

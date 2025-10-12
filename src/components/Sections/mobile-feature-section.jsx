@@ -3,15 +3,22 @@ import Image from "next/image";
 import React from "react";
 import { Mobilefeatures } from "../../data/features";
 import { motion } from "framer-motion";
+import TranslatableText from "../Global/TranslatableText";
 const MobileFeatureSection = () => {
   return (
     <section className="w-full px-4 py-16 tablet:px-8 desktop:px-16">
       <div className="mx-auto mb-12 max-w-6xl text-center">
         <h2 className="text-EgostixBlue text-3xl font-extrabold tablet:text-4xl">
-          Core Features of Exelth Patient App
+          <TranslatableText
+            en="Core Features of Exelth"
+            bn="এক্সেলথের মূল বৈশিষ্ট্য"
+          />
         </h2>
         <p className="mt-2 text-sm text-gray-600 tablet:text-base">
-          Purpose-built for modern healthcare needs.
+          <TranslatableText
+            en="Purpose-built for modern healthcare providers."
+            bn="আধুনিক স্বাস্থ্যসেবা প্রদানকারীদের জন্য উদ্দেশ্য-নির্মিত।"
+          />
         </p>
       </div>
 
@@ -27,10 +34,14 @@ const MobileFeatureSection = () => {
                 {feature.icon}
               </div>
               <h3 className="text-lg font-semibold text-gray-800">
-                {feature.title}
+                {/* {feature.title} */}
+                <TranslatableText bn={feature.bntitle} en={feature.title} />
               </h3>
             </div>
-            <p className="mt-2 text-sm text-gray-600">{feature.description}</p>
+            <p className="mt-2 text-sm text-gray-600">
+              {" "}
+              <TranslatableText bn={feature.bnDesc} en={feature.description} />
+            </p>
             <div className="redd flex size-full items-center justify-end overflow-hidden">
               <motion.div
                 className="size-full"
