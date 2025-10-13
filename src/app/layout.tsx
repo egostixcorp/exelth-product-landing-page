@@ -4,6 +4,8 @@ import TranslateToggle from "@/components/Global/TranslateToggle";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Inter } from "next/font/google";
+import dynamic from "next/dynamic";
+const FacebookPixel = dynamic(import("../lib/facebook-meta-pixel"));
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -49,6 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <FacebookPixel />
         <LanguageProvider>
           <ThemeProvider
             attribute="class"
