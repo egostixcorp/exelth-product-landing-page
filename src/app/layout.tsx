@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import ConsoleEasterEgg from "@/components/Global/ConsoleLogEgg";
 import TranslateToggle from "@/components/Global/TranslateToggle";
 import { LanguageProvider } from "@/context/LanguageContext";
@@ -103,6 +103,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <GoogleAnalytics gaId="G-1H3MPS7600" />
+            <GoogleTagManager gtmId="GTM-5KPGMHFZ" />
             {children}
             <Analytics />
             <ConsoleEasterEgg />
