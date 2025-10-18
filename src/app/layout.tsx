@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import ConsoleEasterEgg from "@/components/Global/ConsoleLogEgg";
 import TranslateToggle from "@/components/Global/TranslateToggle";
 import { LanguageProvider } from "@/context/LanguageContext";
@@ -101,6 +102,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             {children}
+            <Analytics />
             <ConsoleEasterEgg />
             <TranslateToggle />
           </ThemeProvider>
