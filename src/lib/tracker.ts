@@ -71,7 +71,7 @@ export async function trackButtonClick(label: string) {
 async function sendExelthTeamEmail(visitor_id: string, user_id: string | null) {
   try {
     await resend.emails.send({
-      from: "Exelth Tracker <send@notifications.exelth.com>",
+      from: "Exelth Notifications <send@notifications.exelth.com>",
       to: FOUNDERS_EMAILS,
       subject: "📲 New App Download Interest",
       html: `
