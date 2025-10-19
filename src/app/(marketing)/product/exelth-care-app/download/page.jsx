@@ -19,6 +19,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import { trackButtonClick } from "@/lib/tracker";
+import { useTrackClick } from "@/components/hooks/useTrackClick";
 
 // Example screenshots array
 const screenshots = [
@@ -53,7 +55,16 @@ export default function DownloadPage() {
     setCurrentIndex(
       (prev) => (prev - 1 + screenshots.length) % screenshots.length,
     );
-
+  // const handleDownload = async () => {
+  //   try {
+  //     await trackButtonClick("download_apk");
+  //     window.location.href = "/apk/exelth.apk";
+  //   } catch (error) {
+  //     console.error("Error tracking download:", error);
+  //     window.location.href = "/apk/exelth.apk";
+  //   }
+  // };
+  const { track, loading } = useTrackClick();
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gray-50 p-6 pt-20">
       <div className="w-full max-w-lg rounded-2xl bg-white p-6 text-center shadow-lg">
@@ -89,11 +100,18 @@ export default function DownloadPage() {
 
         {/* Buttons */}
         <div className="flex w-full items-center justify-center gap-5">
-          <a href="/apk/exelth.apk">
-            <Button variant="exelth">
-              <Icon.Smartphone /> Download APK
-            </Button>
-          </a>
+          {/* <a href="/apk/exelth.apk"> */}
+          <Button
+            variant="exelth"
+            onClick={async () => {
+              await track("download_apk");
+              window.location.href = "/apk/exelth.apk"; // manually trigger download
+            }}
+            disabled={loading}
+          >
+            <Icon.Download /> Download APK
+          </Button>
+          {/* </a> */}
           <Button variant="outline" onClick={() => setOpen(true)}>
             <Icon.Fullscreen /> See preview
           </Button>
