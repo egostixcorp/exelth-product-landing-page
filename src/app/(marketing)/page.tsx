@@ -1,4 +1,5 @@
-import React from "react";
+// "use client";
+import React, { useEffect } from "react";
 import HeroSection from "@/components/Sections/hero-section";
 import DemoSection from "@/components/Sections/demo-section";
 import GridLayout from "@/components/Layouts/grid-layout";

@@ -1,7 +1,9 @@
+// import { log } from "console";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 import { updateSession } from "@/utils/supabase/middleware";
+// import { log } from "console";
 
 /**
  * Combined middleware:
@@ -9,43 +11,40 @@ import { updateSession } from "@/utils/supabase/middleware";
  * 2. Assigns persistent visitor_id for analytics + click tracking
  */
 export async function middleware(req: NextRequest) {
-  // Check if visitor_id already exists
+  // Read visitor_id from request cookies
+  console.log("run");
   const existingVisitorId = req.cookies.get("visitor_id")?.value;
 
-  // Run Supabase session update
+  // Update Supabase session (returns a NextResponse)
   const supabaseResponse = await updateSession(req);
 
-  // If no visitor_id, we need to set it
+  // Create unified response (start with Supabase response)
+  const response = NextResponse.next({
+    request: { headers: req.headers },
+  });
+
+  // Copy Supabase cookies to this response
+  supabaseResponse.cookies.getAll().forEach((cookie) => {
+    response.cookies.set(cookie.name, cookie.value, cookie);
+  });
+  console.log("run");
+
+  // ✅ If visitor_id doesn’t exist, create and attach
   if (!existingVisitorId) {
     const newVisitorId = uuidv4();
-
-    // Create a new response that includes both Supabase session and visitor_id
-    const response = NextResponse.next({
-      request: {
-        headers: req.headers,
-      },
-    });
-
-    // Copy all cookies from supabaseResponse to our new response
-    supabaseResponse.cookies.getAll().forEach((cookie) => {
-      response.cookies.set(cookie.name, cookie.value, cookie);
-    });
-
-    // Add visitor_id cookie
+    console.log("Generating new visitor_id:", newVisitorId);
     response.cookies.set("visitor_id", newVisitorId, {
       path: "/",
       maxAge: 60 * 60 * 24 * 365, // 1 year
       sameSite: "lax",
-      httpOnly: false,
+      httpOnly: false, // allow client-side analytics access
       secure: process.env.NODE_ENV === "production",
     });
 
     console.log("✅ New visitor_id set:", newVisitorId);
-    return response;
   }
 
-  // If visitor_id exists, just return the Supabase response
-  return supabaseResponse;
+  return response;
 }
 
 /**

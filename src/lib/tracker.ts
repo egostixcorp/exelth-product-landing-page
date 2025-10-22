@@ -1,5 +1,5 @@
 "use server";
-
+import { v4 as uuidv4 } from "uuid";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
@@ -20,7 +20,8 @@ const FOUNDERS_EMAILS = [
 export async function trackButtonClick(label: string) {
   const supabase = await createClient();
   const cookieStore = cookies();
-  //   const visitor_id = cookieStore.get("visitor_id")?.value;
+  const visitor_id = cookieStore.get("visitor_id")?.value;
+  console.log("visitor_id", visitor_id);
 
   //   if (!visitor_id) return { success: false, message: "No visitor ID" };
 
@@ -34,7 +35,7 @@ export async function trackButtonClick(label: string) {
   const { data: existing } = await supabase
     .from("click_events")
     .select("id, click_count")
-    .eq("visitor_id", "visitor_id")
+    .eq("visitor_id", visitor_id)
     .eq("button_label", label)
     .maybeSingle();
 
@@ -50,7 +51,7 @@ export async function trackButtonClick(label: string) {
       .eq("id", existing.id);
   } else {
     await supabase.from("click_events").insert({
-      visitor_id: "visitor_id",
+      visitor_id: visitor_id,
       user_id,
       button_label: label,
       click_count: 1,
@@ -60,7 +61,7 @@ export async function trackButtonClick(label: string) {
 
   // ✅ Send email only for first-time "download_apk" clicks
   if (isNewClick && label === "download_apk") {
-    await sendExelthTeamEmail("visitor_id", user_id);
+    await sendExelthTeamEmail(visitor_id, user_id);
   }
 
   revalidatePath("/");
@@ -68,7 +69,10 @@ export async function trackButtonClick(label: string) {
 }
 
 // 📧 Resend email helper
-async function sendExelthTeamEmail(visitor_id: string, user_id: string | null) {
+async function sendExelthTeamEmail(
+  visitor_id: string | undefined,
+  user_id: string | null,
+) {
   try {
     await resend.emails.send({
       from: "Exelth Notifications <send@notifications.exelth.com>",
@@ -83,7 +87,7 @@ async function sendExelthTeamEmail(visitor_id: string, user_id: string | null) {
               A new user clicked the <strong>Download APK</strong> button for the first time.
             </p>
             <ul style="color: #4b5563; font-size: 14px; line-height: 1.6;">
-              <li><b>Visitor ID:</b> ${visitor_id}</li>
+              <li><b>Visitor ID:</b> ${visitor_id ?? "Unknown"}</li>
               <li><b>User ID:</b> ${user_id ?? "Anonymous"}</li>
               <li><b>Timestamp:</b> ${new Date().toLocaleString()}</li>
             </ul>
@@ -102,4 +106,27 @@ async function sendExelthTeamEmail(visitor_id: string, user_id: string | null) {
   } catch (err) {
     console.error("❌ Failed to send Resend notification:", err);
   }
+}
+export async function setVisitorCookie() {
+  const cookieStore = cookies();
+  const existing = cookieStore.get("visitor_id")?.value;
+
+  // If cookie already exists, just return it
+  if (existing) {
+    console.log("🟢 Existing visitor_id:", existing);
+    return existing;
+  }
+
+  // Otherwise, create a new one
+  const newVisitorId = uuidv4();
+  cookieStore.set("visitor_id", newVisitorId, {
+    path: "/",
+    maxAge: 60 * 60 * 24 * 365, // 1 year
+    sameSite: "lax",
+    httpOnly: false, // allow access for analytics if needed
+    secure: process.env.NODE_ENV === "production",
+  });
+
+  console.log("✅ New visitor_id created:", newVisitorId);
+  return newVisitorId;
 }
