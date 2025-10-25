@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+
 import { AppBaseUrl, AppMBaseUrl } from "@/data/const";
 import Waitlist from "@/components/Waitlist/Waitlist";
 import Icon from "@/components/Global/Icon";
@@ -14,6 +15,7 @@ import { Badge } from "../ui/badge";
 import React, { useLayoutEffect } from "react";
 import gsap from "gsap";
 import TranslatableText from "../Global/TranslatableText";
+import SearchHeader from "../App/Global/SearchHeader";
 const HeroSection = () => {
   useLayoutEffect(() => {
     const Gctx = gsap.context(() => {
@@ -105,7 +107,7 @@ const HeroSection = () => {
       >
         {/* Waitlist Button with Tooltip */}
         <div className="flex items-center gap-2">
-          <Waitlist />
+          {/* <Waitlist />
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
@@ -118,7 +120,10 @@ const HeroSection = () => {
                 </p>
               </TooltipContent>
             </Tooltip>
-          </TooltipProvider>
+          </TooltipProvider> */}
+          <Link href={"/search"} className="w-80">
+            <SearchHeader />
+          </Link>
         </div>
 
         {/* Mobile App Button with Tooltip */}
