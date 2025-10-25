@@ -103,7 +103,7 @@ const HeroSection = () => {
       </div>
       <div
         id="action-button"
-        className="flex translate-y-[50%] flex-col items-center justify-center gap-5 opacity-0 blur-sm laptop:flex-row"
+        className="flex translate-y-[50%] flex-col items-center justify-center gap-5 opacity-0 blur-sm"
       >
         {/* Waitlist Button with Tooltip */}
         <div className="flex items-center gap-2">
@@ -127,7 +127,7 @@ const HeroSection = () => {
         </div>
 
         {/* Mobile App Button with Tooltip */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 relative">
           <Link href={"/product/exelth-care-app/download"}>
             <Button
               variant={"exelth"}
@@ -136,12 +136,14 @@ const HeroSection = () => {
               <Icon.Smartphone /> Exelth Mobile App
             </Button>
           </Link>
-          <TooltipProvider>
-            <Tooltip>
+          <div className="absolute -right-5 top-3">
+
+          <TooltipProvider >
+            <Tooltip >
               <TooltipTrigger>
                 <Icon.Info className="size-4 cursor-pointer text-gray-500" />
               </TooltipTrigger>
-              <TooltipContent>
+              <TooltipContent >
                 <p>
                   Download the Exelth mobile app to book visits, track
                   appointments, and stay connected.
@@ -149,6 +151,7 @@ const HeroSection = () => {
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
+          </div>
         </div>
       </div>
     </div>

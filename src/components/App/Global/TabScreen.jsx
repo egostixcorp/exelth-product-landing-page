@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 import { MdHomeFilled } from "react-icons/md";
@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 import { Home, LayoutGrid, Search, Activity, UserCircle } from "lucide-react";
 import Image from "next/image";
 import clsx from "clsx";
+import { createClient } from "@/utils/supabase/client";
 
 const tabs = [
   { name: "Home", href: "/patient", icon: MdHomeFilled },
@@ -23,7 +24,28 @@ const tabs = [
 export default function TabScreen() {
   const pathname = usePathname();
   const { user } = useAuth();
+  const [patient, setPatient] = useState(null);
 
+  useEffect(() => {
+    const fetchPatient = async () => {
+      if (!user?.id) return;
+      const supabase = createClient();
+
+      const { data, error } = await supabase
+        .from("patient_users")
+        .select("*, user:user_id(*)")
+        .eq("user_id", user.id)
+        .single();
+
+      if (error) {
+        console.error("Error fetching patient details:", error.message);
+      } else {
+        setPatient(data);
+      }
+    };
+
+    fetchPatient();
+  }, [user?.id]);
   // hide tab bar on certain pages
   const hidden =
     pathname.includes("/facility") || pathname.includes("/profile/");
@@ -53,9 +75,9 @@ export default function TabScreen() {
                   : "text-gray-500 hover:text-gray-800",
               )}
             >
-              {user?.avatar_url ? (
+              {patient?.user?.avatar_url ? (
                 <Image
-                  src={user.avatar_url}
+                  src={patient?.user.avatar_url}
                   alt="Profile"
                   width={28}
                   height={28}
