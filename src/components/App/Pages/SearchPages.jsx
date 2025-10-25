@@ -79,7 +79,7 @@ const SearchPage = () => {
         )}
       </div>
 
-      <div className="sticky bottom-1 flex w-full items-center justify-center bg-white">
+      <div className=" flex w-full items-center justify-center bg-white">
         <p className="redd w-fit rounded-3xl border border-green-500 p-2 text-center text-xs text-gray-600">
           <span className="font-bold text-black">Disclaimer:</span> Some clinic
           profiles are community{" "}
