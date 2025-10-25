@@ -4,6 +4,7 @@ import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import ConsoleEasterEgg from "@/components/Global/ConsoleLogEgg";
 // import TranslateToggle from "@/components/Global/TranslateToggle";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { AuthProvider } from "@/context/AuthContext";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Inter } from "next/font/google";
 import dynamic from "next/dynamic";
@@ -95,21 +96,23 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <FacebookPixel />
-        <LanguageProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <GoogleAnalytics gaId="G-1H3MPS7600" />
-            <GoogleTagManager gtmId="GTM-5KPGMHFZ" />
-            {children}
-            <Analytics />
-            <ConsoleEasterEgg />
-            {/* <TranslateToggle /> */}
-          </ThemeProvider>
-        </LanguageProvider>
+        <AuthProvider>
+          <LanguageProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <GoogleAnalytics gaId="G-1H3MPS7600" />
+              <GoogleTagManager gtmId="GTM-5KPGMHFZ" />
+              {children}
+              <Analytics />
+              <ConsoleEasterEgg />
+              {/* <TranslateToggle /> */}
+            </ThemeProvider>
+          </LanguageProvider>
+        </AuthProvider>
       </body>
     </html>
   );

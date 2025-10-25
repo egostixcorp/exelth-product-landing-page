@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <div className="redd sticky right-0 top-0 flex h-40 w-full flex-col items-center justify-center gap-5 bg-neutral-50 px-10 shadow transition-all duration-500">
+    <div className="redd sticky z-50 right-0 top-0 flex h-40 w-full flex-col items-center justify-center gap-5 bg-neutral-50 px-10 shadow transition-all duration-500">
       <div className="redd flex w-full items-center justify-between">
         <Link href={"/search"}>
           <LogoType />

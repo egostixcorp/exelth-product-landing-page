@@ -18,7 +18,7 @@ const Header = () => {
         </div>
         <div
           id="menu-desktop"
-          className="hidden items-center justify-center gap-5 tablet:flex"
+          className="hidden items-center justify-center gap-2 tablet:flex"
         >
           {/* {navigation.map((data, i) => {
             return (
@@ -31,14 +31,17 @@ const Header = () => {
           <WaitlistModel>
             <Button variant={"exelth"}>Join Waitlist</Button>
           </WaitlistModel>
+          <Button size={"icon"} variant={"outline"}>
+            <Icon.UserCircle />
+          </Button>
         </div>
         <div
           id="menu-mobile"
           className="redd flex items-center justify-center gap-2 tablet:hidden"
         >
-          <WaitlistModel>
-            <Button variant={"exelth"}>Join Waitlist</Button>
-          </WaitlistModel>
+          <Button variant={"exelth"}>
+            <Icon.UserCircle /> Log in
+          </Button>
           <MobileNav>
             <Icon.Menu />
           </MobileNav>
