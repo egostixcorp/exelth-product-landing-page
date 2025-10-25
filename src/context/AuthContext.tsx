@@ -144,7 +144,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       localStorage.removeItem(ROLE_KEY);
     }
 
-    router.push("/auth/login");
+    router.push("/login");
   };
 
   const updateAvatar = async (url: string) => {

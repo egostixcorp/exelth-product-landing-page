@@ -95,7 +95,7 @@ export default function LoginPage() {
 
         <div className="mb-6 flex justify-end">
           <Link
-            href="/(auth)/forgot-password"
+            href="/forgot-password"
             className="text-sm font-medium text-green-600 hover:underline"
           >
             Forgot Password?
@@ -116,7 +116,7 @@ export default function LoginPage() {
       <div className="mt-6 text-sm text-gray-700">
         Don&apos;t have an account?{" "}
         <Link
-          href="/(auth)/signup"
+          href="/signup"
           className="font-semibold text-green-600 hover:underline"
         >
           Sign up

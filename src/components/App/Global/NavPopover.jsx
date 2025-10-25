@@ -13,8 +13,11 @@ import { RiLayoutMasonryFill, RiInboxFill } from "react-icons/ri";
 import { FaCircleUser } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/AuthContext";
+import LoginDialog from "./LoginDialog";
 
 const NavPopover = () => {
+  const { signOut, user } = useAuth();
   const mainNav = [
     { label: "Home", href: "/patient", icon: <MdHomeFilled size={18} /> },
     {
@@ -51,7 +54,21 @@ const NavPopover = () => {
         )}
       >
         {/* --- Main Nav --- */}
-        <div className="flex flex-col gap-1 border-b border-gray-200 pb-2">
+        {user ? (
+          <div className="flex flex-col gap-1 border-b border-gray-200 pb-2">
+            {mainNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-gray-700 transition hover:bg-gray-50"
+              >
+                {item.icon}
+                <span>{item.label}</span>
+              </Link>
+            ))}
+          </div>
+        ) : null}
+        {/* <div className="flex flex-col gap-1 border-b border-gray-200 pb-2">
           {mainNav.map((item) => (
             <Link
               key={item.href}
@@ -62,20 +79,22 @@ const NavPopover = () => {
               <span>{item.label}</span>
             </Link>
           ))}
-        </div>
+        </div> */}
 
         {/* --- Secondary Nav --- */}
-        <div className="mt-1 flex flex-col gap-1 border-b border-gray-200 py-2">
-          {secondaryNav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-md px-3 py-2 text-sm text-gray-700 transition hover:bg-gray-50"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
+        {user ? (
+          <div className="mt-1 flex flex-col gap-1 border-b border-gray-200 py-2">
+            {secondaryNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-md px-3 py-2 text-sm text-gray-700 transition hover:bg-gray-50"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        ) : null}
 
         {/* --- Facility Section --- */}
         <div className="mt-1 flex flex-col gap-1 border-b border-gray-200 py-2">
@@ -113,12 +132,18 @@ const NavPopover = () => {
         </div>
 
         {/* --- Logout --- */}
-        <button
-          onClick={() => console.log("Logout clicked")}
-          className="mt-1 rounded-md px-3 py-2 text-left text-sm text-gray-700 transition hover:bg-gray-50"
-        >
-          Log out
-        </button>
+        {user ? (
+          <button
+            onClick={() => signOut()}
+            className="mt-1 rounded-md px-3 py-2 text-left text-sm text-gray-700 transition hover:bg-gray-50 hover:text-red-600"
+          >
+            Log out
+          </button>
+        ) : (
+          // <div className="flex items-center justify-end p-4">
+          <LoginDialog triggerLabel="Login / Signup" />
+          // </div>
+        )}
       </PopoverContent>
     </Popover>
   );
