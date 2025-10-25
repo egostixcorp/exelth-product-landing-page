@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import ConsoleEasterEgg from "@/components/Global/ConsoleLogEgg";
-import TranslateToggle from "@/components/Global/TranslateToggle";
+// import TranslateToggle from "@/components/Global/TranslateToggle";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Inter } from "next/font/google";
@@ -107,7 +107,7 @@ export default function RootLayout({
             {children}
             <Analytics />
             <ConsoleEasterEgg />
-            <TranslateToggle />
+            {/* <TranslateToggle /> */}
           </ThemeProvider>
         </LanguageProvider>
       </body>

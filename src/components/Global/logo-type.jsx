@@ -3,7 +3,7 @@ import React from "react";
 
 const LogoType = () => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex redd items-center justify-center">
       <Image
         alt="exelth logo"
         src={"/brand/exelth-icon-app.svg"}
