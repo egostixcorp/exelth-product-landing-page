@@ -1,11 +1,11 @@
-import { supabase } from "@/lib/supabase"; // your Supabase client
+import { createClient } from "@/utils/supabase/client"; // your Supabase client
 import { useEffect, useState } from "react";
 
 export function useFeatureFlags(apiUrl?: string) {
   const [flags, setFlags] = useState<Record<string, boolean>>({});
   const [loadingFlags, setLoadingFlags] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+  const supabase = createClient();
   async function fetchFlags() {
     try {
       const url = apiUrl || "https://api.exelth.com/api/v1/feature-flags";
