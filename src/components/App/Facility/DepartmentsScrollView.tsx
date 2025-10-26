@@ -53,7 +53,7 @@ export default function DepartmentsScrollView({
   if (!departments?.length) {
     return (
       <div className="mb-8 px-4">
-        <h3 className="mb-2 text-sm font-semibold">Departments</h3>
+        <h3 className="text-base font-semibold text-gray-900">Departments</h3>
         <p className="text-sm text-gray-500">No departments found.</p>
       </div>
     );
