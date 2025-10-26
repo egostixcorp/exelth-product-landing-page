@@ -1,10 +1,15 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-
+import dayjs from "dayjs";
+import LocalizedFormat from "dayjs/plugin/localizedFormat";
+// import * as FileSystem from "expo-file-system";
+// import * as Sharing from "expo-sharing";
+// import { Alert, Platform } from "react-native";
+dayjs.extend(LocalizedFormat);
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-export function detectSearchType(term:string) {
+export function detectSearchType(term: string) {
   const lower = term.toLowerCase();
 
   if (lower.includes("clinic") || lower.includes("hospital")) return "clinic";
@@ -16,3 +21,34 @@ export function detectSearchType(term:string) {
 
   return "general"; // default fallback
 }
+
+export function getInitials(fullName: string) {
+  if (!fullName) return "";
+
+  const names = fullName
+    .trim()
+    .split(/\s+/)
+    .filter((name) => name.length > 0);
+
+  if (names.length === 0) return "";
+
+  if (names.length === 1) {
+    return names[0][0].toUpperCase();
+  }
+
+  return (names[0][0] + names[names.length - 1][0]).toUpperCase();
+}
+export function formatTimeToAMPM(timeStr: string) {
+  return dayjs(`2000-01-01T${timeStr}`).format("hh:mm A");
+}
+export function formatTimeTo12hrs(timeStr: string) {
+  return dayjs(`2000-01-01T${timeStr}`).format("hh:mm");
+}
+export function formatDate(date: string) {
+  return dayjs(date).format("ll");
+}
+
+// Always return YYYY-MM-DD in local timezone
+export const toSqlDate = (date: string) => {
+  return dayjs(date).format("YYYY-MM-DD");
+};

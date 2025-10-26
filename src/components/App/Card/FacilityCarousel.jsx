@@ -67,8 +67,8 @@ export default function FacilityCarousel({ data }) {
 
         {facilityImages.length > 1 && (
           <>
-            <CarouselPrevious className="absolute left-2 top-1/2 z-10 -translate-y-1/2 bg-white/70 backdrop-blur-sm hover:bg-white" />
-            <CarouselNext className="absolute right-2 top-1/2 z-10 -translate-y-1/2 bg-white/70 backdrop-blur-sm hover:bg-white" />
+            {/* <CarouselPrevious className="absolute left-2 top-1/2 z-10 -translate-y-1/2 bg-white/70 backdrop-blur-sm hover:bg-white" /> */}
+            {/* <CarouselNext className="absolute right-2 top-1/2 z-10 -translate-y-1/2 bg-white/70 backdrop-blur-sm hover:bg-white" /> */}
           </>
         )}
       </Carousel>

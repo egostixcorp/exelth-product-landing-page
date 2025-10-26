@@ -19,6 +19,14 @@ import { Button } from "@/components/ui/button";
 import FacilityCarousel from "@/components/App/Card/FacilityCarousel";
 import { MdVerified } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
+import FacilityProfileSkeleton from "@/components/App/Skeleton/FacilityProfileSkeleton";
+import {
+  getAllFacilityDoctorsByFacilityId,
+  getAllDepartmentsByFacilityId,
+} from "@/app/actions/facility";
+import DepartmentsScrollView from "@/components/App/Facility/DepartmentsScrollView";
+import FacilitiesDoctorCard from "@/components/App/Facility/FacilitiesDoctorCard";
+import DoctorsSheet from "@/components/App/Facility/DoctorsSheet";
 // import FacilityCarousel from "@/components/facility/FacilityCarousel";
 // import FacilitiesDoctorCard from "@/components/Cards/FacilitiesDoctorCard";
 // import DepartmentsScrollView from "@/components/Facility/DepartmentsScrollView";
@@ -32,7 +40,7 @@ export default function FacilityProfileId({ params }) {
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isFavorite, setIsFavorite] = useState(false);
-
+  const [open, setOpen] = useState(false);
   const doctorSheetRef = useRef(null);
   const openDoctorsSheet = () => doctorSheetRef.current?.present?.();
 
@@ -41,6 +49,8 @@ export default function FacilityProfileId({ params }) {
       try {
         const [facilityRes, doctorsRes, departmentsRes] = await Promise.all([
           fetch(`${API_URL_V1}/public-facilities`),
+          await getAllFacilityDoctorsByFacilityId(params.facilityID),
+          await getAllDepartmentsByFacilityId(params.facilityID),
           // fetch(`${API_URL_V1}/facility/${params.facilityId}/doctors`),
           // fetch(`${API_URL_V1}/facility/${params.facilityId}/departments`),
         ]);
@@ -50,8 +60,8 @@ export default function FacilityProfileId({ params }) {
         // const deptData = await departmentsRes.json();
 
         setFacility(facilityData);
-        // setDoctors(doctorsData);
-        // setDepartments(deptData);
+        setDoctors(doctorsRes);
+        setDepartments(departmentsRes);
       } catch (err) {
         console.error("Failed to fetch facility data:", err);
       } finally {
@@ -84,11 +94,7 @@ export default function FacilityProfileId({ params }) {
   };
 
   if (loading) {
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <p className="text-gray-500">Loading facility details...</p>
-      </div>
-    );
+    return <FacilityProfileSkeleton />;
   }
 
   if (!selectedFacility) {
@@ -100,7 +106,7 @@ export default function FacilityProfileId({ params }) {
   }
 
   return (
-    <div className="min-h-screen bg-white p-5">
+    <div className="min-h-screen bg-white md:p-5 p-2">
       {/* --- Cover Carousel --- */}
       {/* <FacilityCarousel data={facility} /> */}
       <div className="redd hidden h-96 w-full items-center justify-center md:flex md:px-[21%]">
@@ -200,12 +206,12 @@ export default function FacilityProfileId({ params }) {
 
         {/* --- Departments --- */}
         <div className="mt-6">
-          {/* <DepartmentsScrollView
+          <DepartmentsScrollView
             departments={departments}
-            facility_id={facility.id}
-            facility_name={facility.name}
+            facility_id={params.facilityID}
+            facility_name={selectedFacility.name}
             loading={loading}
-          /> */}
+          />
         </div>
 
         {/* --- Doctors Section --- */}
@@ -221,28 +227,29 @@ export default function FacilityProfileId({ params }) {
           ) : (
             <>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {/* {doctors.slice(0, 3).map(({ doctor, facility_doctor }) => (
+                {doctors.slice(0, 3).map(({ doctor, facility_doctor }) => (
                   <FacilitiesDoctorCard
                     key={doctor.id}
                     doctor_id={doctor.id}
                     org_id={doctor.org_id}
-                    facility_id={facility.id}
+                    facility_id={selectedFacility.id}
                     name={doctor.user.full_name}
                     specialty={doctor.department?.name || "Unknown"}
                     fee={
                       facility_doctor.fee
-                        ? `₹${facility_doctor.fee}`
+                        ? `${facility_doctor.fee}`
                         : "Not provided"
                     }
-                    image={{ uri: doctor.user.avatar_url }}
+                    image={doctor.user.avatar_url}
                   />
-                ))} */}
+                ))}
               </div>
 
               {doctors.length > 3 && (
                 <div className="mt-4 text-center">
                   <Button
-                    onClick={openDoctorsSheet}
+                    onClick={() => setOpen(true)}
+                    // onClick={openDoctorsSheet}
                     className="bg-green-600 hover:bg-green-700"
                   >
                     See All Doctors ({doctors.length})
@@ -253,7 +260,12 @@ export default function FacilityProfileId({ params }) {
           )}
         </div>
 
-        {/* <DoctorsSheet doctors={doctors} ref={doctorSheetRef} /> */}
+        <DoctorsSheet
+          doctors={doctors}
+          ref={doctorSheetRef}
+          open={open}
+          onOpenChange={setOpen}
+        />
 
         {/* --- Lab Tests --- */}
         <div className="mt-10">{/* <LabTestsScreen id={facility.id} /> */}</div>
