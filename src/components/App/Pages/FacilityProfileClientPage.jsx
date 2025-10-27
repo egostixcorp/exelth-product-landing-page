@@ -24,6 +24,7 @@ import {
   getAllFacilityDoctorsByFacilityId,
   getAllDepartmentsByFacilityId,
 } from "@/app/actions/facility";
+import GoogleMapEmbed from "../Global/GoogleMap";
 import DepartmentsScrollView from "@/components/App/Facility/DepartmentsScrollView";
 import FacilitiesDoctorCard from "@/components/App/Facility/FacilitiesDoctorCard";
 import DoctorsSheet from "@/components/App/Facility/DoctorsSheet";
@@ -102,11 +103,12 @@ export default function FacilityProfileId({ params }) {
   }
 
   return (
-    <div className="min-h-screen bg-white p-2 md:p-5">
+    <div className="relative min-h-screen bg-white p-2 md:p-5">
       {/* --- Cover Carousel --- */}
       {/* <FacilityCarousel data={facility} /> */}
-      <div className="redd hidden h-96 w-full items-center justify-center md:flex md:px-[21%] laptop:px-8 desktop:px-[21%]">
-        <div className="redd grid h-full w-full grid-cols-2 gap-2 overflow-hidden rounded-2xl">
+
+      <div className="redd relative w-full items-center justify-center md:h-96 md:px-[21%] laptop:px-8 desktop:px-[21%]">
+        <div className="redd hidden h-full w-full grid-cols-2 gap-2 overflow-hidden rounded-2xl md:grid">
           <div id="cover_photo" className="size-full overflow-hidden">
             <Image
               src={selectedFacility?.cover_photo}
@@ -130,9 +132,29 @@ export default function FacilityProfileId({ params }) {
             ))}
           </div>
         </div>
-      </div>
-      <div className="block md:hidden">
-        <FacilityCarousel data={selectedFacility} />
+        <div className="block md:hidden">
+          <FacilityCarousel data={selectedFacility} />
+        </div>
+        {/* Buttons */}
+        <div className="absolute right-0 top-0 flex gap-3">
+          <Button
+            onClick={handleShare}
+            variant="outline"
+            className="flex items-center gap-1 border-gray-300 bg-gray-50 hover:bg-gray-100"
+          >
+            <Share2 className="h-4 w-4 text-green-600" /> Share
+          </Button>
+
+          <Button
+            onClick={() => setIsFavorite((prev) => !prev)}
+            variant="outline"
+            className={`flex items-center gap-1 border-gray-300 ${isFavorite ? "bg-red-100" : "bg-gray-50"}`}
+          >
+            <Heart
+              className={`h-4 w-4 ${isFavorite ? "fill-red-500 text-red-500" : "text-green-600"}`}
+            />
+          </Button>
+        </div>
       </div>
 
       {/* --- Header --- */}
@@ -162,7 +184,16 @@ export default function FacilityProfileId({ params }) {
                     "No address available"}
                 </span>
               </div>
-
+              {/* Google Maps Interactive Embed */}
+              <GoogleMapEmbed
+                lat={selectedFacility?.lat}
+                lng={selectedFacility?.lng}
+                name={selectedFacility?.name}
+                address={selectedFacility?.location?.address}
+                image={
+                  selectedFacility?.cover_photo || selectedFacility?.photos?.[0]
+                }
+              />
               <div className="flex flex-wrap gap-4">
                 <div className="flex items-center gap-1">
                   <Phone className="h-4 w-4 text-gray-400" />
@@ -176,27 +207,6 @@ export default function FacilityProfileId({ params }) {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Buttons */}
-          <div className="flex gap-3">
-            <Button
-              onClick={handleShare}
-              variant="outline"
-              className="flex items-center gap-1 border-gray-300 bg-gray-50 hover:bg-gray-100"
-            >
-              <Share2 className="h-4 w-4 text-green-600" /> Share
-            </Button>
-
-            <Button
-              onClick={() => setIsFavorite((prev) => !prev)}
-              variant="outline"
-              className={`flex items-center gap-1 border-gray-300 ${isFavorite ? "bg-red-100" : "bg-gray-50"}`}
-            >
-              <Heart
-                className={`h-4 w-4 ${isFavorite ? "fill-red-500 text-red-500" : "text-green-600"}`}
-              />
-            </Button>
           </div>
         </div>
 
