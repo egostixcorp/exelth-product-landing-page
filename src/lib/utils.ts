@@ -52,3 +52,24 @@ export function formatDate(date: string) {
 export const toSqlDate = (date: string) => {
   return dayjs(date).format("YYYY-MM-DD");
 };
+export const calculateTimeUntilAppointment = (
+  appointmentDate: string,
+  appointmentTime: string,
+) => {
+  const appointmentDateTime = dayjs(`${appointmentDate}T${appointmentTime}`);
+  const now = dayjs();
+  const diffInMinutes = appointmentDateTime.diff(now, "minute");
+
+  if (diffInMinutes <= 0) return "Now or past";
+
+  const days = Math.floor(diffInMinutes / (60 * 24));
+  const hours = Math.floor((diffInMinutes % (60 * 24)) / 60);
+  const minutes = diffInMinutes % 60;
+
+  let parts = [];
+  if (days > 0) parts.push(`${days}d`);
+  if (hours > 0) parts.push(`${hours}h`);
+  if (minutes > 0) parts.push(`${minutes}m`);
+
+  return `in ${parts.join(" ")}`;
+};
