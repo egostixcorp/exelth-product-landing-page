@@ -66,7 +66,7 @@ export default function GoogleMapEmbed({
   if (!isLoaded || !lat || !lng) return null;
 
   return (
-    <div className="mt-3 overflow-hidden rounded-xl border border-gray-200 shadow-sm">
+    <div className="mt-3 w-full overflow-hidden rounded-xl border border-gray-200 shadow-sm">
       {!isLoaded && <Skeleton style={containerStyle} />}
       <GoogleMap
         mapContainerStyle={containerStyle}

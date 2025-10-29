@@ -12,12 +12,12 @@ const Header = () => {
         <Link href={"/search"}>
           <LogoType />
         </Link>
-        {/* <NavHeader /> */}
+        <SearchHeader />
         <UserHeaderAvatar />
       </div>
-      <div className="redd flex h-14 w-full items-center justify-center">
+      {/* <div className="redd flex h-14 w-full items-center justify-center">
         <SearchHeader />
-      </div>
+      </div> */}
     </div>
   );
 };

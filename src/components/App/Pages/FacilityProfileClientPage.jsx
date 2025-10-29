@@ -107,8 +107,11 @@ export default function FacilityProfileId({ params }) {
       {/* --- Cover Carousel --- */}
       {/* <FacilityCarousel data={facility} /> */}
 
-      <div className="redd relative w-full items-center justify-center md:h-96 md:px-[21%] laptop:px-8 desktop:px-[21%]">
-        <div className="redd hidden h-full w-full grid-cols-2 gap-2 overflow-hidden rounded-2xl md:grid">
+      <div className="redd relative w-full items-center justify-center tablet:px-2 md:h-96 laptop:px-8 desktop:px-[21%]">
+        <div
+          id="desktop-image-layout"
+          className="redd hidden h-full w-full grid-cols-2 gap-2 overflow-hidden rounded-2xl md:grid"
+        >
           <div id="cover_photo" className="size-full overflow-hidden">
             <Image
               src={selectedFacility?.cover_photo}
@@ -162,7 +165,7 @@ export default function FacilityProfileId({ params }) {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-2xl font-bold text-gray-900">
+              <h1 className="text-2xl font-bold text-gray-900 tablet:text-4xl">
                 {selectedFacility?.name}
               </h1>
               {selectedFacility?.verified ? (
@@ -176,36 +179,45 @@ export default function FacilityProfileId({ params }) {
               )}
             </div>
 
-            <div className="mt-1 flex flex-col gap-1 text-sm text-gray-600">
-              <div className="flex items-start gap-1">
-                <MapPin className="h-4 w-4 text-gray-400" />
-                <span>
-                  {selectedFacility?.location?.address ||
-                    "No address available"}
-                </span>
-              </div>
-              {/* Google Maps Interactive Embed */}
-              <GoogleMapEmbed
-                lat={selectedFacility?.lat}
-                lng={selectedFacility?.lng}
-                name={selectedFacility?.name}
-                address={selectedFacility?.location?.address}
-                image={
-                  selectedFacility?.cover_photo || selectedFacility?.photos?.[0]
-                }
-              />
-              <div className="flex flex-wrap gap-4">
-                <div className="flex items-center gap-1">
-                  <Phone className="h-4 w-4 text-gray-400" />
+            <div className="redd mt-1 flex flex-row gap-1 text-xs text-gray-600 tablet:text-xl">
+              <div id="info" className="redd desktop:w-[35rem]">
+                <div className="flex items-start justify-start gap-1">
+                  <MapPin className="laptop:size-8 size-5 text-gray-900" />
                   <span>
-                    {selectedFacility?.business_number || "No number"}
+                    {selectedFacility?.location?.address ||
+                      "No address available"}
                   </span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <Mail className="h-4 w-4 text-gray-400" />
-                  <span>{selectedFacility?.business_email || "No email"}</span>
+                {/* Google Maps Interactive Embed */}
+                <GoogleMapEmbed
+                  lat={selectedFacility?.lat}
+                  lng={selectedFacility?.lng}
+                  name={selectedFacility?.name}
+                  address={selectedFacility?.location?.address}
+                  image={
+                    selectedFacility?.cover_photo ||
+                    selectedFacility?.photos?.[0]
+                  }
+                />
+                <div className="flex flex-wrap gap-4">
+                  <div className="flex items-center gap-1">
+                    <Phone className="h-4 w-4 text-gray-400" />
+                    <span>
+                      {selectedFacility?.business_number || "No number"}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Mail className="h-4 w-4 text-gray-400" />
+                    <span>
+                      {selectedFacility?.business_email || "No email"}
+                    </span>
+                  </div>
                 </div>
               </div>
+              <div
+                id="today-doctors"
+                className="redd hidden rounded-3xl border laptop:block desktop:w-[35rem]"
+              ></div>
             </div>
           </div>
         </div>
@@ -233,7 +245,7 @@ export default function FacilityProfileId({ params }) {
           ) : (
             <>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {doctors.slice(0, 3).map(({ doctor, facility_doctor }) => (
+                {doctors?.slice(0, 3).map(({ doctor, facility_doctor }) => (
                   <FacilitiesDoctorCard
                     key={doctor.id}
                     doctor_id={doctor.id}

@@ -22,6 +22,15 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Global/ConsoleLogEgg.jsx", "src/app/actions/user.js", "src/components/App/Card/FacilityCarousel.jsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/components/Global/ConsoleLogEgg.jsx",
+    "src/app/actions/user.js",
+    "src/components/App/Card/FacilityCarousel.jsx",
+    "src/components/App/Pages/DoctorProfileClientPage.jsx"
+  ],
   "exclude": ["node_modules"]
 }

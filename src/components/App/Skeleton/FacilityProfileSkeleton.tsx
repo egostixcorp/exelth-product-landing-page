@@ -6,7 +6,7 @@ export default function FacilityProfileSkeleton() {
   return (
     <div className="min-h-screen bg-white p-5">
       {/* --- Cover Section --- */}
-      <div className="hidden h-96 w-full items-center justify-center md:flex md:px-[21%]">
+      <div className="hidden h-96 w-full items-center justify-center tablet:px-2 md:flex laptop:px-8 desktop:px-[21%]">
         <div className="grid h-full w-full grid-cols-2 gap-2 overflow-hidden rounded-2xl">
           <Skeleton className="h-full w-full" />
           <div className="grid grid-cols-2 gap-2">

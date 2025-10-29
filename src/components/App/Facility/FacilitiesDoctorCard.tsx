@@ -78,7 +78,7 @@ export default function FacilitiesDoctorCard({
         onClick={(e) => {
           e.stopPropagation();
           router.push(
-            `/search/facility/slot?doctor_id=${doctor_id}&org_id=${org_id}&facility_id=${facility_id}`,
+            `/search/facility/doctor?doctor_id=${doctor_id}&org_id=${org_id}&facility_id=${facility_id}`,
           );
         }}
       >
