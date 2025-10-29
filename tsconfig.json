@@ -31,6 +31,6 @@
     "src/app/actions/user.js",
     "src/components/App/Card/FacilityCarousel.jsx",
     "src/components/App/Pages/DoctorProfileClientPage.jsx"
-  ],
+, "src/components/App/Facility/FacilitySuggestionSection.tsx"  ],
   "exclude": ["node_modules"]
 }
