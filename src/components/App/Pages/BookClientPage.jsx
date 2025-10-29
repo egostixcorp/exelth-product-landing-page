@@ -21,6 +21,7 @@ import Icon from "@/components/Global/Icon";
 import BackButton from "../Button/BackButton";
 import { useDoctorFacilityStatus } from "@/components/hooks/useDoctorFacilityStatus";
 import Link from "next/link";
+import { Phone } from "lucide-react";
 
 dayjs.extend(LocalizedFormat);
 
@@ -278,21 +279,42 @@ export default function BookPage() {
           <p className="text-lg font-bold">₹{fee}</p>
           <p className="text-sm text-muted-foreground">Total Payable</p>
         </div>
-        {isBook ? (
+        {user ? (
+          isBook ? (
+            <Button
+              size="lg"
+              className="bg-green-600 hover:bg-green-700"
+              disabled={booking}
+              onClick={handleBookAppointment}
+            >
+              {booking ? "Booking..." : "Confirm Booking"}
+            </Button>
+          ) : (
+            // <Link href={`tel:${facility?.business_number}`}>
+            <Button
+              onClick={() => router.push(`tel:${facility?.business_number}`)}
+              className="bg-blue-500 hover:bg-blue-600"
+            >
+              <Phone /> Call Clinic
+            </Button>
+            // </Link>
+          )
+        ) : isBook ? (
           <Button
             size="lg"
             className="bg-green-600 hover:bg-green-700"
             disabled={booking}
-            onClick={handleBookAppointment}
+            onClick={() => router.push("/login")}
           >
             {booking ? "Booking..." : "Confirm Booking"}
           </Button>
         ) : (
-          <Link href={`tel:${facility?.business_number}`}>
-            <Button className="bg-blue-500 hover:bg-blue-600">
-              Call Clinic
-            </Button>
-          </Link>
+          <Button
+            onClick={() => router.push("/login")}
+            className="bg-blue-500 hover:bg-blue-600"
+          >
+            <Phone /> Call Clinic
+          </Button>
         )}
       </div>
     </div>
