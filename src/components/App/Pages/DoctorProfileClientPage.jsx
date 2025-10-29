@@ -20,7 +20,7 @@ import {
 import { getAppointmentSeatsByDoctorId } from "@/app/actions/slots";
 import { MdVerified } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
-
+import BackButton from '../Button/BackButton'
 export default function DoctorPage({ doctor_id, org_id, facility_id }) {
   const router = useRouter();
   // const params = useSearchParams();
@@ -73,7 +73,8 @@ export default function DoctorPage({ doctor_id, org_id, facility_id }) {
   const facility_doctor = doctorData.facility_doctor;
 
   return (
-    <div className="mx-auto max-w-4xl space-y-8 p-6">
+    <div className="relative mx-auto max-w-4xl space-y-8 p-6">
+      <div className="absolute top-10 -left-10 "><BackButton/></div>
       {/* Doctor Profile */}
       <div className="flex items-center gap-6 rounded-2xl border bg-white p-6 shadow-sm">
         <Image

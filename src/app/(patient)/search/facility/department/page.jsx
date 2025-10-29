@@ -6,6 +6,7 @@ import { getAllFacilityDoctorsByFacilityId } from "../../../../../app/actions/fa
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import BackButton from "@/components/App/Button/BackButton";
 
 const FacilityDepartmentPage = () => {
   const searchParams = useSearchParams();
@@ -40,7 +41,10 @@ const FacilityDepartmentPage = () => {
   );
 
   return (
-    <div className="mx-auto min-h-screen max-w-4xl bg-white px-4 py-6 md:px-8">
+    <div className="mx-auto relative min-h-screen max-w-4xl bg-white px-4 py-6 md:px-8">
+      <div className="absolute -left-10 top-10">
+        <BackButton />
+      </div>
       {/* --- Header --- */}
       <div className="mb-6">
         <h1 className="text-xl font-semibold text-gray-900">{facility_name}</h1>
@@ -59,7 +63,7 @@ const FacilityDepartmentPage = () => {
           <p className="text-sm">No doctors available in this department.</p>
         </div>
       ) : (
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {DoctorsByDepartmentId.map(({ doctor, facility_doctor }) => (
             <FacilitiesDoctorCard
               key={doctor.id}

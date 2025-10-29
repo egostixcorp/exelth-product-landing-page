@@ -18,6 +18,7 @@ import { bookAppointment } from "../../../app/actions/appointment";
 import { useAuth } from "@/context/AuthContext";
 import { formatTimeToAMPM, calculateTimeUntilAppointment } from "@/lib/utils";
 import Icon from "@/components/Global/Icon";
+import BackButton from "../Button/BackButton";
 
 dayjs.extend(LocalizedFormat);
 
@@ -120,7 +121,10 @@ export default function BookPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl space-y-6 p-6">
+    <div className="mx-auto relative max-w-3xl space-y-6 p-6">
+      <div className="absolute -left-10 top-10">
+        <BackButton />
+      </div>
       <div>
         <h1 className="text-2xl font-bold">Confirm Appointment</h1>
         <p className="text-gray-500">
