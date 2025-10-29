@@ -62,7 +62,7 @@ export default function UpcomingAppointments({
     <div className="mb-10 px-2">
       <div className="mb-3 flex items-center justify-between">
         <h2 className="text-lg font-semibold">Upcoming Appointments</h2>
-        <Link href="/activities/appointments">
+        <Link href="/activities/appointments_tests">
           <span className="text-sm font-medium text-green-600 hover:underline">
             See all
           </span>
