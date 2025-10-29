@@ -9,6 +9,7 @@ import {
 } from "@react-google-maps/api";
 import Image from "next/image";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Hospital } from "lucide-react";
 
 type Props = {
   lat: number;

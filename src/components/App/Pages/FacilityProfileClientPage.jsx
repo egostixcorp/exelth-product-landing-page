@@ -14,7 +14,18 @@ import {
   Users,
   CheckCircle2,
   Stethoscope,
+  Grid2X2,
 } from "lucide-react";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import FacilityCarousel from "@/components/App/Card/FacilityCarousel";
 import { MdVerified } from "react-icons/md";
@@ -28,6 +39,7 @@ import GoogleMapEmbed from "../Global/GoogleMap";
 import DepartmentsScrollView from "@/components/App/Facility/DepartmentsScrollView";
 import FacilitiesDoctorCard from "@/components/App/Facility/FacilitiesDoctorCard";
 import DoctorsSheet from "@/components/App/Facility/DoctorsSheet";
+import TodayAvailability from "../Card/TodayDoctor";
 
 export default function FacilityProfileId({ params }) {
   const pathname = usePathname();
@@ -121,7 +133,7 @@ export default function FacilityProfileId({ params }) {
               className="size-full border object-cover"
             />
           </div>
-          <div className="grid grid-cols-2 place-items-center">
+          <div className="relative grid grid-cols-2 place-items-center">
             {selectedFacility?.photos?.slice(0, 4).map((photo, idx) => (
               <div key={idx} className="h-48 w-full overflow-hidden">
                 <Image
@@ -133,6 +145,9 @@ export default function FacilityProfileId({ params }) {
                 />
               </div>
             ))}
+            {selectedFacility?.photos?.length > 4 && (
+              <DialogGallaryImages selectedFacility={selectedFacility} />
+            )}
           </div>
         </div>
         <div className="block md:hidden">
@@ -182,7 +197,7 @@ export default function FacilityProfileId({ params }) {
             <div className="redd mt-1 flex flex-row gap-1 text-xs text-gray-600 tablet:text-xl">
               <div id="info" className="redd desktop:w-[35rem]">
                 <div className="flex items-start justify-start gap-1">
-                  <MapPin className="laptop:size-8 size-5 text-gray-900" />
+                  <MapPin className="size-5 text-gray-900 laptop:size-8" />
                   <span>
                     {selectedFacility?.location?.address ||
                       "No address available"}
@@ -216,8 +231,10 @@ export default function FacilityProfileId({ params }) {
               </div>
               <div
                 id="today-doctors"
-                className="redd hidden rounded-3xl border laptop:block desktop:w-[35rem]"
-              ></div>
+                // className="redd hidden rounded-3xl border laptop:block desktop:w-[35rem]"
+              >
+                <TodayAvailability />
+              </div>
             </div>
           </div>
         </div>
@@ -245,7 +262,7 @@ export default function FacilityProfileId({ params }) {
           ) : (
             <>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {doctors?.slice(0, 3).map(({ doctor, facility_doctor }) => (
+                {doctors?.slice(0, 3)?.map(({ doctor, facility_doctor }) => (
                   <FacilitiesDoctorCard
                     key={doctor.id}
                     doctor_id={doctor.id}
@@ -308,5 +325,40 @@ export default function FacilityProfileId({ params }) {
         )}
       </div>
     </div>
+  );
+}
+
+function DialogGallaryImages({ selectedFacility }) {
+  return (
+    <Dialog>
+      <DialogTrigger className="absolute bottom-5 right-5 hidden tablet:block">
+        <Button variant={"outline"}>
+          {" "}
+          <Grid2X2 /> Show More
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="h-[30rem] w-[35rem]">
+        <DialogHeader>
+          <DialogTitle hidden>Are you absolutely sure?</DialogTitle>
+          <DialogDescription hidden>
+            This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="grid grid-cols-2 place-items-center gap-2 overflow-y-auto">
+          {selectedFacility?.photos?.map((photo, idx) => (
+            <div key={idx} className="h-48 w-full overflow-hidden rounded-lg">
+              <Image
+                src={photo}
+                alt={`Facility Photo ${idx + 1}`}
+                width={500}
+                height={500}
+                className="h-full w-full border object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }
