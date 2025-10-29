@@ -19,6 +19,8 @@ import { useAuth } from "@/context/AuthContext";
 import { formatTimeToAMPM, calculateTimeUntilAppointment } from "@/lib/utils";
 import Icon from "@/components/Global/Icon";
 import BackButton from "../Button/BackButton";
+import { useDoctorFacilityStatus } from "@/components/hooks/useDoctorFacilityStatus";
+import Link from "next/link";
 
 dayjs.extend(LocalizedFormat);
 
@@ -43,7 +45,11 @@ export default function BookPage() {
   const [booking, setBooking] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("CoV"); // "Pay at clinic"
   const serviceFee = 0;
-
+  const {
+    showPrice,
+    isBook,
+    loading: statusloading,
+  } = useDoctorFacilityStatus(facility_id, doctor_id);
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -100,7 +106,9 @@ export default function BookPage() {
         await bookAppointment(appointmentData);
 
       if (success) {
-        toast.success(`Appointment Booked Successfully. Appointment ID: ${appointment_id}`);
+        toast.success(
+          `Appointment Booked Successfully. Appointment ID: ${appointment_id}`,
+        );
         router.push("/patient/activities/appointments_tests");
       } else {
         toast.error("Failed to complete appointment booking.");
@@ -121,7 +129,7 @@ export default function BookPage() {
   }
 
   return (
-    <div className="mx-auto relative max-w-3xl space-y-6 p-6">
+    <div className="relative mx-auto max-w-3xl space-y-6 p-6">
       <div className="absolute -left-10 top-10">
         <BackButton />
       </div>
@@ -270,14 +278,22 @@ export default function BookPage() {
           <p className="text-lg font-bold">₹{fee}</p>
           <p className="text-sm text-muted-foreground">Total Payable</p>
         </div>
-        <Button
-          size="lg"
-          className="bg-green-600 hover:bg-green-700"
-          disabled={booking}
-          onClick={handleBookAppointment}
-        >
-          {booking ? "Booking..." : "Confirm Booking"}
-        </Button>
+        {isBook ? (
+          <Button
+            size="lg"
+            className="bg-green-600 hover:bg-green-700"
+            disabled={booking}
+            onClick={handleBookAppointment}
+          >
+            {booking ? "Booking..." : "Confirm Booking"}
+          </Button>
+        ) : (
+          <Link href={`tel:${facility?.business_number}`}>
+            <Button className="bg-blue-500 hover:bg-blue-600">
+              Call Clinic
+            </Button>
+          </Link>
+        )}
       </div>
     </div>
   );
