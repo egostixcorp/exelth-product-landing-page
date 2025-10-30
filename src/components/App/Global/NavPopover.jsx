@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext";
 import LoginDialog from "./LoginDialog";
+import Image from "next/image";
 
 const NavPopover = () => {
   const { signOut, user } = useAuth();
@@ -49,7 +50,7 @@ const NavPopover = () => {
       <PopoverContent
         align="end"
         className={cn(
-          "w-64 rounded-2xl border border-gray-100 bg-white p-2 shadow-xl",
+          "w-80 rounded-2xl border border-gray-100 bg-white p-2 shadow-xl",
           "flex flex-col",
         )}
       >
@@ -97,21 +98,31 @@ const NavPopover = () => {
         ) : null}
 
         {/* --- Facility Section --- */}
-        <div className="mt-1 flex flex-col gap-1 border-b border-gray-200 py-2">
+        <div className="group mt-1 flex flex-col gap-1 border-b border-gray-200 py-2">
           <Link
             // href="/b2b/register"
             href="#"
-            className="flex flex-col gap-0.5 rounded-md px-3 py-2 transition hover:bg-gray-50"
+            className="flex gap-0.5 rounded-md px-3 py-2 transition hover:bg-gray-50"
           >
-            <span className="flex items-center gap-1 text-sm font-medium text-gray-900">
-              <MdLocalHospital size={14} className="text-green-600" />
-              List your clinic or hospital
-            </span>
+            <div className="flex flex-col">
+              <span className="flex items-center group-hover:text-green-600 transition-all duration-500 gap-1 text-sm font-medium text-gray-900">
+                List your clinic or hospital
+              </span>
 
-            <span className="text-xs text-gray-500">
-              Join Exelth to connect with patients and grow your healthcare
-              presence.
-            </span>
+              <span className="text-xs text-gray-500">
+                Join Exelth to connect with patients and grow your healthcare
+                presence.
+              </span>
+            </div>
+            <div className="redd h-20 w-52 flex items-center justify-center overflow-hidden">
+              <Image
+                src={"/icon/d-p.png"}
+                alt=""
+                className="group-hover:scale-110 transition-all duration-500 size-full object-cover"
+                width={500}
+                height={500}
+              />
+            </div>
           </Link>
 
           <Link
