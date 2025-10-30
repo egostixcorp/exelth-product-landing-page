@@ -14,11 +14,21 @@ import clsx from "clsx";
 import { createClient } from "@/utils/supabase/client";
 
 const tabs = [
-  { name: "Home", href: "/patient", icon: MdHomeFilled },
-  { name: "Service", href: "/service", icon: RiLayoutMasonryFill },
-  { name: "Search", href: "/search", icon: IoMdSearch },
-  { name: "Activities", href: "/activities", icon: MdViewTimeline },
-  { name: "Profile", href: "/profile", icon: UserCircle },
+  { name: "Home", href: "/patient", icon: MdHomeFilled, login: "/patient" },
+  {
+    name: "Service",
+    href: "/service",
+    icon: RiLayoutMasonryFill,
+    login: "/service",
+  },
+  { name: "Search", href: "/search", icon: IoMdSearch, login: "/patient" },
+  {
+    name: "Activities",
+    href: "/activities",
+    icon: MdViewTimeline,
+    login: "/login",
+  },
+  { name: "Profile", href: "/profile", icon: UserCircle, login: "/login" },
 ];
 
 export default function TabScreen() {
@@ -59,7 +69,7 @@ export default function TabScreen() {
         "flex h-16 items-center justify-around px-2 md:h-20",
       )}
     >
-      {tabs.map(({ name, href, icon: Icon }) => {
+      {tabs.map(({ name, href, icon: Icon, login }) => {
         const isActive = pathname === href || pathname.startsWith(`${href}/`);
 
         // Special rendering for Profile tab
@@ -67,7 +77,7 @@ export default function TabScreen() {
           return (
             <Link
               key={name}
-              href={href}
+              href={user ? href : login}
               className={clsx(
                 "flex flex-col items-center justify-center gap-1 text-xs font-medium transition",
                 isActive
@@ -103,7 +113,7 @@ export default function TabScreen() {
         return (
           <Link
             key={name}
-            href={href}
+            href={user ? href : login}
             className={clsx(
               "flex flex-col items-center justify-center gap-1 text-xs font-medium transition",
               isActive ? "text-green-600" : "text-gray-500 hover:text-gray-800",
