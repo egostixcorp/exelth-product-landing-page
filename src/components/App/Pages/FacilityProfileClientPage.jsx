@@ -40,6 +40,7 @@ import DepartmentsScrollView from "@/components/App/Facility/DepartmentsScrollVi
 import FacilitiesDoctorCard from "@/components/App/Facility/FacilitiesDoctorCard";
 import DoctorsSheet from "@/components/App/Facility/DoctorsSheet";
 import TodayAvailability from "../Card/TodayDoctor";
+import { RequestPublishCard } from "../Card/RequestPublishCard";
 
 export default function FacilityProfileId({ params }) {
   const pathname = usePathname();
@@ -256,9 +257,13 @@ export default function FacilityProfileId({ params }) {
           </h2>
 
           {doctors.length === 0 ? (
+            <div>
+
             <p className="text-gray-500">
               No doctors available at this facility.
             </p>
+             <RequestPublishCard type="doctor" orgId="" userId="" />
+            </div>
           ) : (
             <>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

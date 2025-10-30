@@ -13,6 +13,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import DepartmentSheet from "@/components/App/Facility/DepartmentSheet";
+import { HeartPulse } from "lucide-react";
+import { RequestPublishCard } from "../Card/RequestPublishCard";
 
 interface Department {
   id: string;
@@ -52,9 +54,14 @@ export default function DepartmentsScrollView({
 
   if (!departments?.length) {
     return (
-      <div className="mb-8 px-4">
-        <h3 className="text-base font-semibold text-gray-900">Departments</h3>
+      <div className="mb-8 px-1">
+        <h3 className="flex items-start gap-2 text-base font-semibold text-gray-900">
+          {" "}
+          <HeartPulse className="h-5 w-5 text-gray-600" />
+          Departments
+        </h3>
         <p className="text-sm text-gray-500">No departments found.</p>
+        <RequestPublishCard type="department" orgId="" userId="" />
       </div>
     );
   }
@@ -70,7 +77,8 @@ export default function DepartmentsScrollView({
 
   return (
     <div className="mb-8 px-1">
-      <div className="mb-3 flex items-center justify-between">
+      <div className="mb-3 flex items-center justify-between gap-2">
+        <HeartPulse className="h-5 w-5 text-gray-600" />
         <h3 className="text-base font-semibold text-gray-900">Departments</h3>
       </div>
 
