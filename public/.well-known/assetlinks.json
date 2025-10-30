@@ -1,0 +1,15 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.exelth.exelthapp.preview",
+            "sha256_cert_fingerprints": [
+                "A1:2E:B8:A1:B3:5A:D4:92:B7:B2:93:EF:5F:CB:D6:74:6E:7B:AD:62:00:5B:D7:20:14:9E:AE:2C:87:04:02:A3",
+                "BE:D0:10:63:96:F5:A5:8C:67:5B:EC:A1:08:98:DA:CA:9E:FD:6D:36:0C:44:9E:35:48:5A:80:CA:77:81:7B:B9"
+            ]
+        }
+    }
+]
