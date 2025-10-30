@@ -19,6 +19,8 @@ import { Button } from "@/components/ui/button";
 // import { Colors } from "@/constants/Brand";
 import { Filter } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { getPatientID } from "@/app/actions/user";
+import { useAuth } from "@/context/AuthContext";
 
 const SearchHeader = () => {
   const supabase = createClient();
@@ -31,7 +33,7 @@ const SearchHeader = () => {
     "Book appointments",
   ];
   const router = useRouter();
-  //   const { user } = useAuth();
+    const { user } = useAuth();
 
   // Filter states
   const [location, setLocation] = useState("");
@@ -59,8 +61,8 @@ const SearchHeader = () => {
     if (!query.trim()) return;
 
     const searchType = detectSearchType(query.trim());
-    // const patientId = await getPatientID(user?.id);
-    const patientId = "test-patient-id"; // Placeholder for patient ID
+    const patientId = await getPatientID(user?.id);
+    // const patientId = "test-patient-id"; // Placeholder for patient ID
 
     const { error } = await supabase.from("patient_search_logs").insert({
       term: query.trim(),
@@ -70,7 +72,7 @@ const SearchHeader = () => {
 
     if (error) console.error("❌ Supabase insert error:", error);
     router.push(`/search/${encodeURIComponent(query)}`);
-    router.push(`/search`);
+    // router.push(`/search`);
   };
 
   const applyFilters = () => {

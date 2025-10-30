@@ -57,7 +57,7 @@ export default function FacilitySuggestionSection() {
   const [facilities, setFacilities] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [radiusKm, setRadiusKm] = useState(1);
-  const [tab, setTab] = useState<"card" | "map">("card");
+  const [tab, setTab] = useState<"card" | "map">("map");
   const [userPosition, setUserPosition] = useState<{
     lat: number;
     lng: number;
@@ -173,12 +173,12 @@ export default function FacilitySuggestionSection() {
               className="relative w-56 cursor-pointer rounded-xl border bg-white p-3 shadow-sm transition hover:shadow-md tablet:w-auto"
             >
               {facility.verified ? (
-                <div className="absolute right-5 top-5 z-50 flex items-center gap-1 rounded-md bg-blue-50 p-1 text-xs font-medium text-blue-600">
+                <div className="absolute right-5 top-5 z-40 flex items-center gap-1 rounded-md bg-blue-50 p-1 text-xs font-medium text-blue-600">
                   <MdVerified size={12} />
                   {/* Verified */}
                 </div>
               ) : (
-                <div className="absolute right-5 top-5 z-50 flex items-center gap-1 rounded-md bg-gray-100 p-1 text-xs font-medium text-gray-600">
+                <div className="absolute right-5 top-5 z-40 flex items-center gap-1 rounded-md bg-gray-100 p-1 text-xs font-medium text-gray-600">
                   <FaUsers size={12} />
                   {/* Community */}
                 </div>

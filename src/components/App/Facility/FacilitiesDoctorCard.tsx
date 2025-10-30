@@ -55,7 +55,7 @@ export default function FacilitiesDoctorCard({
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-gray-100 text-gray-400">
-            <span className="text-sm font-medium">{name[0]}</span>
+            <span className="text-sm font-medium">{name}</span>
           </div>
         )}
       </div>
