@@ -18,17 +18,41 @@ const SearchPage = () => {
   const [facilities, setFacilities] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
+  //  const [userPosition, setUserPosition] = useState<{
+  //     lat: number;
+  //     lng: number;
+  //   } | null>(null);
   const fetchFacilities = useCallback(async () => {
     try {
       setError("");
+      // Try to get user location
+      const position = await new Promise((resolve) => {
+        navigator.geolocation.getCurrentPosition(resolve, () => resolve(null));
+      });
+      if (position) {
+        const { latitude, longitude } = position.coords;
+        // setUserPosition({ lat: latitude, lng: longitude });
+      }
       const response = await fetch(`${API_URL_V1}/public-facilities`);
       if (!response.ok) throw new Error("Failed to fetch facilities");
 
-      const json = await response.json();
-
+      const data = await response.json();
+      let processed = data;
+      if (position) {
+        const { latitude, longitude } = position.coords;
+        processed = data
+          .map((facility) => {
+            const lat = parseFloat(facility.lat || "0");
+            const lng = parseFloat(facility.lng || "0");
+            if (!lat || !lng) return { ...facility, distanceKm: null };
+            const distanceKm = haversineDistance(latitude, longitude, lat, lng);
+            return { ...facility, distanceKm };
+          })
+          // .filter((f) => f.distanceKm !== null && f.distanceKm <= radiusKm)
+          .sort((a, b) => (a.distanceKm ?? 0) - (b.distanceKm ?? 0));
+      }
       // Filter based on restriction logic
-      const visibleFacilities = json.filter((facility) => {
+      const visibleFacilities = processed.filter((facility) => {
         if (restrictedFacilityIds.includes(facility.id)) {
           return allowedPhones.includes(user?.phone ?? "");
         }
@@ -79,7 +103,7 @@ const SearchPage = () => {
         )}
       </div>
 
-      <div className=" flex w-full items-center justify-center bg-white">
+      <div className="flex w-full items-center justify-center bg-white">
         <p className="redd w-fit rounded-3xl border border-green-500 p-2 text-center text-xs text-gray-600">
           <span className="font-bold text-black">Disclaimer:</span> Some clinic
           profiles are community{" "}
@@ -94,3 +118,15 @@ const SearchPage = () => {
 };
 
 export default SearchPage;
+// ✅ Distance utility
+function haversineDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
