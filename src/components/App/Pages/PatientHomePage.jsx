@@ -12,6 +12,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Inbox, CalendarDays, Building2 } from "lucide-react";
 import UpcomingAppointments from "../Global/UpcomingAppointments";
 import FacilitySuggestionSection from "../Facility/FacilitySuggestionSection";
+import ServiceGrid from "../Global/ServiceGrid";
 
 // import FacilitySuggestionSection from "@/components/Home/FacilitySuggestionSection";
 // import ServiceGrid from "@/components/Home/ServiceGrid";
@@ -48,8 +49,8 @@ export default function PatientHomePage() {
   }, [user]);
 
   return (
-    <main className="min-h-screen bg-white ">
-      <section className="mx-auto rred max-w-5xl laptop:w-[55rem] tablet:w-[40rem] px-2 py-6">
+    <main className="min-h-screen bg-white">
+      <section className="rred mx-auto max-w-5xl px-2 py-6 tablet:w-[40rem] laptop:w-[55rem]">
         {/* Header */}
         <div className="mb-6 flex items-center justify-between">
           <div>
@@ -85,7 +86,9 @@ export default function PatientHomePage() {
         </div>
 
         {/* Service Grid */}
-        <div className="mt-8">{/* <ServiceGrid /> */}</div>
+        <div className="mt-8">
+          <ServiceGrid />{" "}
+        </div>
       </section>
     </main>
   );
