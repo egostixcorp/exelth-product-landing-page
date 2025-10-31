@@ -8,6 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Add or generate routes here (can also be fetched from your CMS/DB)
   const staticRoutes = [
     "",
+    "/search",
+    "/patient",
     "/about",
     "/product",
     "/contact",
