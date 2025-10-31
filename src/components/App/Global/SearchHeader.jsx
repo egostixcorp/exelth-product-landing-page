@@ -27,13 +27,15 @@ const SearchHeader = () => {
   const [query, setQuery] = useState("");
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const placeholders = [
-    "Hospitals",
-    "Clinics",
-    "Lab tests",
-    "Book appointments",
+    "Search by clinic name, hospital name, or doctor name",
+    "Search for health issues like fever, back pain, or headache",
+    "Find doctors by specialty — cardiologist, dentist, or pediatrician",
+    "Search for nearby labs and diagnostic centers",
+    "Book appointments for checkups, tests, or consultations",
   ];
+
   const router = useRouter();
-    const { user } = useAuth();
+  const { user } = useAuth();
 
   // Filter states
   const [location, setLocation] = useState("");

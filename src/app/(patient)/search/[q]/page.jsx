@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { API_URL_V1 } from "@/const/URL";
 import FacilityCard from "@/components/App/Card/FacilityCard";
 import FacilitiesDoctorCard from "@/components/App/Facility/FacilitiesDoctorCard";
+import { FaUsers } from "react-icons/fa";
+import { MdVerified } from "react-icons/md";
 
 // interface Doctor {
 //   id: string;
@@ -56,13 +58,15 @@ export default function SearchResultsPage() {
       setLoading(false);
     }
   }
-//   console.log("Doctors", results.facilities.name);
+  //   console.log("Doctors", results.facilities.name);
 
   // --- Loading State ---
   if (loading) {
     return (
-      <div className="flex min-h-[70vh] w-full items-center justify-center">
-        <Skeleton className="h-6 w-32" />
+      <div className="flex min-h-[70vh] w-full items-start pt-10 justify-center gap-5">
+        <Skeleton className="h-72 w-80" />
+        <Skeleton className="h-72 w-80" />
+        <Skeleton className="h-72 w-80" />
       </div>
     );
   }
@@ -93,7 +97,7 @@ export default function SearchResultsPage() {
         {results.facilities.map((facility) => (
           <div
             key={facility.id}
-            className="overflow-hidden flex-col flex items-center justify-center gap-2 pt-1 rounded-xl border border-gray-200 bg-white shadow-sm transition hover:shadow-md"
+            className="flex flex-col items-center justify-center gap-2 overflow-hidden rounded-xl border border-gray-200 bg-white pt-1 shadow-sm transition hover:shadow-md"
           >
             {/* --- Facility Header --- */}
             <FacilityCard
@@ -137,14 +141,16 @@ export default function SearchResultsPage() {
       </div>
 
       {/* --- Disclaimer --- */}
-      <p className="mt-8 text-center text-xs leading-relaxed text-gray-600">
-        <strong className="font-semibold text-gray-900">Disclaimer:</strong>{" "}
-        Some clinic profiles are community{" "}
-        <Users className="inline-block h-3 w-3 text-gray-500" /> listings for
-        discovery purposes. Exelth does not claim partnership unless marked{" "}
-        <CheckCircle2 className="inline-block h-3 w-3 text-blue-500" />{" "}
-        Verified.
-      </p>
+      <div className="my-5 flex w-full items-center justify-center bg-white">
+        <p className="redd w-fit rounded-3xl border border-green-500 p-2 text-center text-xs text-gray-600">
+          <span className="font-bold text-black">Disclaimer:</span> Some clinic
+          profiles are community{" "}
+          <FaUsers size={12} className="inline-block text-gray-500" /> for
+          discovery purposes. Exelth does not claim partnership unless marked
+          Verified{" "}
+          <MdVerified size={12} className="inline-block text-blue-500" />.
+        </p>
+      </div>
     </div>
   );
 }

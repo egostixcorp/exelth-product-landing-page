@@ -9,25 +9,25 @@ const ServiceGrid = () => {
     {
       label: "Book Appointment",
       img: "/icon/b.png",
-      route: "/book",
+      route: "/search",
       publish: true,
     },
     {
       label: "Lab & Radiology",
       img: "/icon/l.png",
-      route: "/labs",
+      route: "/search",
       publish: true,
     },
     {
       label: "Ambulance Service",
       img: "/icon/a.png",
-      route: "/ambulance",
+      route: "#",
       publish: false,
     },
     {
       label: "Emergency Service",
       img: "/icon/e.png",
-      route: "/emergency",
+      route: "#",
       publish: false,
     },
   ];
@@ -39,10 +39,15 @@ const ServiceGrid = () => {
       <div className="grid w-full grid-cols-2 gap-4 laptop:grid-cols-4">
         {services.map((item, idx) => (
           <Link
-            href={"#"}
+            href={item.route}
             key={idx}
             className="group relative flex flex-col items-center justify-center rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition-all hover:-translate-y-1 hover:border-green-500 hover:shadow-md"
           >
+            {item.publish === false && (
+              <div className="absolute right-2 top-2 rounded-3xl bg-green-600 px-2 py-1 text-xs font-semibold text-white">
+                Coming soon
+              </div>
+            )}
             <div className="relative mb-2 size-28">
               <Image
                 src={item.img}
