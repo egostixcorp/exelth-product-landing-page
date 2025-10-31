@@ -103,7 +103,7 @@ const SearchHeader = () => {
         <div className="rede relative w-full">
           <Input
             type="text"
-            placeholder={`Search for ${placeholders[placeholderIndex]}`}
+            placeholder={`${placeholders[placeholderIndex]}`}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="flex h-12 rounded-full bg-white px-4 py-2 text-sm shadow-md focus-visible:ring-1 focus-visible:ring-green-500"
