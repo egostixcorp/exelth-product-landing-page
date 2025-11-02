@@ -10,6 +10,7 @@ import { MdMedicalServices } from "react-icons/md";
 import { RiBillFill } from "react-icons/ri";
 import { FaRegCalendarCheck } from "react-icons/fa";
 import clsx from "clsx";
+import BackButton from "@/components/App/Button/BackButton";
 
 const activityTabs = [
   {
@@ -46,7 +47,12 @@ const activityTabs = [
 
 export default function ActivitiesLayout({ children }) {
   const pathname = usePathname();
-
+  const AfterActivityHidden = pathname.startsWith("/activities/");
+  // ✅ determine current label based on route match
+  const activeTab = activityTabs.find(
+    (tab) => pathname === tab.route || pathname.startsWith(`${tab.route}/`),
+  );
+  const currentLabel = activeTab?.label ?? "Activities";
   return (
     <div className="flex h-screen w-full items-start justify-center bg-white">
       {/* Sidebar */}
@@ -55,7 +61,7 @@ export default function ActivitiesLayout({ children }) {
           Activities
         </h1>
 
-        <nav className="flex flex-col gap-1">
+        <nav className="redd flex flex-col gap-1">
           {activityTabs.map(({ route, label, icon: Icon }) => {
             const isActive =
               pathname === route || pathname.startsWith(`${route}/`);
@@ -86,38 +92,47 @@ export default function ActivitiesLayout({ children }) {
           })}
         </nav>
       </aside>
-      <nav className="redd flex w-full flex-col items-start justify-start gap-1 p-5 md:hidden">
-        {activityTabs.map(({ route, label, icon: Icon }) => {
-          const isActive =
-            pathname === route || pathname.startsWith(`${route}/`);
+      {AfterActivityHidden ? null : (
+        <nav className="redd flex w-full flex-col items-start justify-start gap-1 p-5 md:hidden">
+          {activityTabs.map(({ route, label, icon: Icon }) => {
+            const isActive =
+              pathname === route || pathname.startsWith(`${route}/`);
 
-          return (
-            <Link
-              key={route}
-              href={route}
-              className={clsx(
-                "flex w-full items-center gap-3 rounded-lg border px-3 py-2 text-base font-medium transition-colors",
-                isActive
-                  ? "border border-green-100 text-green-700"
-                  : "text-black hover:bg-gray-100 hover:text-gray-900",
-              )}
-            >
-              {Icon && (
-                <Icon
-                  size={20}
-                  className={clsx(
-                    "flex-shrink-0 text-green-600",
-                    isActive ? "text-green-700" : "text-gray-500",
-                  )}
-                />
-              )}
-              <span>{label}</span>
-            </Link>
-          );
-        })}
-      </nav>
+            return (
+              <Link
+                key={route}
+                href={route}
+                className={clsx(
+                  "flex w-full items-center gap-3 rounded-lg border px-3 py-2 text-base font-medium transition-colors",
+                  isActive
+                    ? "border border-green-100 text-green-700"
+                    : "text-black hover:bg-gray-100 hover:text-gray-900",
+                )}
+              >
+                {Icon && (
+                  <Icon
+                    size={20}
+                    className={clsx(
+                      "flex-shrink-0 text-green-600",
+                      isActive ? "text-green-700" : "text-gray-500",
+                    )}
+                  />
+                )}
+                <span>{label}</span>
+              </Link>
+            );
+          })}
+        </nav>
+      )}
+
       {/* Main content */}
-      <main className="hidden flex-1 items-center justify-center overflow-y-auto p-4 md:flex md:p-8">
+      <main className="relative flex-1 flex-col items-center justify-center overflow-y-auto p-4 md:flex md:p-8">
+        <div className="absolute left-2 top-2 block tablet:hidden">
+          <BackButton />
+        </div>
+        <h2 className="sticky mb-4 w-full pl-10 text-left text-lg font-semibold text-gray-900 md:text-xl">
+          {currentLabel}
+        </h2>
         {children}
       </main>
       {/* {children} */}
