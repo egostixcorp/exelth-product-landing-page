@@ -2,6 +2,7 @@ import Header from "@/components/App/Global/Header";
 import Footer from "@/components/Global/Footer";
 import TabScreen from "@/components/App/Global/TabScreen";
 import React from "react";
+import AppDownloadDialog from "@/components/App/Global/AppDownloadDialog";
 export const metadata = {
   metadataBase: new URL("https://www.exelth.com/"),
   title: {
@@ -14,6 +15,7 @@ const PatientLayout = ({ children }) => {
     <div>
       <Header />
       {children}
+      <AppDownloadDialog />
       <TabScreen />
       <Footer />
     </div>
