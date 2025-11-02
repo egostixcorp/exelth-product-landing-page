@@ -54,7 +54,7 @@ export default function ActivitiesLayout({ children }) {
   );
   const currentLabel = activeTab?.label ?? "Activities";
   return (
-    <div className="flex h-screen w-full items-start justify-center bg-white">
+    <div className="flex h-screen w-full items-start justify-center bg-white px-4 md:px-8">
       {/* Sidebar */}
       <aside className="hidden h-full w-80 flex-shrink-0 border-r bg-white p-6 md:flex md:flex-col">
         <h1 className="mb-6 text-2xl font-semibold text-gray-800">
