@@ -14,13 +14,13 @@ import { toast } from "sonner";
 import BackButton from "@/components/App/Button/BackButton";
 
 const patientProfileNav = [
-  { label: "Personal information", route: "/profile/user-info" },
-  { label: "View profile", route: "/profile/view-profile" },
-  { label: "Account settings", route: "/profile/account" },
-  { label: "Get help", route: "/profile/help" },
-  { label: "Give us feedback", route: "/profile/feedback" },
-  { label: "Payments", route: "/profile/payments" },
-  { label: "Legal", route: "/profile/legal" },
+  { label: "Personal information", route: "" },
+  { label: "View profile", route: "" },
+  { label: "Account settings", route: "" },
+  { label: "Get help", route: "" },
+  { label: "Give us feedback", route: "" },
+  { label: "Payments", route: "" },
+  { label: "Legal", route: "" },
 ];
 const profile = [
   { label: "About me", route: "/profile", icon: "/icon/" },
@@ -68,7 +68,7 @@ export default function ProfileLayout({ children }) {
     );
 
   return (
-    <div className="h-screen w-full bg-white px-4  md:px-8">
+    <div className="min-h-screen w-full bg-white px-4 md:px-8">
       <div id="mobile-layout" className="block size-full p-2 tablet:hidden">
         {/* Profile Card */}
         <div
