@@ -130,3 +130,56 @@ export async function setVisitorCookie() {
   console.log("✅ New visitor_id created:", newVisitorId);
   return newVisitorId;
 }
+interface PublishRequestParams {
+  facility_id: string;
+  user_id: string;
+  type: "doctor" | "department" | "lab_test";
+}
+export async function sendPublishRequest({
+  facility_id,
+  user_id,
+  type,
+}: PublishRequestParams) {
+  const supabase = await createClient();
+
+  try {
+    // Check if request already exists
+    const { data: existing, error: fetchError } = await supabase
+      .from("facility_publish_requests")
+      .select("id")
+      .eq("facility_id", facility_id)
+      .eq("user_id", user_id)
+      .eq("type", type)
+      .maybeSingle();
+
+    if (fetchError) throw fetchError;
+
+    if (existing) {
+      return {
+        success: false,
+        message: "You already sent a request.",
+        alreadyRequested: true,
+      };
+    }
+
+    // Insert new request
+    const { error: insertError } = await supabase
+      .from("facility_publish_requests")
+      .insert([{ facility_id, user_id, type }]);
+
+    if (insertError) throw insertError;
+
+    return {
+      success: true,
+      message: "Request sent successfully.",
+      alreadyRequested: false,
+    };
+  } catch (error: any) {
+    console.error("❌ sendPublishRequest error:", error);
+    return {
+      success: false,
+      message: "Something went wrong. Please try again.",
+      alreadyRequested: false,
+    };
+  }
+}

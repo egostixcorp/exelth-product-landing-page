@@ -1,3 +1,4 @@
+// "use client";
 import LogoType from "@/components/Global/logo-type";
 import UserHeaderAvatar from "@/components/App/Avatar/UserHeaderAvatar";
 import NavHeader from "@/components/App/Global/NavHeader";
@@ -5,8 +6,15 @@ import SearchHeader from "@/components/App/Global/SearchHeader";
 import PatientSearchBar from "@/components/App/Global/PatientSearchBar";
 import React from "react";
 import Link from "next/link";
+// import { setVisitorCookie } from "@/lib/tracker";
 
 const Header = () => {
+  // useEffect(() => {
+  //   (async () => {
+  //     const id = await setVisitorCookie();
+  //     // setVisitorId(id);
+  //   })();
+  // }, []);
   return (
     <div className="redd sticky right-0 top-0 z-50 flex h-auto w-full flex-col items-center justify-center gap-5 bg-neutral-50 px-10 py-5 shadow transition-all duration-500">
       <div className="redd hidden w-full items-center justify-between md:flex">

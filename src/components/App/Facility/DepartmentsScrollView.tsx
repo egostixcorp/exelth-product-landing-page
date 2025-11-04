@@ -15,6 +15,7 @@ import {
 import DepartmentSheet from "@/components/App/Facility/DepartmentSheet";
 import { HeartPulse } from "lucide-react";
 import { RequestPublishCard } from "../Card/RequestPublishCard";
+import { useAuth } from "@/context/AuthContext";
 
 interface Department {
   id: string;
@@ -37,6 +38,7 @@ export default function DepartmentsScrollView({
   facility_name,
 }: Props) {
   const router = useRouter();
+  const { user } = useAuth();
   const [open, setOpen] = useState(false);
 
   if (loading) {
@@ -61,7 +63,11 @@ export default function DepartmentsScrollView({
           Departments
         </h3>
         <p className="text-sm text-gray-500">No departments found.</p>
-        <RequestPublishCard type="department" orgId="" userId="" />
+        <RequestPublishCard
+          type="department"
+          orgId={facility_id}
+          userId={user?.id || ""}
+        />
       </div>
     );
   }

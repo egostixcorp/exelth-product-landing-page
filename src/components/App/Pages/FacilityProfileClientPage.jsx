@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { API_URL_V1 } from "@/const/URL";
+import { useAuth } from "../../../context/AuthContext";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import {
@@ -46,6 +47,7 @@ import { RequestPublishCard } from "../Card/RequestPublishCard";
 export default function FacilityProfileId({ params }) {
   const pathname = usePathname();
   const router = useRouter();
+  const { user } = useAuth();
   const [facility, setFacility] = useState([]);
   const [doctors, setDoctors] = useState([]);
   const [departments, setDepartments] = useState([]);
@@ -259,7 +261,12 @@ export default function FacilityProfileId({ params }) {
                   <p className="text-gray-500">
                     No doctors available at this facility.
                   </p>
-                  <RequestPublishCard type="doctor" orgId="" userId="" />
+                  <RequestPublishCard
+                    type="doctor"
+                    orgId={selectedFacility.id}
+                    userId={user.id}
+                  
+                  />
                 </div>
               ) : (
                 <>
@@ -332,7 +339,7 @@ export default function FacilityProfileId({ params }) {
           </div>
           <div
             id="today-doctors"
-            className="redd shadow-lg sticky top-36 mt-12 hidden min-h-72 p-5 rounded-3xl border border-neutral-100 tablet:block tablet:w-96 laptop:w-[35rem]"
+            className="redd sticky top-36 mt-12 hidden min-h-72 rounded-3xl border border-neutral-100 p-5 shadow-lg tablet:block tablet:w-96 laptop:w-[35rem]"
           >
             <TodayAvailability
               facilityId={selectedFacility.id}
