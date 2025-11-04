@@ -46,19 +46,18 @@ const requestMap: Record<
 
 export function RequestPublishCard({ orgId, userId, type }: Props) {
   const { title, description, icon } = requestMap[type];
-  const [message, setMessage] = useState("");
   const [isPending, startTransition] = useTransition();
 
   //   const handleRequest = () => {
   //     startTransition(async () => {
-  //       const res = await requestPublishAction({ orgId, userId, type, message });
+  //       const res = await requestPublishAction({ orgId, userId, type });
   //       if (res.success) toast.success(res.message);
   //       else toast.error(res.message);
   //     });
   //   };
 
   return (
-    <Card className="flex flex-col w-80 items-center justify-between gap-3 rounded-2xl border border-gray-200 p-5 shadow-sm transition hover:border-green-300 hover:shadow-md">
+    <Card className="flex w-80 flex-col items-center justify-between gap-3 rounded-2xl border border-gray-200 p-5 shadow-sm transition hover:border-green-300 hover:shadow-md">
       <div className="relative h-28 w-28">
         <Image
           src={icon}
@@ -74,13 +73,6 @@ export function RequestPublishCard({ orgId, userId, type }: Props) {
         <h3 className="text-base font-semibold text-gray-900">{title}</h3>
         <p className="text-sm text-gray-600">{description}</p>
       </div>
-
-      {/* <textarea
-        placeholder="Add a short message (optional)"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        className="mt-2 w-full rounded-lg border border-gray-300 p-2 text-sm outline-none focus:ring-2 focus:ring-green-500"
-      /> */}
 
       <Button
         // onClick={handleRequest}
