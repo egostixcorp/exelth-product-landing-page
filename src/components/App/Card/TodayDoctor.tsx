@@ -1,16 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Clock, User } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Clock, User, Phone } from "lucide-react";
 import { format } from "date-fns";
 
 interface TodayAvailabilityProps {
   facilityId: string;
+  number: string; // business_number
 }
 
 type DoctorData = {
@@ -23,10 +26,13 @@ type DoctorData = {
 
 export default function TodayAvailability({
   facilityId,
+  number,
 }: TodayAvailabilityProps) {
   const [loading, setLoading] = useState(true);
   const [doctors, setDoctors] = useState<DoctorData[]>([]);
   const supabase = createClient();
+  const router = useRouter();
+
   useEffect(() => {
     const fetchTodayAvailability = async () => {
       try {
@@ -49,7 +55,7 @@ export default function TodayAvailability({
 
         // 2️⃣ Count slots per doctor
         const slotCountMap = seats.reduce<Record<string, number>>(
-          (acc: any, seat: any) => {
+          (acc, seat) => {
             acc[seat.doctor_id] = (acc[seat.doctor_id] || 0) + 1;
             return acc;
           },
@@ -74,7 +80,7 @@ export default function TodayAvailability({
         const merged = doctorData.map((doc: any) => ({
           doctor_id: doc.id,
           name: doc.full_name,
-          fee: doc.consultation_fee,
+          fee: doc.appointment_price ?? "—",
           avatar_url: doc.avatar_url,
           available_slots: slotCountMap[doc.id] || 0,
         }));
@@ -89,7 +95,8 @@ export default function TodayAvailability({
 
     fetchTodayAvailability();
   }, [facilityId]);
-  if (doctors.length === 0) return null;
+
+  // ---- Loading Skeleton ----
   if (loading)
     return (
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -107,13 +114,43 @@ export default function TodayAvailability({
       </div>
     );
 
+  // ---- No Doctors Today ----
   if (doctors.length === 0)
     return (
-      <div className="rounded-md border py-6 text-center text-sm text-gray-500">
-        No doctors available today.
+      <div className="relative mt-4 rounded-md borderr border-gray-200 bg-white  text-center text-gray-700">
+        <h3 className="mb-2 text-base font-semibold">
+          No doctors are available for appointments today.
+        </h3>
+        <p className="text-sm text-gray-500">
+          Please check again later or contact the clinic directly for more
+          information about doctor schedules.
+        </p>
+
+        <div className="mt-4 flex items-center justify-center text-xs text-gray-400">
+          <Clock className="mr-1 h-3 w-3" />
+          {format(new Date(), "EEEE, MMM d, yyyy")}
+        </div>
+
+        {/* ---- Sticky Bottom Call Button (Mobile only) ---- */}
+        <div>
+          <Button
+            onClick={() => router.push(`tel:${number}`)}
+            variant="default"
+            className="h-12 w-full gap-2 bg-blue-500 hover:bg-blue-600"
+          >
+            <Phone className="h-5 w-5 text-white" />
+            <span className="text-base font-medium text-white">
+              Call Clinic
+            </span>
+          </Button>
+          <p className="mt-2 text-center text-xs text-gray-500">
+            Tap to contact the reception for today’s doctor availability.
+          </p>
+        </div>
       </div>
     );
 
+  // ---- Doctor Cards ----
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {doctors.map((doc) => (
@@ -137,6 +174,7 @@ export default function TodayAvailability({
               </p>
             </div>
           </CardHeader>
+
           <CardContent className="mt-2 flex items-center justify-between">
             <Badge
               variant="secondary"
