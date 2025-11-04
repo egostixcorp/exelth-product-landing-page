@@ -39,9 +39,7 @@ export default function ProfileLayout({ children }) {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
-  const activeTab = profile.find(
-    (tab) => pathname === tab.route || pathname.startsWith(`${tab.route}/`),
-  );
+  const activeTab = profile.find((tab) => pathname === tab.route);
   const currentLabel = activeTab?.label ?? "Profile";
   const fetchPatient = useCallback(async () => {
     if (!user?.id) return;
@@ -191,8 +189,7 @@ export default function ProfileLayout({ children }) {
 
           <nav className="redd flex flex-col gap-1">
             {profile.map(({ route, label, icon: Icon }) => {
-              const isActive =
-                pathname === route || pathname.startsWith(`${route}/`);
+              const isActive = pathname === route;
 
               return (
                 <Link
