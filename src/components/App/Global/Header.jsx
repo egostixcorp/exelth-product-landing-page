@@ -2,6 +2,7 @@ import LogoType from "@/components/Global/logo-type";
 import UserHeaderAvatar from "@/components/App/Avatar/UserHeaderAvatar";
 import NavHeader from "@/components/App/Global/NavHeader";
 import SearchHeader from "@/components/App/Global/SearchHeader";
+import PatientSearchBar from "@/components/App/Global/PatientSearchBar";
 import React from "react";
 import Link from "next/link";
 
@@ -13,6 +14,7 @@ const Header = () => {
           <LogoType />
         </Link>
         <SearchHeader />
+        {/* <PatientSearchBar/> */}
         <UserHeaderAvatar />
       </div>
       <div className="redd flex h-14 w-full items-center justify-center tablet:hidden">
