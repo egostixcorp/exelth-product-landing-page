@@ -12,10 +12,22 @@ import {
   useJsApiLoader,
   CircleF,
 } from "@react-google-maps/api";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import { MdVerified } from "react-icons/md";
 import { API_URL_V1 } from "@/const/URL";
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Map, X } from "lucide-react";
 
 // const API_URL_V1 =
 //   process.env.NEXT_PUBLIC_API_URL_V1 || "https://api.exelth.com/api/v1";
@@ -30,6 +42,11 @@ const containerStyle = {
   width: "100%",
   height: "100%",
   borderRadius: "24px",
+};
+const mobileContainerStyle = {
+  width: "100%",
+  height: "26rem",
+  borderRadius: "16px",
 };
 
 // Google Map Options
@@ -227,7 +244,7 @@ const PlacesClientPage = ({ placeName }) => {
   }
 
   return (
-    <div className="redd flex h-full w-full flex-col items-start justify-start gap-5 p-4 sm:p-6 lg:flex-row lg:p-10">
+    <div className="redd relative flex h-full w-full flex-col items-start justify-start gap-5 p-4 sm:p-6 lg:flex-row lg:p-10">
       {/* Facilities List */}
       <div className="w-full lg:w-auto lg:flex-1">
         <h1 className="mb-6 text-2xl font-bold text-gray-900 sm:text-3xl">
@@ -281,8 +298,100 @@ const PlacesClientPage = ({ placeName }) => {
           </div>
         )}
       </div>
+      {/* Mobile Map Drawer - Only visible on mobile */}
+      <MobileMapDrawer
+        isLoaded={isLoaded}
+        mapCenter={mapCenter}
+        facilities={facilities}
+        decodedPlace={decodedPlace}
+      />
     </div>
   );
 };
 
 export default PlacesClientPage;
+function MobileMapDrawer({ isLoaded, mapCenter, facilities, decodedPlace }) {
+  const [open, setOpen] = useState(true);
+  const [snap, setSnap] = useState("50%");
+  return (
+    <div className="laptop:hidden">
+      {/* Floating Map Button */}
+      <Button
+        onClick={() => setOpen(true)}
+        className="fixed bottom-20 right-6 z-50 h-14 w-14 rounded-full bg-green-600 shadow-lg hover:bg-green-700 hover:shadow-xl"
+        size="icon"
+      >
+        <Map className="h-6 w-6" />
+      </Button>
+
+      {/* Map Drawer */}
+      <Drawer
+        open={open}
+        onOpenChange={setOpen}
+        defaultOpen
+        // snapPoints={["50%", "85%", 1]}
+        // activeSnapPoint={snap}
+        // setActiveSnapPoint={setSnap}
+        // modal={true}
+      >
+        <DrawerContent className="max-h-[96vh]]">
+          <DrawerHeader className="border-b">
+            <div className="flex items-center justify-between text-left">
+              <div>
+                <DrawerTitle>Map View</DrawerTitle>
+                <DrawerDescription>
+                  Facilities in {decodedPlace}
+                </DrawerDescription>
+              </div>
+              <DrawerClose asChild>
+                <Button variant="ghost" size="icon">
+                  <X className="h-5 w-5" />
+                </Button>
+              </DrawerClose>
+            </div>
+          </DrawerHeader>
+
+          <div className="flex-1 overflow-hidden p-4">
+            {!isLoaded ? (
+              <Skeleton className="h-full w-full rounded-2xl" />
+            ) : mapCenter ? (
+              <GoogleMap
+                mapContainerStyle={mobileContainerStyle}
+                center={mapCenter}
+                zoom={13}
+                options={mapOptions}
+              >
+                <CircleF
+                  center={mapCenter}
+                  radius={3000}
+                  options={{
+                    strokeColor: "#22c55e",
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: "#22c55e",
+                    fillOpacity: 0.15,
+                  }}
+                />
+                {facilities.map((facility) => (
+                  <MapMarker key={facility.id} facility={facility} />
+                ))}
+              </GoogleMap>
+            ) : (
+              <div className="flex h-full items-center justify-center rounded-2xl bg-gray-100">
+                <p className="text-gray-500">No location data available</p>
+              </div>
+            )}
+          </div>
+
+          <DrawerFooter className="border-t pt-4">
+            <DrawerClose asChild>
+              <Button variant="outline" className="w-full">
+                Close Map
+              </Button>
+            </DrawerClose>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    </div>
+  );
+}
