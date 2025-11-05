@@ -15,6 +15,7 @@ import {
 import { MdVerified } from "react-icons/md";
 import { API_URL_V1 } from "@/const/URL";
 import { useAuth } from "@/context/AuthContext";
+import Link from "next/link";
 
 // const API_URL_V1 =
 //   process.env.NEXT_PUBLIC_API_URL_V1 || "https://api.exelth.com/api/v1";
@@ -84,32 +85,34 @@ function MapMarker({ facility }) {
           position={position}
           onCloseClick={() => setShowInfo(false)}
         >
-          <div className="w-56 font-sans text-sm">
-            {facility.cover_photo && (
-              <Image
-                src={facility.cover_photo}
-                alt={facility.name}
-                width={224}
-                height={96}
-                className="mb-2 h-24 w-full rounded-md object-cover"
-              />
-            )}
-            <div className="flex items-start justify-between gap-2">
-              <h3 className="font-semibold text-gray-800">{facility.name}</h3>
-              {facility.verified && (
-                <MdVerified
-                  className="mt-0.5 flex-shrink-0 text-blue-500"
-                  size={16}
+          <Link href={`/search/facility/profile/${facility.id}`}>
+            <div className="w-56 font-sans text-sm">
+              {facility.cover_photo && (
+                <Image
+                  src={facility.cover_photo}
+                  alt={facility.name}
+                  width={224}
+                  height={96}
+                  className="mb-2 h-24 w-full rounded-md object-cover"
                 />
               )}
+              <div className="flex items-start justify-between gap-2">
+                <h3 className="font-semibold text-gray-800">{facility.name}</h3>
+                {facility.verified && (
+                  <MdVerified
+                    className="mt-0.5 flex-shrink-0 text-blue-500"
+                    size={16}
+                  />
+                )}
+              </div>
+              <p className="mt-1 text-xs text-gray-600">
+                {facility.facility_type}
+              </p>
+              <p className="mt-1 text-xs text-gray-600">
+                {facility.location?.address || "No address"}
+              </p>
             </div>
-            <p className="mt-1 text-xs text-gray-600">
-              {facility.facility_type}
-            </p>
-            <p className="mt-1 text-xs text-gray-600">
-              {facility.location?.address || "No address"}
-            </p>
-          </div>
+          </Link>
         </InfoWindowF>
       )}
     </>

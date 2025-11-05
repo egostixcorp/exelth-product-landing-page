@@ -14,6 +14,7 @@ import {
 } from "@react-google-maps/api";
 import { MdVerified } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
+import Link from "next/link";
 
 // Base API URL
 const API_URL =
@@ -288,21 +289,23 @@ function MapMarker({ facility }: { facility: any }) {
           position={position}
           onCloseClick={() => setShowInfo(false)}
         >
-          <div className="w-56 font-sans text-sm">
-            {facility.cover_photo && (
-              <Image
-                src={facility.cover_photo}
-                alt={facility.name}
-                width={500}
-                height={300}
-                className="mb-2 h-24 w-full rounded-md object-cover"
-              />
-            )}
-            <h3 className="font-semibold text-gray-800">{facility.name}</h3>
-            <p className="mt-1 text-xs text-gray-600">
-              {facility.location?.address || "No address"}
-            </p>
-          </div>
+          <Link href={`/search/facility/profile/${facility.id}`}>
+            <div className="w-56 font-sans text-sm">
+              {facility.cover_photo && (
+                <Image
+                  src={facility.cover_photo}
+                  alt={facility.name}
+                  width={500}
+                  height={300}
+                  className="mb-2 h-24 w-full rounded-md object-cover"
+                />
+              )}
+              <h3 className="font-semibold text-gray-800">{facility.name}</h3>
+              <p className="mt-1 text-xs text-gray-600">
+                {facility.location?.address || "No address"}
+              </p>
+            </div>
+          </Link>
         </InfoWindowF>
       )}
     </>
