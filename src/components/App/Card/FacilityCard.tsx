@@ -26,7 +26,7 @@ const FacilityCard: React.FC<FacilityCardProps> = ({
   return (
     <Link
       href={`/search/facility/profile/${id}`}
-      className="block w-full max-w-80 overflow-hidden rounded-xl border border-gray-100 bg-white transition hover:shadow-md"
+      className="block w-52 overflow-hidden rounded-xl border border-gray-100 bg-white transition hover:shadow-md tablet:w-56 laptop:w-56 desktop:w-72"
     >
       <div className="redd relative h-52 w-full overflow-hidden rounded-xl">
         <Image

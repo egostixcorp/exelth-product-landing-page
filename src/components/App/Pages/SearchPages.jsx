@@ -6,9 +6,11 @@ import { API_URL_V1 } from "@/const/URL";
 import FacilityCard from "@/components/App/Card/FacilityCard";
 import FacilityCardSkeleton from "@/components/App/Skeleton/FacilityCardSkeleton";
 // import SearchHeader from "@/components/Global/SearchHeader";
+import FacilityPlacesCarousel from "@/components/App/Global/FacilityPlacesCarousel";
 import { useAuth } from "@/context/AuthContext";
 import { FaUsers } from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
+import FacilityPlacesCarouselSkeleton from "../Skeleton/FacilityPlacesCarouselSkeleton";
 
 const allowedPhones = ["917478005366", "919800908021"];
 const restrictedFacilityIds = ["089f5f81-631d-4e10-a980-2f804b808154"];
@@ -58,8 +60,17 @@ const SearchPage = () => {
         }
         return true;
       });
-
-      setFacilities(visibleFacilities);
+      const uniqueCities = [
+        ...new Set(
+          visibleFacilities.map((f) => f.location?.city).filter(Boolean), // Remove null/undefined values
+        ),
+      ];
+      const grouped = uniqueCities.reduce((acc, city) => {
+        acc[city] = visibleFacilities.filter((f) => f.location?.city === city);
+        return acc;
+      }, {});
+      setFacilities(grouped);
+      // setFacilities(visibleFacilities);
     } catch (err) {
       console.error(err);
       setError("Could not load facilities. Please try again later.");
@@ -75,8 +86,7 @@ const SearchPage = () => {
   return (
     <div className="flex min-h-screen flex-col bg-white">
       {/* <SearchHeader /> */}
-
-      <div className="container mx-auto px-4 py-4">
+      {/* <div className="container mx-auto px-4 py-4">
         {loading ? (
           <div className="grid grid-cols-1 place-items-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[...Array(6)].map((_, i) => (
@@ -101,10 +111,31 @@ const SearchPage = () => {
             ))}
           </div>
         )}
+      </div> */}
+      <div className="container mx-auto px-4 py-4">
+        {loading ? (
+          <div className="w-full">
+            {[1, 2, 3].map((i) => (
+              <FacilityPlacesCarouselSkeleton key={i} />
+            ))}
+          </div>
+        ) : Object.keys(facilities).length === 0 ? (
+          <p className="text-center text-gray-500">No facilities found.</p>
+        ) : (
+          <>
+            {Object.entries(facilities).map(([city, facilities]) => (
+              <FacilityPlacesCarousel
+                key={city}
+                cityName={city}
+                facilities={facilities}
+              />
+            ))}
+          </>
+        )}
       </div>
 
       <div className="flex w-full items-center justify-center bg-white">
-        <p className="redd w-fit rounded-3xl border border-green-500 p-2 text-center text-xs text-gray-600">
+        <p className="redd w-full rounded-3xl border border-green-500 p-2 text-center text-xs text-gray-600">
           <span className="font-bold text-black">Disclaimer:</span> Some clinic
           profiles are community{" "}
           <FaUsers size={12} className="inline-block text-gray-500" /> for
