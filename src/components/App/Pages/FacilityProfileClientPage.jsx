@@ -264,8 +264,7 @@ export default function FacilityProfileId({ params }) {
                   <RequestPublishCard
                     type="doctor"
                     orgId={selectedFacility.id}
-                    userId={user.id}
-                  
+                    userId={user?.id}
                   />
                 </div>
               ) : (
