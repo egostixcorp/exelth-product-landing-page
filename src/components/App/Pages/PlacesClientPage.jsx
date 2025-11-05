@@ -14,6 +14,7 @@ import {
 } from "@react-google-maps/api";
 import { MdVerified } from "react-icons/md";
 import { API_URL_V1 } from "@/const/URL";
+import { useAuth } from "@/context/AuthContext";
 
 // const API_URL_V1 =
 //   process.env.NEXT_PUBLIC_API_URL_V1 || "https://api.exelth.com/api/v1";
@@ -119,7 +120,7 @@ const PlacesClientPage = ({ placeName }) => {
   // const params = useParams();
   // const placeName = params?.place || "";
   const decodedPlace = decodeURIComponent(placeName);
-
+  const { user } = useAuth();
   const [facilities, setFacilities] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -149,7 +150,7 @@ const PlacesClientPage = ({ placeName }) => {
       // Apply restriction logic
       const visibleFacilities = filteredFacilities.filter((facility) => {
         if (restrictedFacilityIds.includes(facility.id)) {
-          return allowedPhones.includes(mockUser?.phone ?? "");
+          return allowedPhones.includes(user?.phone ?? "");
         }
         return true;
       });
