@@ -43,8 +43,8 @@ const page = ({ params }) => {
   const { place } = params;
 
   return (
-    <div className="flex min-h-screen w-full items-center justify-center">
-      <PlacesClientPage />
+    <div className="flex min-h-screen w-full items-start justify-center">
+      <PlacesClientPage placeName={place} />
     </div>
   );
 };

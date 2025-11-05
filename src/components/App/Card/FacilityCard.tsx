@@ -13,6 +13,7 @@ interface FacilityCardProps {
   name: string;
   address: string;
   image: string;
+  ClassName: string;
   status?: boolean; // true = verified, false = community
 }
 
@@ -22,11 +23,15 @@ const FacilityCard: React.FC<FacilityCardProps> = ({
   address,
   image,
   status,
+  ClassName,
 }) => {
   return (
     <Link
       href={`/search/facility/profile/${id}`}
-      className="block w-52 overflow-hidden rounded-xl border border-gray-100 bg-white transition hover:shadow-md tablet:w-56 laptop:w-56 desktop:w-72"
+      className={cn(
+        "block w-52 overflow-hidden rounded-xl border border-gray-100 bg-white transition hover:shadow-md tablet:w-56 laptop:w-56 desktop:w-72",
+        ClassName,
+      )}
     >
       <div className="redd relative h-52 w-full overflow-hidden rounded-xl">
         <Image
