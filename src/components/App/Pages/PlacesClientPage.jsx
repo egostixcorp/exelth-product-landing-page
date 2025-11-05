@@ -28,6 +28,7 @@ import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Map, X } from "lucide-react";
+import { useIsMobile } from "@/components/hooks/use-mobile";
 
 // const API_URL_V1 =
 //   process.env.NEXT_PUBLIC_API_URL_V1 || "https://api.exelth.com/api/v1";
@@ -139,6 +140,7 @@ function MapMarker({ facility }) {
 const PlacesClientPage = ({ placeName }) => {
   // const params = useParams();
   // const placeName = params?.place || "";
+  const IsMobile = useIsMobile();
   const decodedPlace = decodeURIComponent(placeName);
   const { user } = useAuth();
   const [facilities, setFacilities] = useState([]);
@@ -301,6 +303,7 @@ const PlacesClientPage = ({ placeName }) => {
       {/* Mobile Map Drawer - Only visible on mobile */}
       <MobileMapDrawer
         isLoaded={isLoaded}
+        Mobile={IsMobile}
         mapCenter={mapCenter}
         facilities={facilities}
         decodedPlace={decodedPlace}
@@ -310,8 +313,14 @@ const PlacesClientPage = ({ placeName }) => {
 };
 
 export default PlacesClientPage;
-function MobileMapDrawer({ isLoaded, mapCenter, facilities, decodedPlace }) {
-  const [open, setOpen] = useState(true);
+function MobileMapDrawer({
+  isLoaded,
+  mapCenter,
+  facilities,
+  decodedPlace,
+  Mobile,
+}) {
+  const [open, setOpen] = useState(Mobile ? true : false);
   const [snap, setSnap] = useState("50%");
   return (
     <div className="laptop:hidden">
@@ -328,7 +337,7 @@ function MobileMapDrawer({ isLoaded, mapCenter, facilities, decodedPlace }) {
       <Drawer
         open={open}
         onOpenChange={setOpen}
-        defaultOpen
+        defaultOpen={Mobile ? true : false}
         // snapPoints={["50%", "85%", 1]}
         // activeSnapPoint={snap}
         // setActiveSnapPoint={setSnap}
