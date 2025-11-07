@@ -41,7 +41,7 @@ const FacilityPlacesCarousel = ({ cityName, facilities }) => {
       </div>
 
       {/* Carousel Section */}
-      <div className="redd w-fullf relative w-[19rem] laptop:max-w-4xl desktop:max-w-4xl">
+      <div className="redd w-fullf relative min-w-[20rem] laptop:max-w-4xl desktop:max-w-4xl">
         <Carousel
           opts={{
             align: "start",
