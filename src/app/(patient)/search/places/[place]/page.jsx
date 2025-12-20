@@ -16,7 +16,7 @@ export async function generateMetadata({ params }) {
     title: `${formattedPlace} `,
     description: `Discover detailed information, reviews, and services available at ${formattedPlace}.`,
     openGraph: {
-      title: `${formattedPlace}`,
+      title: `Exelth in ${formattedPlace}`,
       description: `Explore ${formattedPlace} on Exelth — view details, nearby doctors, facilities, and services.`,
       url: `https://exelth.com/places/${place}`,
       siteName: "Exelth",

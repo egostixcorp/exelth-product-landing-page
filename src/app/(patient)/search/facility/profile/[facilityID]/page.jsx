@@ -25,7 +25,7 @@ export async function generateMetadata({ params }) {
       facility?.cover_photo ||
       "https://exelth.com/defaults/facility-og-default.jpg";
 
-    const url = `https://exelth.com/search/facility/profiel/${params.facilityID}`;
+    const url = `https://exelth.com/search/facility/profile/${params.facilityID}`;
 
     return {
       title,
