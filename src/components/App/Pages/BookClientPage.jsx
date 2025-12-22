@@ -110,7 +110,7 @@ export default function BookPage() {
         toast.success(
           `Appointment Booked Successfully. Appointment ID: ${appointment_id}`,
         );
-        router.push("/patient/activities/appointments_tests");
+        router.push("/activities/appointments_tests");
       } else {
         toast.error("Failed to complete appointment booking.");
       }

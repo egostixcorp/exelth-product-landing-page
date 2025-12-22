@@ -1,4 +1,4 @@
-// app/facility/[facilityID]/page.tsx
+
 
 import { API_URL_V1 } from "@/const/URL";
 import FacilityProfileId from "@/components/App/Pages/FacilityProfileClientPage";
