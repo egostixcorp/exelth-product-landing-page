@@ -347,7 +347,7 @@ export default function FacilityProfileId({ params }) {
           </div>
         </div>
       </div>
-      <div className="sticky bottom-0 right-0 block w-full bg-white p-1 tablet:hidden">
+      {/* <div className="sticky bottom-0 right-0 block w-full bg-white p-1 tablet:hidden">
         <Button
           onClick={() =>
             router.push(`tel:${selectedFacility?.business_number}`)
@@ -357,7 +357,7 @@ export default function FacilityProfileId({ params }) {
         >
           Call Clinic
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 }
