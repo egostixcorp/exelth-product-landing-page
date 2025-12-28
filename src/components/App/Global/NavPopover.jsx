@@ -101,11 +101,11 @@ const NavPopover = () => {
         <div className="group mt-1 flex flex-col gap-1 border-b border-gray-200 py-2">
           <Link
             // href="/b2b/register"
-            href="#"
+            href="https://app.exelth.com/"
             className="flex gap-0.5 rounded-md px-3 py-2 transition hover:bg-gray-50"
           >
             <div className="flex flex-col">
-              <span className="flex items-center group-hover:text-green-600 transition-all duration-500 gap-1 text-sm font-medium text-gray-900">
+              <span className="flex items-center gap-1 text-sm font-medium text-gray-900 transition-all duration-500 group-hover:text-green-600">
                 List your clinic or hospital
               </span>
 
@@ -114,11 +114,11 @@ const NavPopover = () => {
                 presence.
               </span>
             </div>
-            <div className="redd h-20 w-52 flex items-center justify-center overflow-hidden">
+            <div className="redd flex h-20 w-52 items-center justify-center overflow-hidden">
               <Image
                 src={"/icon/d-p.png"}
                 alt=""
-                className="group-hover:scale-110 transition-all duration-500 size-full object-cover"
+                className="size-full object-cover transition-all duration-500 group-hover:scale-110"
                 width={500}
                 height={500}
               />
