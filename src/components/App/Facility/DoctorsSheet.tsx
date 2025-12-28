@@ -117,7 +117,7 @@ export default function DoctorsSheet({
                     </p>
                     <p className="text-sm text-gray-600">
                       {item.doctor.department?.name || "Unknown"} •{" "}
-                      {item.facility_doctor?.fee
+                      {item.facility_doctor?.show_price
                         ? `₹${item.facility_doctor.fee}`
                         : "Not provided fee"}
                     </p>

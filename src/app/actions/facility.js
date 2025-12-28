@@ -102,6 +102,7 @@ export async function getFacilityDoctorFullDetailsById(doctorId) {
       fee: row.appointment_price || row.doctor.appointment_price, // include more fields as needed
       available: row.available,
       created_at: row.created_at,
+      show_price: row.show_price,
     },
   }));
 
