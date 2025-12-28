@@ -222,7 +222,8 @@ export default function BookPage() {
           <h2 className="text-lg font-semibold">Bill Details</h2>
           <div className="flex justify-between text-sm">
             <span>Consultation Fee</span>
-            <span>₹{fee}</span>
+            {/* <span>₹{fee}</span> */}
+            <span>{showPrice ? `₹${fee}` : "Not provided fee"}</span>
           </div>
           <div className="flex justify-between text-sm">
             <span>Service Fee & Tax</span>
@@ -231,7 +232,8 @@ export default function BookPage() {
           <Separator />
           <div className="flex justify-between font-semibold">
             <span>Total Payable</span>
-            <span>₹{fee}</span>
+            {/* <span>₹{fee}</span> */}
+            <span>{showPrice ? `₹${fee}` : "Not provided fee"}</span>
           </div>
         </CardContent>
       </Card>
