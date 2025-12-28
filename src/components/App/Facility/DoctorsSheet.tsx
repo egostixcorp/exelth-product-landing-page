@@ -63,7 +63,7 @@ export default function DoctorsSheet({
   const handleBookClick = (item: Doctor) => {
     onOpenChange(false);
     router.push(
-      `/search/facility/slot?doctor_id=${item.doctor.id}&org_id=${item.doctor.org_id}&facility_id=${item.facility_doctor.facility_id}`,
+      `/search/facility/doctor?doctor_id=${item.doctor.id}&org_id=${item.doctor.org_id}&facility_id=${item.facility_doctor.facility_id}`,
     );
   };
 
@@ -117,7 +117,7 @@ export default function DoctorsSheet({
                     </p>
                     <p className="text-sm text-gray-600">
                       {item.doctor.department?.name || "Unknown"} •{" "}
-                      {item.facility_doctor.show_price
+                      {item.facility_doctor?.fee
                         ? `₹${item.facility_doctor.fee}`
                         : "Not provided fee"}
                     </p>

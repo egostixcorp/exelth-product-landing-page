@@ -281,7 +281,7 @@ export default function FacilityProfileId({ params }) {
                           name={doctor.user.full_name}
                           specialty={doctor.department?.name || "Unknown"}
                           fee={
-                            facility_doctor.fee
+                            facility_doctor?.fee
                               ? `${facility_doctor.fee}`
                               : "Not provided"
                           }

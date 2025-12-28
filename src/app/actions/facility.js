@@ -36,10 +36,11 @@ export async function getAllFacilityDoctorsByFacilityId(f_id) {
       id: row.id,
       facility_id: row.facility_id,
       org_member_id: row.org_member_id,
-      fee: row.appointment_price, // include more fields as needed
-      // fee: row.appointment_price || row.doctor.appointment_price, // include more fields as needed
+      // fee: row.appointment_price, // include more fields as needed
+      fee: row.appointment_price || row.doctor.appointment_price, // include more fields as needed
       available: row.available,
       created_at: row.created_at,
+      show_price: row.show_price,
     },
   }));
 
@@ -98,7 +99,7 @@ export async function getFacilityDoctorFullDetailsById(doctorId) {
       id: row.id,
       facility_id: row.facility_id,
       org_member_id: row.org_member_id,
-      fee: row.appointment_price, // include more fields as needed
+      fee: row.appointment_price || row.doctor.appointment_price, // include more fields as needed
       available: row.available,
       created_at: row.created_at,
     },
