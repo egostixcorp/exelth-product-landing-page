@@ -75,8 +75,8 @@ export default function AppointmentCard({
     );
 
   return (
-    <Card className="tablet:w-[320px] w-80 h-72 rounded-xl border p-4 transition hover:shadow-md">
-      <CardContent className="flex flex-col justify-between  h-full gap-3 p-0">
+    <Card className="h-72 w-80 rounded-xl border p-4 transition hover:shadow-md tablet:w-[320px]">
+      <CardContent className="flex h-full flex-col justify-between gap-3 p-0">
         {/* --- Doctor Header --- */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -103,7 +103,7 @@ export default function AppointmentCard({
             </div>
           </div>
           <div
-            className={`rounded-lg px-2 py-1 capitalize text-xs font-semibold text-white ${getStatusColor(status)}`}
+            className={`rounded-lg px-2 py-1 text-xs font-semibold capitalize text-white ${getStatusColor(status)}`}
           >
             {status}
           </div>
@@ -141,7 +141,7 @@ export default function AppointmentCard({
         {/* --- Actions --- */}
         <div className="mt-3 flex gap-2">
           <Link
-            href={`/activities/appointments/${appointment_id}?doctor_id=${doctor_id}&facility_id=${facility_id}`}
+            href={`/activities/appointments_tests/${appointment_id}?doctor_id=${doctor_id}&facility_id=${facility_id}`}
             className="flex-1"
           >
             <Button className="w-full bg-gray-100 text-gray-800 hover:bg-gray-200">

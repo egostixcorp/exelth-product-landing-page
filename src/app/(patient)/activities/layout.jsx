@@ -54,14 +54,14 @@ export default function ActivitiesLayout({ children }) {
   );
   const currentLabel = activeTab?.label ?? "Activities";
   return (
-    <div className="flex h-screen w-full items-start justify-center bg-white px-4 md:px-8">
+    <div className="flex min-h-screen w-full items-start justify-center bg-white px-4 md:px-8">
       {/* Sidebar */}
-      <aside className="hidden h-full w-80 flex-shrink-0 border-r bg-white p-6 md:flex md:flex-col">
+      <aside className="redd sticky top-28 hidden h-full w-80 flex-shrink-0 border-r bg-white p-6 md:flex md:flex-col">
         <h1 className="mb-6 text-2xl font-semibold text-gray-800">
           Activities
         </h1>
 
-        <nav className="redd flex flex-col gap-1">
+        <nav className="redd redd flex flex-col gap-1">
           {activityTabs.map(({ route, label, icon: Icon }) => {
             const isActive =
               pathname === route || pathname.startsWith(`${route}/`);
