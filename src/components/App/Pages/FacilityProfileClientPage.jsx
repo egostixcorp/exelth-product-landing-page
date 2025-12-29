@@ -43,6 +43,7 @@ import FacilitiesDoctorCard from "@/components/App/Facility/FacilitiesDoctorCard
 import DoctorsSheet from "@/components/App/Facility/DoctorsSheet";
 import TodayAvailability from "../Card/TodayDoctor";
 import { RequestPublishCard } from "../Card/RequestPublishCard";
+import { Badge } from "@/components/ui/badge";
 
 export default function FacilityProfileId({ params }) {
   const pathname = usePathname();
@@ -127,8 +128,22 @@ export default function FacilityProfileId({ params }) {
       <div className="redd relative w-full items-center justify-center tablet:px-2 md:h-96 laptop:px-8 desktop:px-[21%]">
         <div
           id="desktop-image-layout"
-          className="redd hidden h-full w-full grid-cols-2 gap-2 overflow-hidden rounded-2xl md:grid"
+          className="redd relative hidden h-full w-full grid-cols-2 gap-2 overflow-hidden rounded-2xl md:grid"
         >
+          {selectedFacility?.facility_logo && (
+            <div className="redd absolute bottom-2 left-2 z-40 size-28 overflow-hidden rounded-lg bg-white">
+              <Image
+                src={selectedFacility?.facility_logo}
+                alt={`Facility logo`}
+                // fill
+                width={500}
+                height={500}
+                // sizes="100vw"
+                className="size-full scale-95 object-cover transition-transform duration-700 ease-in-out hover:scale-105"
+                priority={true}
+              />
+            </div>
+          )}
           <div id="cover_photo" className="size-full overflow-hidden">
             <Image
               src={selectedFacility?.cover_photo}
@@ -201,40 +216,52 @@ export default function FacilityProfileId({ params }) {
                   )}
                 </div>
 
-                <div className="redd mt-1 flex flex-row gap-1 text-xs text-gray-600 tablet:text-xl">
+                <div className="redd mt-1 flex flex-row gap-1 text-lg text-gray-600 tablet:text-xl">
                   <div id="info" className="redd w-full desktop:w-[35rem]">
-                    <div className="flex items-start justify-start gap-1">
-                      <MapPin className="size-5 text-gray-900 laptop:size-8" />
+                    <div className="flex items-start justify-start gap-1 text-lg">
+                      <MapPin className="min-h-5 min-w-5 text-gray-900 laptop:size-8" />
                       <span>
                         {selectedFacility?.location?.address ||
                           "No address available"}
                       </span>
                     </div>
-                    {/* Google Maps Interactive Embed */}
-                    <GoogleMapEmbed
-                      lat={selectedFacility?.lat}
-                      lng={selectedFacility?.lng}
-                      name={selectedFacility?.name}
-                      address={selectedFacility?.location?.address}
-                      image={
-                        selectedFacility?.cover_photo ||
-                        selectedFacility?.photos?.[0]
-                      }
-                    />
-                    <div className="flex flex-wrap gap-4">
+
+                    <div className="flex flex-wrap gap-2 text-lg">
                       <div className="flex items-center gap-1">
-                        <Phone className="h-4 w-4 text-gray-400" />
+                        <Phone className="h-4 w-4 text-gray-900 laptop:size-8" />
                         <span>
                           {selectedFacility?.business_number || "No number"}
                         </span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <Mail className="h-4 w-4 text-gray-400" />
+                        <Mail className="h-4 w-4 text-gray-900 laptop:size-8" />
                         <span>
                           {selectedFacility?.business_email || "No email"}
                         </span>
                       </div>
                     </div>
+
+                    {/* --- Services --- */}
+                    {selectedFacility?.services_tag?.tags?.length > 0 && (
+                      <div className="mt-8">
+                        <h3 className="mb-2 text-lg font-semibold text-gray-900">
+                          Services
+                        </h3>
+                        <div className="flex flex-wrap gap-2">
+                          {selectedFacility?.services_tag?.tags.map(
+                            (tag, idx) => (
+                              <span
+                                key={idx}
+                                className="inline-flex items-center rounded-full border border-green-200 bg-green-50 px-3 py-0.5 text-xs font-medium text-green-700"
+                                // className="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-700"
+                              >
+                                {tag}
+                              </span>
+                            ),
+                          )}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -299,7 +326,7 @@ export default function FacilityProfileId({ params }) {
                       <Button
                         onClick={() => setOpen(true)}
                         // onClick={openDoctorsSheet}
-                        className="bg-green-600 hover:bg-green-700"
+                        className="w-full bg-green-600 hover:bg-green-700 tablet:w-auto"
                       >
                         See All Doctors ({doctors.length})
                       </Button>
@@ -320,29 +347,32 @@ export default function FacilityProfileId({ params }) {
             <div className="mt-10">
               {/* <LabTestsScreen id={facility.id} /> */}
             </div>
+            {/* Google Maps Interactive Embed */}
+            <div>
+              <h2 className="mb-1 text-lg font-semibold">Facility address</h2>
 
-            {/* --- Services --- */}
-            {selectedFacility?.services_tag?.tags?.length > 0 && (
-              <div className="mt-8">
-                <h3 className="mb-2 text-lg font-semibold text-gray-900">
-                  Services
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {selectedFacility?.services_tag?.tags.map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-700"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
+              {selectedFacility?.location?.address && (
+                <p className="mb-4 text-sm text-muted-foreground">
+                  This Facility is located at{" "}
+                  {selectedFacility?.location?.address}. Please check the map
+                  below for directions.
+                </p>
+              )}
+
+              <GoogleMapEmbed
+                lat={selectedFacility?.lat}
+                lng={selectedFacility?.lng}
+                name={selectedFacility?.name}
+                address={selectedFacility?.location?.address}
+                image={
+                  selectedFacility?.cover_photo || selectedFacility?.photos?.[0]
+                }
+              />
+            </div>
           </div>
           <div
             id="today-doctors"
-            className="redd sticky top-36 mt-12 hidden min-h-72 rounded-3xl border border-neutral-100 p-5 shadow-lg tablet:block tablet:w-96 laptop:w-[35rem]"
+            className="redd sticky top-36 mt-12 hidden min-h-72 rounded-xl border border-neutral-100 p-5 shadow-lg tablet:block tablet:w-96 laptop:w-[35rem]"
           >
             <TodayAvailability
               facilityId={selectedFacility.id}

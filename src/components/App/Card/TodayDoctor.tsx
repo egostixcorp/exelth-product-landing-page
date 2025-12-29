@@ -13,11 +13,13 @@ import { format } from "date-fns";
 
 interface TodayAvailabilityProps {
   facilityId: string;
+  orgId: string;
   number: string; // business_number
 }
 
 type DoctorData = {
   doctor_id: string;
+  org_id: string;
   name: string;
   fee: number;
   avatar_url?: string | null;
@@ -27,6 +29,7 @@ type DoctorData = {
 export default function TodayAvailability({
   facilityId,
   number,
+  orgId,
 }: TodayAvailabilityProps) {
   const [loading, setLoading] = useState(true);
   const [doctors, setDoctors] = useState<DoctorData[]>([]);
@@ -71,7 +74,9 @@ export default function TodayAvailability({
         // 3️⃣ Fetch doctor details
         const { data: doctorData, error: doctorError } = await supabase
           .from("org_members")
-          .select("id, full_name, avatar_url, appointment_price")
+          .select(
+            "id,org_id, user:user_id(full_name, avatar_url), appointment_price",
+          )
           .in("id", doctorIds);
 
         if (doctorError) throw doctorError;
@@ -79,9 +84,10 @@ export default function TodayAvailability({
         // 4️⃣ Merge slot counts
         const merged = doctorData.map((doc: any) => ({
           doctor_id: doc.id,
-          name: doc.full_name,
+          org_id: doc.org_id,
+          name: doc.user.full_name,
           fee: doc.appointment_price ?? "—",
-          avatar_url: doc.avatar_url,
+          avatar_url: doc.user.avatar_url,
           available_slots: slotCountMap[doc.id] || 0,
         }));
 
@@ -99,8 +105,8 @@ export default function TodayAvailability({
   // ---- Loading Skeleton ----
   if (loading)
     return (
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {[1, 2, 3].map((i) => (
+      <div className="grid gap-4 tablet:grid-cols-1 laptop:grid-cols-2">
+        {[1, 2].map((i) => (
           <Card key={i} className="border border-gray-200">
             <CardHeader className="flex flex-row items-center gap-3">
               <Skeleton className="h-12 w-12 rounded-full" />
@@ -117,7 +123,7 @@ export default function TodayAvailability({
   // ---- No Doctors Today ----
   if (doctors.length === 0)
     return (
-      <div className="relative mt-4 rounded-md borderr border-gray-200 bg-white  text-center text-gray-700">
+      <div className="borderr relative mt-4 rounded-md border-gray-200 bg-white text-center text-gray-700">
         <h3 className="mb-2 text-base font-semibold">
           No doctors are available for appointments today.
         </h3>
@@ -152,43 +158,62 @@ export default function TodayAvailability({
 
   // ---- Doctor Cards ----
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {doctors.map((doc) => (
-        <Card
-          key={doc.doctor_id}
-          className="border-gray-200 transition hover:shadow-md"
-        >
-          <CardHeader className="flex items-center gap-3">
-            <Avatar className="h-12 w-12">
-              <AvatarImage src={doc.avatar_url || undefined} alt={doc.name} />
-              <AvatarFallback>
-                <User className="h-5 w-5 text-gray-500" />
-              </AvatarFallback>
-            </Avatar>
-            <div>
-              <CardTitle className="text-base font-semibold">
-                {doc.name}
-              </CardTitle>
-              <p className="text-sm text-gray-500">
-                ₹{doc.fee ?? "—"} / consult
-              </p>
-            </div>
-          </CardHeader>
+    <div className="w-full">
+      {/* Header */}
+      <div className="mb-3 flex items-center gap-2 text-lg font-bold capitalize text-gray-600">
+        <Clock className="size-5 animate-spin text-green-600" />
+        available today
+      </div>
 
-          <CardContent className="mt-2 flex items-center justify-between">
-            <Badge
-              variant="secondary"
-              className="border border-green-200 bg-green-50 text-green-700"
-            >
-              {doc.available_slots} slots today
-            </Badge>
-            <div className="flex items-center text-sm text-gray-500">
-              <Clock className="mr-1 h-4 w-4" />
-              Today
+      {/* Doctor cards */}
+      <div className="grid gap-4 tablet:grid-cols-1 laptop:grid-cols-2">
+        {doctors.slice(0, 2).map((doc) => (
+          <div
+            key={doc.doctor_id}
+            onClick={() =>
+              router.push(
+                `/search/facility/doctor?doctor_id=${doc.doctor_id}&org_id=${doc.org_id}&facility_id=${facilityId}`,
+              )
+            }
+            className="flex cursor-pointer flex-col items-center rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow-md"
+          >
+            {/* Avatar */}
+            <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full border border-gray-200 bg-gray-50">
+              <Avatar className="h-12 w-12">
+                <AvatarImage src={doc.avatar_url || undefined} alt={doc.name} />
+                <AvatarFallback>
+                  <User className="h-5 w-5 text-gray-400" />
+                </AvatarFallback>
+              </Avatar>
             </div>
-          </CardContent>
-        </Card>
-      ))}
+
+            {/* Name */}
+            <p className="text-center text-sm font-semibold text-gray-900">
+              {doc.name}
+            </p>
+
+            {/* Slot badge */}
+            <div className="mt-2 space-y-2 flex items-center flex-col">
+              <span className="inline-flex items-center rounded-full border border-green-200 bg-green-50 px-3 py-0.5 text-xs font-medium text-green-700">
+                {doc.available_slots} slots today
+              </span>
+            <Button
+              variant="default"
+              // size="sm"
+              className="bg-green-600 w-full text-white hover:bg-green-700"
+              onClick={(e) => {
+                e.stopPropagation();
+                router.push(
+                  `/search/facility/doctor?doctor_id=${doc.doctor_id}&org_id=${doc.org_id}&facility_id=${facilityId}`,
+                );
+              }}
+            >
+              Book now
+            </Button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

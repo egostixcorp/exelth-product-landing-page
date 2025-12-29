@@ -20,6 +20,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 export default function FacilityCarousel({ data }) {
   const coverPhoto = data?.cover_photo;
+  const facility_logo = data?.facility_logo;
   const photos = Array.isArray(data?.photos) ? data.photos : [];
   const facilityImages = [coverPhoto, ...photos].filter(Boolean);
 
@@ -38,7 +39,21 @@ export default function FacilityCarousel({ data }) {
   }
 
   return (
-    <div className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-xl">
+    <div className="redd relative mx-auto w-full max-w-5xl overflow-hidden rounded-xl">
+      {facility_logo && (
+        <div className="redd absolute bottom-2 left-2 z-40 size-28 overflow-hidden rounded-lg bg-white">
+          <Image
+            src={facility_logo}
+            alt={`Facility logo`}
+            // fill
+            width={500}
+            height={500}
+            // sizes="100vw"
+            className="size-full scale-95 object-cover transition-transform duration-700 ease-in-out hover:scale-105"
+            priority={true}
+          />
+        </div>
+      )}
       <Carousel
         opts={{
           align: "start",
