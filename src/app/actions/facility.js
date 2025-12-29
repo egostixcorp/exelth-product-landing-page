@@ -41,6 +41,7 @@ export async function getAllFacilityDoctorsByFacilityId(f_id) {
       available: row.available,
       created_at: row.created_at,
       show_price: row.show_price,
+      order: row.sort_order,
     },
   }));
 
@@ -103,6 +104,7 @@ export async function getFacilityDoctorFullDetailsById(doctorId) {
       available: row.available,
       created_at: row.created_at,
       show_price: row.show_price,
+      order: row.sort_order,
     },
   }));
 

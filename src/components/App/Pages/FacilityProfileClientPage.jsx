@@ -56,7 +56,7 @@ export default function FacilityProfileId({ params }) {
   const [open, setOpen] = useState(false);
   //   const doctorSheetRef = useRef(null);
   //   const openDoctorsSheet = () => doctorSheetRef.current?.present?.();
-  console.log(doctors);
+  // console.log(doctors);
 
   useEffect(() => {
     const fetchFacilityData = async () => {
@@ -272,6 +272,10 @@ export default function FacilityProfileId({ params }) {
                   <div className="grid grid-cols-1 gap-4">
                     {doctors
                       ?.slice(0, 3)
+                      .sort(
+                        (a, b) =>
+                          a.facility_doctor.order - b.facility_doctor.order,
+                      ) // Sort by order if exists
                       ?.map(({ doctor, facility_doctor }) => (
                         <FacilitiesDoctorCard
                           key={doctor.id}
