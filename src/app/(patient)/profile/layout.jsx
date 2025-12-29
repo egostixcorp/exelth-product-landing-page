@@ -44,7 +44,7 @@ export default function ProfileLayout({ children }) {
   const fetchPatient = useCallback(async () => {
     if (!user?.id) return;
     try {
-      const data = await getPatientDetails(user.id);
+      const data = await getPatientDetails(user?.id);
       setPatient(data);
     } catch (err) {
       console.error(err);
@@ -52,11 +52,13 @@ export default function ProfileLayout({ children }) {
     } finally {
       setLoading(false);
     }
-  }, [user]);
+  }, [user?.id]);
 
   useEffect(() => {
     fetchPatient();
   }, [fetchPatient]);
+  console.log(Boolean(avatarUrl));
+  console.log(Boolean(patient?.user?.avatar_url));
 
   if (loading)
     return (
@@ -190,7 +192,12 @@ export default function ProfileLayout({ children }) {
           <nav className="redd flex flex-col gap-1">
             {profile.map(({ route, label, icon: Icon }) => {
               const isActive = pathname === route;
-
+              {
+                /* const avatarSrc = label === "About me" ?
+                    patient?.user?.avatar_url : Icon; */
+              }
+              const avatarSrc =
+                label === "About me" ? patient?.user?.avatar_url : Icon;
               return (
                 <Link
                   key={route}
@@ -203,15 +210,23 @@ export default function ProfileLayout({ children }) {
                   )}
                 >
                   <div className="redd flex size-10 items-center justify-center overflow-hidden rounded-full">
-                    <Image
-                      src={
-                        label === "About me" ? patient?.user?.avatar_url : Icon
-                      }
-                      alt=""
-                      width={32}
-                      height={32}
-                      className="size-full object-cover"
-                    />
+                    {avatarSrc ? (
+                      <Image
+                        src={
+                          label === "About me"
+                            ? patient?.user?.avatar_url
+                              ? patient?.user?.avatar_url
+                              : Icon
+                            : Icon
+                        }
+                        alt={label}
+                        width={32}
+                        height={32}
+                        className="size-full object-cover"
+                      />
+                    ) : (
+                      <div className="size-8 rounded-full bg-gray-300" />
+                    )}
                   </div>
                   <span>{label}</span>
                 </Link>

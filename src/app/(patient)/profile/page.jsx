@@ -25,7 +25,7 @@ import clsx from "clsx";
 // };
 
 export default function PatientProfilePage() {
-  const { id } = useParams();
+  // const { id } = useParams();
   const { user, avatarUrl } = useAuth();
   const [patient, setPatient] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -38,7 +38,7 @@ export default function PatientProfilePage() {
       setLoading(false);
     };
     fetchPatient();
-  }, [id]);
+  }, [user?.id]);
 
   if (loading) {
     return (
@@ -62,18 +62,18 @@ export default function PatientProfilePage() {
       <div className="w-full max-w-xl rounded-xl border bg-white p-6 shadow-lg">
         <div className="flex flex-col items-center">
           {/* --- Avatar --- */}
-          <div className="relative mb-5 ">
+          <div className="relative mb-5">
             {avatarUrl || patient.user?.avatar_url ? (
               <Image
                 src={avatarUrl || patient.user?.avatar_url || ""}
-                alt={patient.full_name || "Profile"}
+                alt={patient?.full_name || "Profile"}
                 width={120}
                 height={120}
                 className="h-28 w-28 rounded-full border border-gray-200 object-cover shadow-sm"
               />
             ) : (
               <div className="flex h-28 w-28 items-center justify-center rounded-full bg-gray-800 text-3xl font-bold text-white">
-                {getInitials(patient.full_name)}
+                {getInitials(patient?.full_name)}
               </div>
             )}
 

@@ -93,14 +93,14 @@ export default function LoginPage() {
           />
         </div>
 
-        <div className="mb-6 flex justify-end">
+        {/* <div className="mb-6 flex justify-end">
           <Link
             href="/forgot-password"
             className="text-sm font-medium text-green-600 hover:underline"
           >
             Forgot Password?
           </Link>
-        </div>
+        </div> */}
 
         {/* Login Button */}
         <Button

@@ -47,7 +47,7 @@ export default function RegisterPage() {
       // ✅ 1. Save patient info in Supabase
       await setPatientFullName(user?.id, fullName);
       await setPatientField(user?.id, "number", user?.phone);
-      await setPatientField(user?.id, "dob", format(dob, "dd-MM-yyyy"));
+      await setPatientField(user?.id, "dob", format(dob, "dd/MM/yyyy"));
 
       // ✅ 2. Update Supabase metadata
       const { error: metadataError } = await supabase.auth.updateUser({
@@ -148,7 +148,7 @@ export default function RegisterPage() {
             <Input
               type="tel"
               maxLength={10}
-              value={phone.replace("+91", "")}
+              value={phone.replace("91", "")}
               onChange={(e) => setPhone("+91" + e.target.value)}
               className="rounded-l-none"
               placeholder="Enter your phone number"

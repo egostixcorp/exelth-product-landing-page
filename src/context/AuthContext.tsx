@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
       setSession(currentSession);
       setUser(currentSession?.user ?? null);
-      setAvatarUrl(currentSession?.user?.user_metadata?.avatar_url || null);
+      setAvatarUrl(currentSession?.user?.user_metadata?.avatar_url || "");
 
       const savedRole =
         typeof window !== "undefined"
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       (_event, session) => {
         setSession(session);
         setUser(session?.user ?? null);
-        setAvatarUrl(session?.user?.user_metadata?.avatar_url || null);
+        setAvatarUrl(session?.user?.user_metadata?.avatar_url || "");
       },
     );
 
