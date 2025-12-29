@@ -5,6 +5,7 @@ import NavPopover from "@/components/App/Global/NavPopover";
 import { useAuth } from "@/context/AuthContext";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
+import { getInitials } from "@/lib/utils";
 
 const UserHeaderAvatar = () => {
   const { user, avatarUrl } = useAuth();
@@ -36,7 +37,7 @@ const UserHeaderAvatar = () => {
       <Link href={user ? "/profile" : "/login"}>
         <Avatar className="size-8">
           <AvatarImage src={avatarUrl || patient?.user?.avatar_url || ""} />
-          <AvatarFallback>EX</AvatarFallback>
+          <AvatarFallback className="bg-green-600 text-white"> {getInitials(patient?.full_name)}</AvatarFallback>
         </Avatar>
       </Link>
       <NavPopover />
