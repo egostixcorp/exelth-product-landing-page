@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 interface DoctorFacilityStatus {
   showPrice: boolean;
   isBook: boolean;
+  appointmentInit: String | null;
   loading: boolean;
 }
 
@@ -16,6 +17,7 @@ export function useDoctorFacilityStatus(
   const [status, setStatus] = useState<DoctorFacilityStatus>({
     showPrice: false,
     isBook: false,
+    appointmentInit: null,
     loading: true,
   });
   const supabase = createClient();
@@ -27,7 +29,7 @@ export function useDoctorFacilityStatus(
       try {
         const { data, error } = await supabase
           .from("facility_doctors")
-          .select("show_price, is_book")
+          .select("show_price, is_book,appointment_init")
           .eq("facility_id", facilityId)
           .eq("org_member_id", orgMemberId)
           .maybeSingle();
@@ -38,18 +40,25 @@ export function useDoctorFacilityStatus(
           setStatus({
             showPrice: Boolean(data.show_price), // ✅ correctly handle DB boolean
             isBook: Boolean(data.is_book),
+            appointmentInit: data.appointment_init,
             loading: false,
           });
         } else {
           setStatus({
             showPrice: false,
             isBook: false,
+            appointmentInit: null,
             loading: false,
           });
         }
       } catch (err) {
         console.error("Error fetching doctor facility status:", err);
-        setStatus({ showPrice: false, isBook: false, loading: false });
+        setStatus({
+          showPrice: false,
+          isBook: false,
+          appointmentInit: null,
+          loading: false,
+        });
       }
     };
 

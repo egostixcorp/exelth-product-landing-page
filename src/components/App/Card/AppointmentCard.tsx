@@ -17,9 +17,13 @@ const getStatusColor = (status: string) => {
     case "upcoming":
     case "rescheduled":
       return "bg-blue-500";
+    case "requested":
+      return "bg-blue-600";
     case "inprogress":
     case "booked":
       return "bg-green-500";
+    case "confirmed":
+      return "bg-green-600";
     case "completed":
       return "bg-amber-500";
     case "cancelled":

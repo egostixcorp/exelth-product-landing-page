@@ -14,7 +14,7 @@ import {
   getFacilityDoctorById,
 } from "../../../app/actions/facility";
 import { getPatientID } from "../../../app/actions/user";
-import { bookAppointment } from "../../../app/actions/appointment";
+import { bookAppointment, requestAppointment } from "../../../app/actions/appointment";
 import { useAuth } from "@/context/AuthContext";
 import { formatTimeToAMPM, calculateTimeUntilAppointment } from "@/lib/utils";
 import Icon from "@/components/Global/Icon";
@@ -49,6 +49,7 @@ export default function BookPage() {
   const {
     showPrice,
     isBook,
+    appointmentInit,
     loading: statusloading,
   } = useDoctorFacilityStatus(facility_id, doctor_id);
   useEffect(() => {
@@ -103,13 +104,24 @@ export default function BookPage() {
         payment_method: paymentMethod,
       };
 
-      const { success, appointment_id } =
-        await bookAppointment(appointmentData);
+      let result;
+
+      if (appointmentInit === "requested") {
+        result = await requestAppointment(appointmentData);
+      } else {
+        // default → booked
+        result = await bookAppointment(appointmentData);
+      }
+
+      const { success, appointment_id } = result;
 
       if (success) {
         toast.success(
-          `Appointment Booked Successfully. Appointment ID: ${appointment_id}`,
+          appointmentInit === "requested"
+            ? `Appointment requested. Clinic will confirm shortly. ID: ${appointment_id}`
+            : `Appointment booked successfully. ID: ${appointment_id}`,
         );
+
         router.push("/activities/appointments_tests");
       } else {
         toast.error("Failed to complete appointment booking.");
@@ -289,7 +301,11 @@ export default function BookPage() {
               disabled={booking}
               onClick={handleBookAppointment}
             >
-              {booking ? "Booking..." : "Confirm Booking"}
+              {booking
+                ? "Processing..."
+                : appointmentInit === "requested"
+                  ? "Request Appointment"
+                  : "Confirm Booking"}
             </Button>
           ) : (
             // <Link href={`tel:${facility?.business_number}`}>
@@ -308,7 +324,11 @@ export default function BookPage() {
             disabled={booking}
             onClick={() => router.push("/login")}
           >
-            {booking ? "Booking..." : "Confirm Booking"}
+            {booking
+              ? "Processing..."
+              : appointmentInit === "requested"
+                ? "Request Appointment"
+                : "Confirm Booking"}
           </Button>
         ) : (
           <Button
