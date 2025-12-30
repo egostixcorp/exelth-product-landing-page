@@ -41,7 +41,7 @@ export default function FacilityCarousel({ data }) {
   return (
     <div className="redd relative mx-auto w-full max-w-5xl overflow-hidden rounded-xl">
       {facility_logo && (
-        <div className="redd absolute bottom-2 left-2 z-40 size-28 overflow-hidden rounded-lg bg-white">
+        <div className="redd absolute bottom-2 left-2 z-40 size-20 overflow-hidden rounded-lg bg-white">
           <Image
             src={facility_logo}
             alt={`Facility logo`}
