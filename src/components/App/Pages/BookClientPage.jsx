@@ -14,7 +14,10 @@ import {
   getFacilityDoctorById,
 } from "../../../app/actions/facility";
 import { getPatientID } from "../../../app/actions/user";
-import { bookAppointment, requestAppointment } from "../../../app/actions/appointment";
+import {
+  bookAppointment,
+  requestAppointment,
+} from "../../../app/actions/appointment";
 import { useAuth } from "@/context/AuthContext";
 import { formatTimeToAMPM, calculateTimeUntilAppointment } from "@/lib/utils";
 import Icon from "@/components/Global/Icon";
@@ -290,7 +293,7 @@ export default function BookPage() {
       {/* Footer */}
       <div className="flex items-center justify-between border-t pt-4">
         <div>
-          <p className="text-lg font-bold">₹{fee}</p>
+          <p className="text-lg font-bold">{showPrice ? `₹${fee}` : ""}</p>
           <p className="text-sm text-muted-foreground">Total Payable</p>
         </div>
         {user ? (
