@@ -43,9 +43,13 @@ const Footer = () => {
                 className="absolute bottom-0 right-0 h-[1px] w-0 bg-green-600 transition-all duration-500 group-hover:left-0 group-hover:w-full"
               />
             </li>
-            {/* <li>
-              <Link href="/changelog">Changelog</Link>
-            </li> */}
+            <li className="group relative w-fit">
+              <Link href="/pricing">Pricing</Link>
+              <div
+                id="border-animation-green"
+                className="absolute bottom-0 right-0 h-[1px] w-0 bg-green-600 transition-all duration-500 group-hover:left-0 group-hover:w-full"
+              />
+            </li>
           </ul>
         </div>
         {/* Patient Column */}

@@ -33,11 +33,11 @@ export const navigation = [
     ],
   },
   {
+    label: "Pricing",
+    route: "/pricing",
+  },
+  {
     label: "Blog",
     route: "/blog",
   },
-  // {
-  //   label: "Pricing",
-  //   route: "/pricing",
-  // },
 ];
