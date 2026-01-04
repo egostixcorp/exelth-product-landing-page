@@ -40,6 +40,9 @@ export default function BookPage() {
   const seat = searchParams.get("seat");
   const fee = searchParams.get("fee");
   const slot_id = searchParams.get("slot_id");
+  console.log({
+    fee: fee,
+  });
 
   const { user } = useAuth();
   const [facility, setFacility] = useState(null);

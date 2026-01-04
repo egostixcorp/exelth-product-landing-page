@@ -134,6 +134,7 @@ export async function bookAppointment({
     appointment_id,
     appointment_seat_id: seat_id,
     payment_method,
+    fee,
   });
 
   if (orgError) {
@@ -155,6 +156,7 @@ export async function bookAppointment({
       appointment_seat_id: seat_id,
       cancelled: false,
       payment_method,
+      fee,
     });
 
   if (patientError) {
