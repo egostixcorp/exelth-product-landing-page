@@ -5,6 +5,7 @@ import Container from "@/components/Global/Container";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
+import Link from "next/link";
 export const metadata = {
   title: "Pricing & Fees",
 };
@@ -39,7 +40,7 @@ const PricingPage = () => {
             <p className="mt-1 text-sm text-neutral-600">
               For most clinics & diagnostic centers
             </p>
-            <div className="mt-8 flex flex-col tablet:flex-row h-fit w-full items-baseline justify-start gap-8">
+            <div className="mt-8 flex h-fit w-full flex-col items-baseline justify-start gap-8 tablet:flex-row">
               {/* OPD */}
               <div className="mt-6">
                 <div className="flex items-end gap-2">
@@ -89,9 +90,11 @@ const PricingPage = () => {
                 </ul>
               </div>
             </div>
-            <Button variant="exelth" className="mt-8 rounded-xl">
-              Get started
-            </Button>
+            <Link href={"https://app.exelth.com/auth/sign-up"} target="_blank">
+              <Button variant="exelth" className="mt-8 rounded-xl">
+                Get started
+              </Button>
+            </Link>
           </div>
         </div>
 
