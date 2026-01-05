@@ -39,7 +39,7 @@ const PricingPage = () => {
             <p className="mt-1 text-sm text-neutral-600">
               For most clinics & diagnostic centers
             </p>
-            <div className="mt-8 flex h-fit w-full items-baseline justify-start gap-8">
+            <div className="mt-8 flex flex-col tablet:flex-row h-fit w-full items-baseline justify-start gap-8">
               {/* OPD */}
               <div className="mt-6">
                 <div className="flex items-end gap-2">
