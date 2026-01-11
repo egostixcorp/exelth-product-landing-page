@@ -44,6 +44,7 @@ import DoctorsSheet from "@/components/App/Facility/DoctorsSheet";
 import TodayAvailability from "../Card/TodayDoctor";
 import { RequestPublishCard } from "../Card/RequestPublishCard";
 import { Badge } from "@/components/ui/badge";
+import LabTestsPage from "@/components/Layouts/lab-test-catalog-lists";
 
 export default function FacilityProfileId({ params }) {
   const pathname = usePathname();
@@ -345,10 +346,10 @@ export default function FacilityProfileId({ params }) {
 
             {/* --- Lab Tests --- */}
             <div className="mt-10">
-              {/* <LabTestsScreen id={facility.id} /> */}
+              <LabTestsPage orgId={selectedFacility.id} />
             </div>
             {/* Google Maps Interactive Embed */}
-            <div>
+            <div className="mt-5">
               <h2 className="mb-1 text-lg font-semibold">Facility address</h2>
 
               {selectedFacility?.location?.address && (
