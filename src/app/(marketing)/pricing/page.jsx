@@ -44,7 +44,7 @@ const PricingPage = () => {
               {/* OPD */}
               <div className="mt-6">
                 <div className="flex items-end gap-2">
-                  <span className="text-4xl font-bold">10%</span>
+                  <span className="text-4xl font-bold">15%</span>
                   <span className="pb-1 text-neutral-500">
                     OPD / doctor bookings
                   </span>
