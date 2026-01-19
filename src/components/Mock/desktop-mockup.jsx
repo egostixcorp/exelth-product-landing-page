@@ -7,10 +7,14 @@ import Link from "next/link";
 import { useMouse } from "@/components/hooks/useMouse"; // <-- custom hook
 
 const images = [
+  "/mock/mock-home.png",
   "/mock/mock-calendar.png",
   "/mock/mock-patients.png",
   "/mock/mock-apps.png",
   "/mock/mock-staffs.png",
+  "/mock/mock-payments.png",
+  "/mock/mock-workflows.png",
+  "/mock/mock-analytics.png",
 ];
 
 export default function DesktopMockUp() {
@@ -91,7 +95,7 @@ export default function DesktopMockUp() {
     <div
       id="desktop-mock"
       ref={mockRef}
-      className="relative w-full translate-y-[50%] opacity-0 blur-sm desktop:h-[85vh]"
+      className="relative w-full translate-y-[50%] opacity-0 blur-sm desktop:h-fit"
     >
       {/* Cursor div */}
       <div

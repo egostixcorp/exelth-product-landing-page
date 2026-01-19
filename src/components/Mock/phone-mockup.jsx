@@ -15,9 +15,12 @@ const PhoneMockUp = ({ ref }) => {
   const images = [
     "/mock/mobile-mock-home.jpg",
     "/mock/mobile-mock-services.jpg",
-    "/mock/mobile-mock-activites.jpg",
-    "/mock/mobile-mock-profile.jpg",
     "/mock/mobile-mock-search.jpg",
+    "/mock/mobile-mock-activites.jpg",
+    "/mock/mobile-mock-account-profile.jpg",
+    "/mock/mobile-mock-appointments.jpg",
+    "/mock/mobile-mock-booking.jpg",
+    "/mock/mobile-mock-facility-profile.jpg",
   ];
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
