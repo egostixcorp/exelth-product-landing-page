@@ -9,6 +9,7 @@ import React, { useLayoutEffect } from "react";
 import gsap from "gsap";
 import DesktopMockUp from "@/components/Mock/desktop-mockup";
 import TranslatableText from "@/components/Global/TranslatableText";
+import { Button } from "@/components/ui/button";
 const HeroSection = () => {
   useLayoutEffect(() => {
     const Gctx = gsap.context(() => {
@@ -32,11 +33,11 @@ const HeroSection = () => {
         y: 0,
         filter: "blur(0px)",
       });
-      tl.to("#desc2", {
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-      });
+      // tl.to("#desc2", {
+      //   opacity: 1,
+      //   y: 0,
+      //   filter: "blur(0px)",
+      // });
       tl.to("#action-button", {
         opacity: 1,
         y: 0,
@@ -85,6 +86,17 @@ const HeroSection = () => {
             {/* Built for modern clinics and hospitals to simplify daily operations
             and deliver better care. */}
           </p>
+          <div
+            id="action-button"
+            className="translate-y-[50%] space-x-4 opacity-0 blur-sm"
+          >
+            {/* <Button variant={"exelth"}>
+              <FaGooglePlay /> Open Play Store
+            </Button> */}
+            <Link href={"https://app.exelth.com/auth/sign-in"}>
+              <Button variant={"exelth"}>Exelth Platform Login</Button>
+            </Link>
+          </div>
         </div>
         <div className="redd relative flex w-full flex-col items-center justify-start gap-5">
           <DesktopMockUp />

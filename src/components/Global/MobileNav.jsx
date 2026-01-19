@@ -9,8 +9,10 @@ import {
   SheetTrigger,
 } from "../ui/sheet";
 import { navigation } from "../../data/navigation";
-import Waitlist from "../Waitlist/Waitlist";
+// import Waitlist from "../Waitlist/Waitlist";
 import Link from "next/link";
+import { Button } from "../ui/button";
+import Icon from "./Icon";
 const MobileNav = ({ children }) => {
   const [close, setClose] = useState(false);
   return (
@@ -37,8 +39,12 @@ const MobileNav = ({ children }) => {
               </Link>
             );
           })}
-          <div>
-            <Waitlist />
+          <div className="w-full">
+            <Link href={"/login"} className="w-full">
+              <Button className="w-full" variant={"exelth"}>
+                <Icon.UserCircle /> Log in
+              </Button>
+            </Link>
           </div>
         </div>
       </SheetContent>

@@ -1,8 +1,8 @@
 import React from "react";
-import { navigation } from "@/data/navigation";
+// import { navigation } from "@/data/navigation";
 import MobileNav from "@/components/Global/MobileNav";
 import DesktopNav from "@/components/Global/DesktopNav";
-import WaitlistModel from "@/components/Waitlist/WaitlistModel";
+// import WaitlistModel from "@/components/Waitlist/WaitlistModel";
 import LogoType from "@/components/Global/logo-type";
 import Link from "next/link";
 import Icon from "./Icon";
@@ -28,20 +28,24 @@ const Header = () => {
             );
           })} */}
           <DesktopNav />
-          <WaitlistModel>
+          {/* <WaitlistModel>
             <Button variant={"exelth"}>Join Waitlist</Button>
-          </WaitlistModel>
-          <Button size={"icon"} variant={"outline"}>
-            <Icon.UserCircle />
-          </Button>
+          </WaitlistModel> */}
+          <Link href={"/login"}>
+            <Button variant={"exelth"}>
+              <Icon.UserCircle /> Log in
+            </Button>
+          </Link>
         </div>
         <div
           id="menu-mobile"
           className="redd flex items-center justify-center gap-2 tablet:hidden"
         >
-          <Button variant={"exelth"}>
-            <Icon.UserCircle /> Log in
-          </Button>
+          <Link href={"/login"}>
+            <Button variant={"exelth"}>
+              <Icon.UserCircle /> Log in
+            </Button>
+          </Link>
           <MobileNav>
             <Icon.Menu />
           </MobileNav>

@@ -101,6 +101,7 @@ const NavPopover = () => {
         <div className="group mt-1 flex flex-col gap-1 border-b border-gray-200 py-2">
           <Link
             // href="/b2b/register"
+            target="_blank"
             href="https://app.exelth.com/"
             className="flex gap-0.5 rounded-md px-3 py-2 transition hover:bg-gray-50"
           >
@@ -126,6 +127,7 @@ const NavPopover = () => {
           </Link>
 
           <Link
+            target="_blank"
             // href="/b2b/refer"
             href="#"
             className="rounded-md px-3 py-2 text-sm text-gray-700 transition hover:bg-gray-50"
@@ -134,6 +136,7 @@ const NavPopover = () => {
           </Link>
 
           <Link
+            target="_blank"
             // href="/b2b/partner"
             href="#"
             className="rounded-md px-3 py-2 text-sm text-gray-700 transition hover:bg-gray-50"
