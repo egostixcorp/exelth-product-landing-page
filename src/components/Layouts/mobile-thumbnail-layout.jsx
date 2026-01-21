@@ -59,7 +59,7 @@ const MobileThumbnailLayout = () => {
               className="redd absolute bottom-10 right-0 z-50 h-20 w-full bg-white blur-sm tablet:bottom-24 laptop:bottom-36 desktop:-bottom-5"
             ></div>
             <Image
-              src={"/assets/product_mobile_cover.png"}
+              src={"/assets/product_mobile_hand.png"}
               width={1980}
               height={1080}
               quality={100}
