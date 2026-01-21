@@ -1,34 +1,44 @@
 // "use client";
 import LogoType from "@/components/Global/logo-type";
+import ProviderNav from "@/components/Global/ProviderNav";
 import UserHeaderAvatar from "@/components/App/Avatar/UserHeaderAvatar";
 import NavHeader from "@/components/App/Global/NavHeader";
 import SearchHeader from "@/components/App/Global/SearchHeader";
 import PatientSearchBar from "@/components/App/Global/PatientSearchBar";
 import React from "react";
 import Link from "next/link";
-// import { setVisitorCookie } from "@/lib/tracker";
+import ServiceGridAction from "./ServiceGridAction";
 
 const Header = () => {
-  // useEffect(() => {
-  //   (async () => {
-  //     const id = await setVisitorCookie();
-  //     // setVisitorId(id);
-  //   })();
-  // }, []);
   return (
-    <div className="redd sticky right-0 top-0 z-50 flex h-auto w-full flex-col items-center justify-center gap-5 bg-neutral-50 px-10 py-5 shadow transition-all duration-500">
-      <div className="redd hidden w-full items-center justify-between md:flex">
-        <Link href={"/search"}>
-          <LogoType />
-        </Link>
-        <SearchHeader />
-        {/* <PatientSearchBar/> */}
-        <UserHeaderAvatar />
-      </div>
-      <div className="redd flex h-14 w-full items-center justify-center tablet:hidden">
-        <SearchHeader />
-      </div>
-    </div>
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 bg-neutral-50 shadow">
+        <div className="mx-auto max-w-7xl space-y-4 px-6 py-4">
+          {/* Top Row */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <Link href="/search">
+                <LogoType />
+              </Link>
+              <ProviderNav />
+            </div>
+
+            <div className="hidden tablet:block">
+              <UserHeaderAvatar />
+            </div>
+          </div>
+
+          {/* Service Grid */}
+          <ServiceGridAction />
+
+          {/* Search */}
+          <SearchHeader />
+        </div>
+      </header>
+
+      {/* Header spacer */}
+      <div className="h-[220px]" />
+    </>
   );
 };
 
