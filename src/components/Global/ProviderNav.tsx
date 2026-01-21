@@ -30,10 +30,10 @@ const providerItems = [
 // Navigation Component
 const ProviderNav = () => {
   return (
-    <NavigationMenu>
+    <NavigationMenu className="redd">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="redd ml-5">
+          <NavigationMenuTrigger className="redd ml-0.5">
             <span>For Providers</span>
           </NavigationMenuTrigger>
 
