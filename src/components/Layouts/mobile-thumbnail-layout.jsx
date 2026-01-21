@@ -8,6 +8,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import Icon from "../Global/Icon";
 import TranslatableText from "../Global/TranslatableText";
+import SearchHeader from "../App/Global/SearchHeader";
 const MobileThumbnailLayout = () => {
   useLayoutEffect(() => {
     const Gctx = gsap.context(() => {
@@ -99,6 +100,7 @@ const MobileThumbnailLayout = () => {
             {/* <Button variant={"exelth"}>
               <FaGooglePlay /> Open Play Store
             </Button> */}
+           
             <Link href={"/product/exelth-care-app/download"}>
               <Button variant={"exelth"}>
                 <Icon.Smartphone /> Download Apk

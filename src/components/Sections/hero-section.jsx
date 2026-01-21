@@ -56,7 +56,8 @@ const HeroSection = () => {
     <div className="redd flex h-[80vh] w-full flex-col items-center justify-center gap-5 desktop:gap-10">
       <div id="badge" className="translate-y-[50%] opacity-0 blur-sm">
         <Badge variant={"outline"} className="gap-3 rounded-xl text-sm">
-          <Icon.Activity className="size-4 text-green-600" /> Coming soon
+          <Icon.Activity className="size-4 text-green-600" />
+          Exelth is live across clinics & hospitals
         </Badge>
       </div>
       <div id="content" className="redd space-y-3 text-center laptop:px-[10%]">
@@ -84,73 +85,57 @@ const HeroSection = () => {
 এবং রোগীদের ভিজিট বুক করার জন্য, স্বাস্থ্য ট্র্যাক করার জন্য এবং
 রিয়েল টাইমে সংযুক্ত থাকার জন্য।"
           />
-          {/* Built for <strong>clinics and hospitals</strong> to manage
-          appointments, staff, and care coordination —{" "}
-          <br className="hidden md:block" />
-          and for <strong>patients</strong> to book visits, track health, and
-          stay connected in real time. */}
-        </p>
-        <p
-          id="desc2"
-          hidden
-          className="translate-y-[50%] text-xs opacity-0 blur-sm tablet:text-sm desktop:text-xl"
-        >
-          Empower patients with a mobile app for{" "}
-          <span className="text-red-400">real-time updates</span>,{" "}
-          <span className="text-green-400">billing</span>, and{" "}
-          <span className="text-orange-400">payments</span>.
         </p>
       </div>
       <div
         id="action-button"
         className="flex translate-y-[50%] flex-col items-center justify-center gap-5 opacity-0 blur-sm"
       >
-        {/* Waitlist Button with Tooltip */}
         <div className="flex items-center gap-2">
-          {/* <Waitlist />
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <Icon.Info className="size-4 cursor-pointer text-gray-500" />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>
-                  Join the waitlist to get early access to the Exelth platform
-                  for clinics & hospitals.
-                </p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider> */}
           <Link href={"/search"} className="w-80">
             <SearchHeader />
           </Link>
         </div>
 
         {/* Mobile App Button with Tooltip */}
-        <div className="flex items-center gap-2 relative">
-          <Link href={"/product/exelth-care-app/download"}>
+        <div className="relative flex flex-col gap-3 sm:flex-row sm:items-center">
+          {/* Primary – Platform Login */}
+          <Link href="https://app.exelth.com/auth/sign-in">
             <Button
-              variant={"exelth"}
+              variant="exelth"
               className="h-11 w-72 tablet:w-72 laptop:w-fit"
             >
-              <Icon.Smartphone /> Exelth Mobile App
+              Log in to Exelth Platform
             </Button>
           </Link>
-          <div className="absolute -right-5 top-3">
 
-          <TooltipProvider >
-            <Tooltip >
-              <TooltipTrigger>
-                <Icon.Info className="size-4 cursor-pointer text-gray-500" />
-              </TooltipTrigger>
-              <TooltipContent >
-                <p>
-                  Download the Exelth mobile app to book visits, track
-                  appointments, and stay connected.
-                </p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          {/* Secondary – Free Listing */}
+          <div className="relative">
+            <Link href="https://app.exelth.com/auth/sign-up">
+              <Button
+                variant="outline"
+                className="h-11 w-72 border-green-600 text-green-700 hover:bg-green-50 tablet:w-72 hover:text-green-700 laptop:w-fit"
+              >
+                List Your Facility (Free)
+              </Button>
+            </Link>
+
+            {/* Tooltip */}
+            <div className="absolute -right-5 top-3">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Icon.Info className="size-4 cursor-pointer text-gray-500" />
+                  </TooltipTrigger>
+                  <TooltipContent className="max-w-xs">
+                    <p>
+                      Clinics and hospitals must log in to verify ownership
+                      before listing facilities. Listing is free.
+                    </p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
           </div>
         </div>
       </div>

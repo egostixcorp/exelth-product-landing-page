@@ -15,13 +15,13 @@ import {
 // Navigation Data
 const productItems = [
   {
-    title: "HealthCare Infrastructure",
+    title: "Exelth Infrastructure Platform",
     href: "/product/exelth-infrastructure-platform",
     description:
       "Streamline operations, staff coordination, and patient workflows with real-time data and automation.",
   },
   {
-    title: "Patient App",
+    title: "Exelth Care App",
     href: "/product/exelth-care-app",
     description:
       "Empower patients with real-time updates, appointment booking, and transparent billing.",

@@ -10,6 +10,7 @@ import gsap from "gsap";
 import DesktopMockUp from "@/components/Mock/desktop-mockup";
 import TranslatableText from "@/components/Global/TranslatableText";
 import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 const HeroSection = () => {
   useLayoutEffect(() => {
     const Gctx = gsap.context(() => {
@@ -48,11 +49,6 @@ const HeroSection = () => {
   }, []);
   return (
     <div className="redd my-20 flex min-h-screen w-full flex-col items-center justify-center gap-5 desktop:gap-10">
-      {/* <div id="badge" className="translate-y-[50%] opacity-0 blur-sm">
-        <Badge variant={"outline"} className="gap-3 rounded-xl text-sm">
-          <Icon.Activity className="size-4 text-green-600" /> Coming soon
-        </Badge>
-      </div> */}
       <div
         id="container"
         className="redd flex w-full flex-col items-start justify-center gap-5 overflow-hidden px-[5%] laptop:px-[15%]"
@@ -62,6 +58,12 @@ const HeroSection = () => {
           className="redd relative flex h-96 flex-col items-center justify-center space-y-3 text-center laptop:h-[40vh] laptop:px-[10%] desktop:h-[60vh]"
         >
           <div class="absolute h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+          <p
+            id="badge"
+            className="redd w-full translate-y-[50%] text-center text-sm text-green-400 opacity-0 blur-sm"
+          >
+            Exelth Platform is Live Now
+          </p>
           <h1
             id="headline"
             className="translate-y-[50%] text-xl font-semibold opacity-0 blur-sm tablet:text-2xl laptop:text-3xl desktop:text-5xl"
@@ -88,14 +90,41 @@ const HeroSection = () => {
           </p>
           <div
             id="action-button"
-            className="translate-y-[50%] space-x-4 opacity-0 blur-sm"
+            className="grid translate-y-[50%] grid-cols-1 place-items-center gap-2 opacity-0 blur-sm tablet:grid-cols-2"
           >
             {/* <Button variant={"exelth"}>
               <FaGooglePlay /> Open Play Store
             </Button> */}
             <Link href={"https://app.exelth.com/auth/sign-in"}>
-              <Button variant={"exelth"}>Exelth Platform Login</Button>
+              <Button variant={"exelth"}> Log in to Exelth Platform</Button>
             </Link>
+            <div className="relative">
+              <Link href="https://app.exelth.com/auth/sign-up">
+                <Button
+                  variant="outline"
+                  className=" border-green-600 text-green-700 hover:bg-green-50 hover:text-green-700 "
+                >
+                  List Your Facility (Free)
+                </Button>
+              </Link>
+
+              {/* Tooltip */}
+              <div className="absolute -right-5 top-2">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <Icon.Info className="size-4 cursor-pointer text-gray-500" />
+                    </TooltipTrigger>
+                    <TooltipContent className="max-w-xs">
+                      <p>
+                        Clinics and hospitals must log in to verify ownership
+                        before listing facilities. Listing is free.
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+            </div>
           </div>
         </div>
         <div className="redd relative flex w-full flex-col items-center justify-start gap-5">
