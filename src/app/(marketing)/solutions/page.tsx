@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import React, { useLayoutEffect } from "react";
 import gsap from "gsap";
 import { Button } from "@/components/ui/button";
-import TranslatableText from "@/components/Global/TranslatableText";
 
 const SolutionsPage = () => {
   useLayoutEffect(() => {
@@ -21,7 +21,6 @@ const SolutionsPage = () => {
   return (
     <div className="my-20 min-h-screen w-full px-[5%] laptop:px-[15%]">
       {/* Hero */}
-
       <section className="relative flex h-[60vh] flex-col items-center justify-center text-center">
         <div className="absolute -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
 
@@ -56,25 +55,32 @@ const SolutionsPage = () => {
 
       {/* Solutions Grid */}
       <section className="mt-20 grid gap-8 md:grid-cols-2">
-        <SolutionCard
+        <SolutionImageCard
           title="Online Visibility & Patient Acquisition"
           desc="Get discovered by patients who are actively choosing where to book."
           href="/solutions/visibility"
+          image="/gifs/solutions/facility-profiles.png"
         />
-        <SolutionCard
+
+        <SolutionImageCard
           title="Clinic & Hospital Operations"
           desc="Run daily operations with real-time control over staff and visits."
           href="/solutions/operations"
+          image="/gifs/solutions/operations-overview.png"
         />
-        <SolutionCard
+
+        <SolutionImageCard
           title="Patient Flow & Experience"
           desc="Reduce wait times and improve throughput without adding staff."
           href="/solutions/patient-flow"
+          image="/gifs/solutions/patient-flow-overview.png"
         />
-        <SolutionCard
+
+        <SolutionImageCard
           title="Revenue, Clinical & Analytics Suite"
           desc="Billing, prescriptions, reports, and performance insights — all tied to visits."
           href="/solutions/revenue-clinical-analytics"
+          image="/gifs/solutions/revenue-analytics-overview.png"
         />
       </section>
     </div>
@@ -83,21 +89,37 @@ const SolutionsPage = () => {
 
 export default SolutionsPage;
 
-const SolutionCard = ({
+const SolutionImageCard = ({
   title,
   desc,
   href,
+  image,
 }: {
   title: string;
   desc: string;
   href: string;
+  image: string;
 }) => (
   <Link
     href={href}
-    className="rounded-xl border border-gray-200 p-6 transition hover:border-green-400 hover:bg-green-50"
+    className="group overflow-hidden rounded-xl border border-gray-200 transition hover:border-green-400 hover:bg-green-50"
   >
-    <h3 className="text-lg font-semibold">{title}</h3>
-    <p className="mt-2 text-gray-600">{desc}</p>
-    <p className="mt-4 text-sm text-green-600">Explore →</p>
+    {/* Cover Image */}
+    <div className="relative h-56 w-full bg-gray-100">
+      <Image
+        src={image}
+        alt={title}
+        fill
+        className="object-cover transition duration-300 group-hover:scale-105"
+      />
+    </div>
+
+    {/* Content */}
+    <div className="p-6">
+      <h3 className="text-lg font-semibold">{title}</h3>
+      <p className="mt-2 text-gray-600">{desc}</p>
+      <p className="mt-4 text-sm text-green-600">Explore →</p>
+    </div>
   </Link>
 );
+
