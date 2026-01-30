@@ -1,6 +1,6 @@
 export const navigation = [
   {
-    label: "Product",
+    label: "Products",
     route: "/product",
     products: [
       {
@@ -13,6 +13,7 @@ export const navigation = [
       },
     ],
   },
+  { label: "Solutions", route: "/solutions" },
   { label: "About", route: "/about" },
   {
     label: "Features",

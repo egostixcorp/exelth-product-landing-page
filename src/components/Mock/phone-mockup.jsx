@@ -5,6 +5,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { useMouse } from "../hooks/useMouse";
+import { ArrowUpRight } from "lucide-react";
 // Register the plugin once
 gsap.registerPlugin(ScrollTrigger);
 const PhoneMockUp = ({ ref }) => {
@@ -86,7 +87,7 @@ const PhoneMockUp = ({ ref }) => {
   return (
     <div
       id="phone-mock"
-      // ref={mockRef}
+      ref={mockRef}
       className="absolute -bottom-7 right-0 z-30 w-[80px] overflow-hidden tablet:-right-10 tablet:w-[190px] laptop:-bottom-5 laptop:w-[201px] desktop:-bottom-5 desktop:h-[550px] desktop:w-[291px]"
     >
       <Image
@@ -97,7 +98,7 @@ const PhoneMockUp = ({ ref }) => {
         height={500}
       />
       <div
-        ref={mockRef}
+        // ref={mockRef}
         className="relative size-full bg-transparent tablet:px-4 tablet:py-1.5 laptop:px-5 laptop:py-2 desktop:px-6 desktop:py-3"
       >
         {/* Cursor div */}
@@ -110,7 +111,9 @@ const PhoneMockUp = ({ ref }) => {
             transform: "translate3d(0,0,0)",
           }}
         >
-          exelth mobile
+          <div className="flex items-center justify-center gap-2">
+            exelth mobile <ArrowUpRight className="size-6" />
+          </div>
         </div>
         <Link href={"/product/exelth-care-app"}>
           <div className="redd size-full overflow-hidden rounded-2xl bg-white p-1.5">

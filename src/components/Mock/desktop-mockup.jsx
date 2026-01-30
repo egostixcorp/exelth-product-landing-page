@@ -5,6 +5,7 @@ import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import { useMouse } from "@/components/hooks/useMouse"; // <-- custom hook
+import { ArrowUpRight } from "lucide-react";
 
 const images = [
   "/mock/mock-home.png",
@@ -107,7 +108,9 @@ export default function DesktopMockUp() {
           transform: "translate3d(0,0,0)",
         }}
       >
-        exelth platform
+        <div className="flex items-center justify-center gap-2">
+          exelth platform <ArrowUpRight className="size-6" />
+        </div>
       </div>
 
       <Link href={"/product/exelth-infrastructure-platform"}>

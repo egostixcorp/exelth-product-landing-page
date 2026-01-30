@@ -20,31 +20,21 @@ const Header = () => {
           id="menu-desktop"
           className="hidden items-center justify-center gap-2 tablet:flex"
         >
-          {/* {navigation.map((data, i) => {
-            return (
-              <Link key={i} href={data.route} className="capitalize">
-                {data.label}
-              </Link>
-            );
-          })} */}
           <DesktopNav />
-          {/* <WaitlistModel>
-            <Button variant={"exelth"}>Join Waitlist</Button>
-          </WaitlistModel> */}
+
           <Link href={"/login"}>
-            <Button variant={"exelth"}>
-              <Icon.UserCircle /> Log in
-            </Button>
+            <Button variant={"outline"}>Log in</Button>
+          </Link>
+          <Link href={"/signup"}>
+            <Button variant={"exelth"}>Sign up</Button>
           </Link>
         </div>
         <div
           id="menu-mobile"
           className="redd flex items-center justify-center gap-2 tablet:hidden"
         >
-          <Link href={"/login"}>
-            <Button variant={"exelth"}>
-              <Icon.UserCircle /> Log in
-            </Button>
+          <Link href={"/signup"}>
+            <Button variant={"exelth"}>Sign up</Button>
           </Link>
           <MobileNav>
             <Icon.Menu />

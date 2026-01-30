@@ -39,10 +39,15 @@ const MobileNav = ({ children }) => {
               </Link>
             );
           })}
-          <div className="w-full">
+          <div className="w-full mt-4 flex flex-col gap-2">
             <Link href={"/login"} className="w-full">
+              <Button className="w-full" variant={"outline"}>
+                Log in
+              </Button>
+            </Link>
+            <Link href={"/signup"} className="w-full">
               <Button className="w-full" variant={"exelth"}>
-                <Icon.UserCircle /> Log in
+                Sign up
               </Button>
             </Link>
           </div>

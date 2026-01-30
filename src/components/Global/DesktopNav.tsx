@@ -30,22 +30,59 @@ const productItems = [
 
 const featureItems = [
   {
-    title: "Real-Time Patient Tracking",
+    title: "Facility Profile & Online Booking",
+    // href: "/features/visibility-booking",
     href: "/features/",
     description:
-      "Live monitoring of patient progress from admission to discharge with alert triggers.",
+      "Public Exelth profiles that let patients discover, and book clinics directly.",
   },
   {
-    title: "Smart Shift & Bed Forecasting",
+    title: "Operational Visit Management",
+    // href: "/features/visit-management",
     href: "/features/",
     description:
-      "Predict bed demand and plan staff shifts using AI-powered forecasting tools.",
+      "Run daily clinic and hospital operations with visit-based workflows and role control.",
   },
   {
-    title: "Secure Digital Records",
+    title: "Live Patient Flow & Queue Control",
+    // href: "/features/patient-flow",
     href: "/features/",
     description:
-      "Centralized, secure system for managing prescriptions, reports, and patient history.",
+      "Track patient status in real time and manage queues to reduce waiting time.",
+  },
+  {
+    title: "Billing, Clinical Records & Analytics",
+    // href: "/features/revenue-clinical-analytics",
+    href: "/features/",
+    description:
+      "Visit-linked billing, prescriptions, reports, and performance insights in one system.",
+  },
+];
+
+const solutionItems = [
+  {
+    title: "Online Visibility & Patient Acquisition",
+    href: "/solutions/visibility",
+    description:
+      "Get discovered by patients with a trusted Exelth profile that drives direct bookings.",
+  },
+  {
+    title: "Clinic & Hospital Operations",
+    href: "/solutions/operations",
+    description:
+      "Run day-to-day operations with real-time control over staff, departments, and visits.",
+  },
+  {
+    title: "Patient Flow & Experience",
+    href: "/solutions/patient-flow",
+    description:
+      "Reduce wait times and improve patient experience with live visit tracking.",
+  },
+  {
+    title: "Revenue, Clinical & Analytics Suite",
+    href: "/solutions/revenue-clinical-analytics",
+    description:
+      "Billing, prescriptions, reports, and performance analytics — all tied to visits.",
   },
 ];
 
@@ -57,10 +94,10 @@ const DesktopNav = () => {
         {/* Product */}
         <NavigationMenuItem>
           <NavigationMenuTrigger>
-            <Link href={"/product"}>Product</Link>
+            <Link href={"/product"}>Products</Link>
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+            <ul className="grid gap-3 grid-cols-2 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
@@ -69,7 +106,7 @@ const DesktopNav = () => {
                   >
                     {/* <Icons.logo className="h-6 w-6" /> */}
                     <div className="mb-2 mt-4 text-2xl font-bold text-green-500">
-                      Exelth
+                      Exelth Products
                     </div>
                     <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                       Streamline Health Care Infrastructure with a Centralized
@@ -87,6 +124,38 @@ const DesktopNav = () => {
             {/* <div className="red w-full px-3">changelog</div> */}
           </NavigationMenuContent>
         </NavigationMenuItem>
+        {/* Solutions */}
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid grid-cols-3 gap-3 p-4 md:w-[500px] lg:w-[600px] lg:grid-cols-[.75fr_1fr]p">
+              <li className="row-span-3">
+                <NavigationMenuLink asChild>
+                  <a
+                    className="from-bg-green-50 to-bg-white flex h-full w-full select-none flex-col justify-end rounded-md bg-green-50 bg-gradient-to-b p-6 no-underline outline-none"
+                    href="/solutions"
+                  >
+                    <div className="mb-2 mt-4 text-2xl font-bold text-green-500">
+                      Exelth Solutions
+                    </div>
+                    <p className="text-sm leading-snug text-muted-foreground line-clamp-2">
+                      Solve real clinic and hospital problems — from patient
+                      discovery to daily operations, visit flow, and revenue
+                      clarity.
+                    </p>
+                  </a>
+                </NavigationMenuLink>
+              </li>
+
+              {solutionItems.map((item) => (
+                <ListItem key={item.title} title={item.title} href={item.href}>
+                  {item.description}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
         {/* About */}
         <NavigationMenuItem>
           <Link href="/about" passHref legacyBehavior>
@@ -99,7 +168,7 @@ const DesktopNav = () => {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Features</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px]">
+            <ul className="grid grid-cols-2 gap-3 p-4 md:w-[500px] lg:w-[600px]">
               {featureItems.map((item) => (
                 <ListItem key={item.title} title={item.title} href={item.href}>
                   {item.description}

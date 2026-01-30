@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="redd flex flex-col items-start justify-start text-left">
           <LogoType />
           <p className="mt-1 text-sm text-gray-600">
-            A connected health infrastructure platform
+            A connected healthcare infrastructure platform
           </p>
         </div>
 
@@ -22,7 +22,7 @@ const Footer = () => {
           <ul className="mt-3 space-y-2 text-sm text-gray-600">
             <li className="redd group relative w-fit">
               <Link href="/product/exelth-infrastructure-platform">
-                For Facilities
+                For Providers
               </Link>
               <div
                 id="border-animation-green"
