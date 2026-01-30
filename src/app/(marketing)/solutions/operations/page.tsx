@@ -16,7 +16,7 @@ const OperationsSolution = () => {
           <h1 className="text-2xl font-semibold laptop:text-4xl">
             One system to run daily healthcare operations.
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-center text-gray-600">
+          <p className="mt-4 max-w-2xl text-center text-lg text-gray-600">
             Exelth gives clinics and hospitals real-time control over staff,
             departments, and visits — without paper, spreadsheets, or chaos.
           </p>
