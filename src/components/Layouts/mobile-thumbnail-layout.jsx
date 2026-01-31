@@ -9,6 +9,7 @@ import Link from "next/link";
 import Icon from "../Global/Icon";
 import TranslatableText from "../Global/TranslatableText";
 import SearchHeader from "../App/Global/SearchHeader";
+import WaitlistModal from "../Waitlist/WaitlistModel";
 const MobileThumbnailLayout = () => {
   useLayoutEffect(() => {
     const Gctx = gsap.context(() => {
@@ -77,7 +78,7 @@ const MobileThumbnailLayout = () => {
             id="badge"
             className="redd w-full text-center text-sm text-green-400"
           >
-            Introducing Exelth Mobile
+            Now live on Android · iOS coming soon
           </p>
           <h1
             id="headline"
@@ -96,16 +97,32 @@ const MobileThumbnailLayout = () => {
               bn="অ্যাপয়েন্টমেন্ট, বিল, প্রেসক্রিপশন এবং রিয়েল-টাইম আপডেট ট্র্যাক করুন — সবই আপনার ফোন থেকে।"
             />
           </p>
-          <div id="action-button" className="space-x-4">
-            {/* <Button variant={"exelth"}>
-              <FaGooglePlay /> Open Play Store
-            </Button> */}
-           
-            <Link href={"/product/exelth-care-app/download"}>
+          <div
+            id="action-button"
+            className="grid grid-cols-1 gap-2 tablet:grid-cols-2"
+          >
+            <Link
+              target="_blank"
+              href={
+                "https://play.google.com/store/apps/details?id=com.exelth.patientapp"
+              }
+            >
               <Button variant={"exelth"}>
-                <Icon.Smartphone /> Download Apk
+                <FaGooglePlay /> Open Play Store
               </Button>
             </Link>
+
+            <WaitlistModal
+              joinFor="iOS_app"
+              title="Exelth for iOS"
+              description="iOS app coming soon. Join the waitlist to get early access."
+              successMessage="You’re on the list! We’ll notify you when iOS launches."
+              variant="bw"
+            >
+              <Button variant="outline">
+                <FaApple /> Join iOS Waitlist
+              </Button>
+            </WaitlistModal>
           </div>
         </div>
       </div>
