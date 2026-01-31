@@ -12,9 +12,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import Link from "next/link";
+import { FaApple, FaGooglePlay } from "react-icons/fa";
+import WaitlistModal from "@/components/Waitlist/WaitlistModel";
 
 export default function AppDownloadDialog() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   React.useEffect(() => {
     // Check if the dialog was already shown before
@@ -47,7 +49,7 @@ export default function AppDownloadDialog() {
               src="/apk/preview/exelth-preview-v2.png"
               alt="Exelth mobile app preview"
               fill
-              className="object-cover"
+              className="object-contain tablet:object-cover"
               priority
             />
           </div>
@@ -66,9 +68,27 @@ export default function AppDownloadDialog() {
 
             {/* Buttons */}
             <div className="mt-4 flex w-full flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link href={"/product/exelth-care-app/download"}>
-                <Button variant={"exelth"}>Download Exelth App</Button>
+              <Link
+                target="_blank"
+                href={
+                  "https://play.google.com/store/apps/details?id=com.exelth.patientapp"
+                }
+              >
+                <Button variant={"exelth"}>
+                  <FaGooglePlay /> Open Play Store
+                </Button>
               </Link>
+              <WaitlistModal
+                joinFor="iOS_app"
+                title="Exelth for iOS"
+                description="iOS app coming soon. Join the waitlist to get early access."
+                successMessage="You’re on the list! We’ll notify you when iOS launches."
+                variant="bw"
+              >
+                <Button variant="outline">
+                  <FaApple /> Join iOS Waitlist
+                </Button>
+              </WaitlistModal>
             </div>
           </div>
         </div>
