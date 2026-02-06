@@ -120,7 +120,7 @@ const WaitlistModal = ({
           </Button>
 
           {status && (
-            <p className="mt-2 text-center text-sm text-neutral-600">
+            <p className="mt-2 text-center text-sm text-neutral-700">
               {status}
             </p>
           )}
