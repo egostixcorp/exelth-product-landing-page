@@ -84,7 +84,7 @@ const SearchPage = () => {
   }, [fetchFacilities]);
 
   return (
-    <div className="flex min-h-screen flex-col pt-8 bg-white">
+    <div className="flex min-h-screen flex-col bg-white">
       {/* <SearchHeader /> */}
       {/* <div className="container mx-auto px-4 py-4">
         {loading ? (
