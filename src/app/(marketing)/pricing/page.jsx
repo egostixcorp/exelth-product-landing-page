@@ -1,14 +1,17 @@
 // "use client";
 
 import React from "react";
+import PriceCard from "@/components/Cards/PriceCard";
 import Container from "@/components/Global/Container";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import Link from "next/link";
+
 export const metadata = {
   title: "Pricing & Fees",
 };
+
 const PricingPage = () => {
   return (
     <div className="flex w-full items-center justify-center py-5">
@@ -19,89 +22,110 @@ const PricingPage = () => {
             variant="outline"
             className="mb-4 rounded-3xl px-4 py-1 text-sm"
           >
-            B2B Pricing • Performance Based
+            Exelth Infrastructure Pricing
           </Badge>
 
           <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
-            Simple pricing built for
+            Infrastructure for modern
             <span className="block text-green-600">healthcare facilities</span>
           </h1>
 
           <p className="mt-4 text-neutral-600">
-            You pay only when a booking is completed.
+            Large hospitals run on powerful healthcare infrastructure. <br />
+            <span className="font-medium text-neutral-900">
+              Exelth brings the same operational technology to clinics and
+              diagnostic centers.
+            </span>
           </p>
         </div>
 
         {/* Pricing Cards */}
-        <div className="mt-16 grid w-fit max-w-5xl gap-6 tablet:grid-cols-1">
-          {/* Standard Pricing */}
-          <div className="rounded-2xl border bg-white p-8 shadow-sm">
-            <h3 className="text-2xl font-semibold">Standard pricing</h3>
-            <p className="mt-1 text-sm text-neutral-600">
-              For most clinics & diagnostic centers
-            </p>
-            <div className="mt-8 flex h-fit w-full flex-col items-baseline justify-start gap-8 tablet:flex-row">
-              {/* OPD */}
-              <div className="mt-6">
-                <div className="flex items-end gap-2">
-                  <span className="text-4xl font-bold">15%</span>
-                  <span className="pb-1 text-neutral-500">
-                    OPD / doctor bookings
-                  </span>
-                </div>
+        <div className="mt-16 grid w-fit max-w-6xl gap-6 tablet:grid-cols-1 md:grid-cols-3">
+          <PriceCard
+            title="Starter"
+            description="For small clinics getting started"
+            price="Free"
+            note="Up to 100 visits / month"
+            features={[
+              "Appointment scheduling",
+              "Basic patient records",
+              "Online appointment booking",
+              "Automated reminders",
+              "Basic queue management",
+              // "1 doctor / clinic",
+            ]}
+            buttonText="Start Free"
+            buttonLink="https://app.exelth.com/auth/sign-up"
+          />
 
-                <ul className="mt-4 space-y-2 text-sm">
-                  {[
-                    "Online appointment booking",
-                    "Live queue & arrival tracking",
-                    "Automated reminders & follow-ups",
-                    "No-show reduction",
-                  ].map((item) => (
-                    <li key={item} className="flex gap-2">
-                      <Check className="mt-0.5 size-4 text-green-600" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+          <PriceCard
+            title="Pro"
+            recommended={true}
+            description="For growing clinics & diagnostic centers"
+            price="₹1999"
+            priceSuffix="/ month"
+            features={[
+              "Unlimited visits",
+              "Patient records & visit history",
+              "E-prescriptions & clinical notes",
+              "Live queue & arrival tracking",
+              "Staff & department management",
+              "Lab test booking & order management",
+              "Operational analytics",
+            ]}
+            buttonText="Upgrade to Pro"
+            buttonLink="https://app.exelth.com/auth/sign-up"
+          />
+
+          <PriceCard
+            title="Enterprise"
+            description="For large clinics, hospitals & healthcare networks"
+            price="Custom"
+            features={[
+              "Multi-doctor & multi-facility infrastructure",
+              "Advanced analytics & operational insights",
+              "Role-based access & enterprise security",
+              "Custom integrations & APIs",
+              "Workflow automation & system integrations",
+              "Dedicated onboarding & priority support",
+            ]}
+            buttonText="Contact Sales"
+            buttonLink="/contact"
+          />
+        </div>
+
+        {/* Add-ons */}
+        <div className="mt-20 w-full max-w-4xl rounded-2xl border bg-white p-8 shadow-sm">
+          <h3 className="text-center text-2xl font-semibold">
+            Add-ons & Pay-as-you-go
+          </h3>
+
+          <p className="mt-2 text-center text-sm text-neutral-600">
+            Activate additional capabilities only when needed.
+          </p>
+
+          <div className="mt-8 grid gap-4 text-sm md:grid-cols-2">
+            {[
+              "AI clinical documentation (pay per usage)",
+              "AI patient communication automation",
+              "Marketplace bookings – 15% per completed appointment",
+              "Diagnostics marketplace orders",
+              "Payment processing infrastructure",
+              "Advanced AI operational analytics",
+            ].map((item) => (
+              <div key={item} className="flex gap-2">
+                <Check className="mt-0.5 size-4 text-green-600" />
+                {item}
               </div>
-
-              {/* Divider */}
-              <div className="my-6 w-0.5 border-r" />
-
-              {/* Lab */}
-              <div>
-                <div className="flex items-end gap-2">
-                  <span className="text-4xl font-bold">15%</span>
-                  <span className="pb-1 text-neutral-500">lab bookings</span>
-                </div>
-
-                <ul className="mt-4 space-y-2 text-sm">
-                  {[
-                    "Test & package discovery",
-                    "Slot-based scheduling",
-                    "Home sample collection",
-                    "Payment & invoice automation",
-                  ].map((item) => (
-                    <li key={item} className="flex gap-2">
-                      <Check className="mt-0.5 size-4 text-green-600" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <Link href={"https://app.exelth.com/auth/sign-up"} target="_blank">
-              <Button variant="exelth" className="mt-8 rounded-xl">
-                Get started
-              </Button>
-            </Link>
+            ))}
           </div>
         </div>
 
         {/* Fine print */}
         <p className="mx-auto mt-10 max-w-xl text-center text-xs text-neutral-500">
-          Pricing applies only to successful, completed bookings. Cancelled or
-          no-show appointments are not charged.
+          Starter plan is free up to 100 visits per month. Marketplace
+          commission applies only to patients or lab bookings generated through
+          Exelth. Add-ons are optional and charged based on usage.
         </p>
       </Container>
     </div>
