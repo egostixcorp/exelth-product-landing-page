@@ -52,7 +52,7 @@ const PriceCard = ({
       </ul>
 
       <Link href={buttonLink} target="_blank">
-        <Button variant="exelth" className="mt-8 w-full rounded-md">
+        <Button variant={recommended ? "exelth" : "outline"} className="mt-8 w-full rounded-md">
           {buttonText}
         </Button>
       </Link>

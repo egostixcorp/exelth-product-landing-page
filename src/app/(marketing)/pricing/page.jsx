@@ -54,7 +54,7 @@ const PricingPage = () => {
               "Basic queue management",
               // "1 doctor / clinic",
             ]}
-            buttonText="Start Free"
+            buttonText="Get Started"
             buttonLink="https://app.exelth.com/auth/sign-up"
           />
 
@@ -73,7 +73,7 @@ const PricingPage = () => {
               "Lab test booking & order management",
               "Operational analytics",
             ]}
-            buttonText="Upgrade to Pro"
+            buttonText="Get Started"
             buttonLink="https://app.exelth.com/auth/sign-up"
           />
 
