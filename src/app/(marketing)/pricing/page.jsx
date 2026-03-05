@@ -42,10 +42,10 @@ const PricingPage = () => {
         {/* Pricing Cards */}
         <div className="mt-16 grid w-fit max-w-6xl gap-6 tablet:grid-cols-1 md:grid-cols-3">
           <PriceCard
-            title="Starter"
+            title="Foundation"
             description="For small clinics getting started"
             price="Free"
-            note="Up to 100 visits / month"
+            note="Up to 20 visits / month"
             features={[
               "Appointment scheduling",
               "Basic patient records",
@@ -59,7 +59,7 @@ const PricingPage = () => {
           />
 
           <PriceCard
-            title="Pro"
+            title="Core"
             recommended={true}
             description="For growing clinics & diagnostic centers"
             price="₹1999"
@@ -123,9 +123,9 @@ const PricingPage = () => {
 
         {/* Fine print */}
         <p className="mx-auto mt-10 max-w-xl text-center text-xs text-neutral-500">
-          Starter plan is free up to 100 visits per month. Marketplace
-          commission applies only to patients or lab bookings generated through
-          Exelth. Add-ons are optional and charged based on usage.
+          Starter plan is free up to 20 visits per month. Marketplace commission
+          applies only to patients or lab bookings generated through Exelth.
+          Add-ons are optional and charged based on usage.
         </p>
       </Container>
     </div>
