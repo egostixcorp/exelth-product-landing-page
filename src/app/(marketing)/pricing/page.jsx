@@ -45,7 +45,7 @@ const PricingPage = () => {
             title="Foundation"
             description="For small clinics getting started"
             price="Free"
-            note="Up to 20 visits / month"
+            note="Free for the first 20 visits"
             features={[
               "Appointment scheduling",
               "Basic patient records",
@@ -54,7 +54,7 @@ const PricingPage = () => {
               "Basic queue management",
               // "1 doctor / clinic",
             ]}
-            buttonText="Get Started"
+            buttonText="Start Free"
             buttonLink="https://app.exelth.com/auth/sign-up"
           />
 
@@ -123,7 +123,7 @@ const PricingPage = () => {
 
         {/* Fine print */}
         <p className="mx-auto mt-10 max-w-xl text-center text-xs text-neutral-500">
-          Starter plan is free up to 20 visits per month. Marketplace commission
+          Foundation plan is free up to 20 total visits. Marketplace commission
           applies only to patients or lab bookings generated through Exelth.
           Add-ons are optional and charged based on usage.
         </p>

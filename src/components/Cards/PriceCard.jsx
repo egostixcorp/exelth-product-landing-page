@@ -28,7 +28,7 @@ const PriceCard = ({
   buttonLink,
 }) => {
   return (
-    <div className={`rounded-2xl border bg-white p-8 shadow-sm flex flex-col items-start justify-between ${recommended ? "ring-2 ring-green-500 " : ""}`}>
+    <div className={`rounded-2xl border bg-white p-8 shadow-sm flex flex-col items-start justify-between ${recommended ? "ring-2 ring-green-500 scale-105" : ""}`}>
       <h3 className="text-2xl font-semibold">{title}</h3>
 
       <p className="mt-1 text-sm text-neutral-600">{description}</p>
