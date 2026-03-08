@@ -231,3 +231,92 @@ export const WebAppfeatures = [
   //       "Facilitate post-discharge services like home care, follow-up appointments, and feedback collection through the mobile app. Strengthen patient care beyond the hospital stay.",
   //   },
 ];
+export const featuresV1 = [
+  {
+    title: "Facility Profile & Online Booking",
+    bntitle: "ফ্যাসিলিটি প্রোফাইল ও অনলাইন বুকিং",
+    icon: <Icon.Hospital />,
+    image: "/assets/features/facility_profile.png",
+    description:
+      "Create a trusted public Exelth profile for your clinic or hospital. Patients can discover services, doctors, departments, and book appointments directly online.",
+    bnDesc:
+      "আপনার ক্লিনিক বা হাসপাতালের জন্য একটি বিশ্বস্ত Exelth পাবলিক প্রোফাইল তৈরি করুন। রোগীরা পরিষেবা, ডাক্তার ও বিভাগ খুঁজে পেয়ে সরাসরি অনলাইনে অ্যাপয়েন্টমেন্ট বুক করতে পারবেন।",
+  },
+
+  {
+    title: "Operational Visit Management",
+    bntitle: "অপারেশনাল ভিজিট ম্যানেজমেন্ট",
+    icon: <Icon.Activity />,
+    image: "/assets/features/visit_management.png",
+    description:
+      "Manage every patient visit from arrival to completion. Control check-ins, consultation flow, prescriptions, and visit outcomes using a structured workflow.",
+    bnDesc:
+      "রোগীর আগমন থেকে চিকিৎসা সম্পন্ন হওয়া পর্যন্ত প্রতিটি ভিজিট পরিচালনা করুন। চেক-ইন, কনসালটেশন, প্রেসক্রিপশন এবং ভিজিট ফলাফল একটি কাঠামোবদ্ধ ওয়ার্কফ্লোতে পরিচালনা করুন।",
+  },
+
+  {
+    title: "Live Patient Flow & Queue Control",
+    bntitle: "লাইভ পেশেন্ট ফ্লো ও কিউ কন্ট্রোল",
+    icon: <Icon.Users />,
+    image: "/assets/features/patient_flow.png",
+    description:
+      "Track patient movement across departments in real time. Reduce waiting times and improve coordination between reception, doctors, labs, and billing.",
+    bnDesc:
+      "বিভিন্ন বিভাগের মধ্যে রোগীর চলাচল রিয়েল-টাইমে ট্র্যাক করুন। অপেক্ষার সময় কমান এবং রিসেপশন, ডাক্তার, ল্যাব ও বিলিংয়ের মধ্যে সমন্বয় বাড়ান।",
+  },
+
+  {
+    title: "Billing, Prescriptions & Clinical Records",
+    bntitle: "বিলিং, প্রেসক্রিপশন ও ক্লিনিক্যাল রেকর্ড",
+    icon: <Icon.FileText />,
+    image: "/assets/features/billing_records.png",
+    description:
+      "Generate visit-linked bills, prescriptions, and medical records automatically. Keep clinical data organized and accessible across departments.",
+    bnDesc:
+      "ভিজিটের সাথে সংযুক্ত বিল, প্রেসক্রিপশন এবং মেডিকেল রেকর্ড স্বয়ংক্রিয়ভাবে তৈরি করুন। ক্লিনিক্যাল ডেটা সুশৃঙ্খলভাবে সংরক্ষণ করুন।",
+  },
+
+  {
+    title: "Staff & Department Management",
+    bntitle: "স্টাফ ও বিভাগ ম্যানেজমেন্ট",
+    icon: <Icon.UsersRound />,
+    image: "/assets/features/staff_management.png",
+    description:
+      "Organize doctors, staff members, and departments with role-based access control. Ensure each team member has the right tools and permissions.",
+    bnDesc:
+      "ডাক্তার, কর্মী এবং বিভাগগুলোকে রোল-ভিত্তিক অ্যাক্সেস কন্ট্রোলের মাধ্যমে সংগঠিত করুন। প্রতিটি সদস্যকে সঠিক টুলস এবং অনুমতি প্রদান করুন।",
+  },
+
+  {
+    title: "Command Palette & Fast Actions",
+    bntitle: "কমান্ড প্যালেট ও দ্রুত অ্যাকশন",
+    icon: <Icon.TerminalSquare />,
+    image: "/assets/features/command_palette.png",
+    description:
+      "Access patients, visits, and system actions instantly using a universal command palette. Speed up daily operations with keyboard-first navigation.",
+    bnDesc:
+      "একটি ইউনিভার্সাল কমান্ড প্যালেট ব্যবহার করে দ্রুত রোগী, ভিজিট এবং সিস্টেম অ্যাকশন অ্যাক্সেস করুন। কীবোর্ড-ফার্স্ট নেভিগেশন দিয়ে কাজ দ্রুত করুন।",
+  },
+
+  {
+    title: "Operational Analytics & Insights",
+    bntitle: "অপারেশনাল অ্যানালিটিক্স ও ইনসাইট",
+    icon: <Icon.FileChartColumn />,
+    image: "/assets/features/analytics.png",
+    description:
+      "Monitor clinic performance with real-time dashboards. Track visit volumes, patient flow efficiency, revenue metrics, and operational trends.",
+    bnDesc:
+      "রিয়েল-টাইম ড্যাশবোর্ডের মাধ্যমে ক্লিনিকের পারফরম্যান্স পর্যবেক্ষণ করুন। ভিজিট সংখ্যা, পেশেন্ট ফ্লো দক্ষতা এবং আয়ের মেট্রিক্স ট্র্যাক করুন।",
+  },
+
+  {
+    title: "Patient Mobile Connectivity",
+    bntitle: "পেশেন্ট মোবাইল কানেক্টিভিটি",
+    icon: <Icon.Smartphone />,
+    image: "/assets/features/mobile_connect.png",
+    description:
+      "Connect your facility with the Exelth Care App so patients can book visits, receive prescriptions, view reports, and get real-time updates.",
+    bnDesc:
+      "Exelth Care App এর সাথে আপনার ফ্যাসিলিটি সংযুক্ত করুন যাতে রোগীরা ভিজিট বুক করতে, প্রেসক্রিপশন পেতে এবং রিপোর্ট দেখতে পারে।",
+  },
+];
