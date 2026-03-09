@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     "telemedicine",
     "patient management",
     "doctor availability",
+    "online doctor booking",
     "medical records",
     "e-prescriptions",
     "lab tests booking",
