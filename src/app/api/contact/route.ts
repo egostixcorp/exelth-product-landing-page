@@ -5,25 +5,56 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
-    const { name, email, message } = await req.json();
+    const { name, email, phone, organization, role, inquiryType, message } =
+      await req.json();
 
-    if (!name || !email || !message) {
+    if (!name || !email || !inquiryType || !message) {
       return NextResponse.json(
-        { error: "All fields are required." },
+        { error: "Name, email, inquiry type, and message are required." },
         { status: 400 },
       );
     }
 
     const { data, error } = await resend.emails.send({
-      from: "Exelth Contact <send@notifications.exelth.com>", // ✅ use a verified sender
-      to: "support@exelth.com", // ✅ your support email
-      //   reply_to: email, // user’s email
-      subject: `New Contact Form Submission from ${name}`,
+      from: "Exelth Contact <send@notifications.exelth.com>",
+      to: "support@exelth.com",
+      replyTo: email,
+      subject: `[${inquiryType}] New message from ${name}`,
       html: `
-        <h2>New Message from ${name}</h2>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
+        <h2>New Contact Form Submission</h2>
+        <table cellpadding="8" style="border-collapse:collapse;width:100%;max-width:600px;">
+          <tr>
+            <td style="font-weight:bold;width:160px;">Name</td>
+            <td>${name}</td>
+          </tr>
+          <tr style="background:#f9f9f9;">
+            <td style="font-weight:bold;">Email</td>
+            <td><a href="mailto:${email}">${email}</a></td>
+          </tr>
+          ${phone ? `
+          <tr>
+            <td style="font-weight:bold;">Phone</td>
+            <td>${phone}</td>
+          </tr>` : ""}
+          ${organization ? `
+          <tr style="background:#f9f9f9;">
+            <td style="font-weight:bold;">Organization</td>
+            <td>${organization}</td>
+          </tr>` : ""}
+          ${role ? `
+          <tr>
+            <td style="font-weight:bold;">Role</td>
+            <td>${role}</td>
+          </tr>` : ""}
+          <tr style="background:#f9f9f9;">
+            <td style="font-weight:bold;">Inquiry Type</td>
+            <td>${inquiryType}</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold;vertical-align:top;">Message</td>
+            <td style="white-space:pre-wrap;">${message}</td>
+          </tr>
+        </table>
       `,
     });
 
