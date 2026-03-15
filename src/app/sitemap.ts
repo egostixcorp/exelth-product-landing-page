@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/solutions",
     "/solutions/operations",
-    "/solutions/patinet-flow",
+    "/solutions/patient-flow",
     "/solutions/revenue-clinical-analytics",
     "/solutions/visibility",
     "/features",
