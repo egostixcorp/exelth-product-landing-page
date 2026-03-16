@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
 import { Textarea } from "@/components/ui/textarea";
 
 const INQUIRY_TYPES = [
@@ -19,6 +20,7 @@ const ContactPage = () => {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null);
   const [type, setType] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -70,7 +72,18 @@ const ContactPage = () => {
               name="inquiryType"
               required
               value={type}
-              onChange={(e) => setType(e.target.value)}
+              onChange={(e) => {
+                const selected = e.target.value;
+                setType(selected);
+
+                if (selected === "Create a free profile") {
+                  router.push("/b2b/register");
+                }
+
+                if (selected === "Career opportunities") {
+                  router.push("/career");
+                }
+              }}
               className="mt-1 w-full rounded-md border px-3 py-2"
             >
               <option value="">Select option</option>
@@ -85,33 +98,42 @@ const ContactPage = () => {
             <>
               <div>
                 <Label>Name *</Label>
-                <Input name="name" required />
+                <Input name="name" required placeholder="Your name" />
               </div>
 
               <div>
                 <Label>Mobile Number *</Label>
-                <Input name="phone" required />
+                <Input name="phone" required placeholder="Your mobile number" />
               </div>
 
               <div>
                 <Label>Email *</Label>
-                <Input name="email" type="email" required />
+                <Input
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="Your email"
+                />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Label>Country</Label>
-                  <Input name="country" defaultValue="India" />
+                  <Input
+                    name="country"
+                    defaultValue="India"
+                    placeholder="Your country"
+                  />
                 </div>
                 <div>
                   <Label>City *</Label>
-                  <Input name="city" required />
+                  <Input name="city" required placeholder="Your city" />
                 </div>
               </div>
 
               <div>
                 <Label>Message</Label>
-                <Textarea name="message" rows={4} />
+                <Textarea name="message" rows={4} placeholder="Your message" />
               </div>
             </>
           )}
