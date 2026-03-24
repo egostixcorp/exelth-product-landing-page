@@ -35,7 +35,7 @@ const PatientFlowSolution = () => {
         {/* Hero Visual */}
         <div className="relative h-48 w-full overflow-hidden rounded-xl border-[5px] border-green-200 bg-white shadow-xl tablet:h-80 laptop:h-[420px] desktop:h-[520px]">
           <Image
-            src="/gifs/solutions/patient-flow-overview.png"
+            src="/screenshots/solutions/patient-flow-overview.png"
             alt="Patient flow overview"
             width={1920}
             height={1080}
@@ -63,7 +63,7 @@ const PatientFlowSolution = () => {
 
         <div className="relative h-48 w-full overflow-hidden rounded-xl border bg-gray-50 tablet:h-80">
           <Image
-            src="/gifs/solutions/admin-booking-dashboard.png"
+            src="/screenshots/solutions/admin-booking-dashboard.png"
             alt="Patient status tracking"
             width={1920}
             height={1080}
@@ -90,7 +90,7 @@ const PatientFlowSolution = () => {
       <section className="mt-24 grid items-center gap-10 rounded-lg bg-green-50 p-8 laptop:grid-cols-2">
         <div className="relative h-48 w-full overflow-hidden rounded-xl border bg-gray-50 tablet:h-80 laptop:order-1">
           <Image
-            src="/gifs/solutions/operations-overview.png"
+            src="/screenshots/solutions/operations-overview.png"
             alt="Queue and wait-time management"
             width={1920}
             height={1080}
@@ -131,7 +131,7 @@ const PatientFlowSolution = () => {
 
         <div className="relative h-48 w-full overflow-hidden rounded-xl border bg-gray-50 tablet:h-80">
           <Image
-            src="/gifs/solutions/patient-followups.png"
+            src="/screenshots/solutions/patient-followups.png"
             alt="Patient follow-ups"
             width={1920}
             height={1080}

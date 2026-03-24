@@ -53,7 +53,7 @@ const AboutPage = () => {
         <div className="grid gap-6 tablet:grid-cols-2 tablet:items-center">
           <div className="redd">
             <Image
-              src="/exelth-about-juggling.png"
+              src="/about/exelth-about-juggling.png"
               width={500}
               height={400}
               alt="Clinic team juggling tasks"
@@ -109,7 +109,7 @@ const AboutPage = () => {
           </div>
           <div>
             <Image
-              src="/exelth-about-b2c.png"
+              src="/about/exelth-about-b2c.png"
               width={500}
               height={400}
               alt="Patient waiting illustration"
@@ -129,7 +129,7 @@ const AboutPage = () => {
           <div className="grid gap-6 tablet:grid-cols-2 tablet:items-center">
             <div className="redd">
               <Image
-                src="/exelth-manual-1.png"
+                src="/about/exelth-manual-1.png"
                 width={500}
                 height={400}
                 alt="Clinic team juggling tasks"
@@ -170,7 +170,7 @@ const AboutPage = () => {
             </div>
             <div className="redd">
               <Image
-                src="/patient-checks-file.png"
+                src="/about/patient-checks-file.png"
                 width={500}
                 height={400}
                 alt="Clinic team juggling tasks"
@@ -198,7 +198,7 @@ const AboutPage = () => {
           <div className="grid gap-6 tablet:grid-cols-2 tablet:items-center">
             <div className="redd">
               <Image
-                src="/old-software.png"
+                src="/about/old-software.png"
                 width={500}
                 height={400}
                 alt="Clinic team juggling tasks"
@@ -253,7 +253,7 @@ const AboutPage = () => {
           <div className="grid gap-6 tablet:grid-cols-2 tablet:items-center">
             <div className="redd">
               <Image
-                src="/exelth-clinic-team.png"
+                src="/about/exelth-clinic-team.png"
                 width={500}
                 height={400}
                 alt="Clinic team juggling tasks"
@@ -295,7 +295,7 @@ const AboutPage = () => {
             </div>
             <div className="redd">
               <Image
-                src="/patient-peace.png"
+                src="/about/patient-peace.png"
                 width={500}
                 height={400}
                 alt="Clinic team juggling tasks"
@@ -325,7 +325,7 @@ const AboutPage = () => {
           <div className="grid gap-6 tablet:grid-cols-2 tablet:items-center">
             <div className="redd">
               <Image
-                src="/just-exelth.png"
+                src="/about/just-exelth.png"
                 width={500}
                 height={400}
                 alt="Clinic team juggling tasks"
@@ -367,7 +367,7 @@ const AboutPage = () => {
           <div className="grid gap-6 tablet:grid-cols-2 tablet:items-center">
             <div className="redd">
               <Image
-                src="/exelth-building.png"
+                src="/about/exelth-building.png"
                 width={500}
                 height={400}
                 alt="Clinic team juggling tasks"
@@ -458,7 +458,7 @@ const AboutPage = () => {
             accessible and timely.
           </p>
           <video
-            src="/Exelth-product-demo.webm"
+            src="/product/exelth-demo.webm"
             muted
             autoPlay
             loop

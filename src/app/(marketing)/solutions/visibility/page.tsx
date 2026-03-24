@@ -36,7 +36,7 @@ const VisibilitySolution = () => {
           <div className="relative h-48 w-full overflow-hidden rounded-xl border-[5px] border-green-200 bg-gray-50 shadow-xl tablet:h-80 laptop:h-[420px] desktop:h-[520px]">
             {/* Replace src with real screenshot */}
             <Image
-              src="/gifs/solutions/facility-profiles.png"
+              src="/screenshots/solutions/facility-profiles.png"
               alt="Exelth facility public profile"
               width={1920}
               height={1080}
@@ -67,7 +67,7 @@ const VisibilitySolution = () => {
         <div className="relative h-40 w-full overflow-hidden rounded-md border bg-gray-50 tablet:h-80">
           {/* Replace src with real screenshot */}
           <Image
-            src="/gifs/solutions/facility-profile.gif"
+            src="/screenshots/solutions/facility-profile.gif"
             alt="Exelth facility public profile"
             fill
             className="size-full scale-110 object-contain p-4"
@@ -91,7 +91,7 @@ const VisibilitySolution = () => {
       <section className="mt-24 grid items-center gap-10 rounded-lg bg-green-50 p-8 laptop:grid-cols-2">
         <div className="relative order-2 h-40 w-full overflow-hidden rounded-md border bg-gray-50 tablet:h-80 laptop:order-1">
           <Image
-            src="/gifs/solutions/patient-booking-flow.gif"
+            src="/screenshots/solutions/patient-booking-flow.gif"
             alt="Patient booking flow"
             fill
             className="scale-110 object-contain p-4"
@@ -127,7 +127,7 @@ const VisibilitySolution = () => {
 
         <div className="relative h-40 w-full overflow-hidden rounded-md border bg-gray-50 tablet:h-80">
           <Image
-            src="/gifs/solutions/admin-booking-dashboard.png"
+            src="/screenshots/solutions/admin-booking-dashboard.png"
             alt="Admin booking dashboard"
             fill
             className="object-contain p-4"

@@ -9,11 +9,10 @@ gsap.registerPlugin(ScrollTrigger);
 const PhoneMockUp = ({ ref }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const images = [
-    "/mock/mobile-mock-home.jpg",
-    "/mock/mobile-mock-services.jpg",
-    "/mock/mobile-mock-activites.jpg",
-    "/mock/mobile-mock-profile.jpg",
-    "/mock/mobile-mock-search.jpg",
+    "/screenshots/mobile/home.jpg",
+    "/screenshots/mobile/services.jpg",
+    "/screenshots/mobile/activities.jpg",
+    "/screenshots/mobile/search.jpg",
   ];
   //   useLayoutEffect(() => {
   //     const ctx = gsap.context(() => {
@@ -50,7 +49,7 @@ const PhoneMockUp = ({ ref }) => {
       className="absolute -bottom-7 right-0 z-30 w-[80px] overflow-hidden tablet:-right-10 tablet:w-[190px] laptop:-bottom-5 laptop:w-[201px] desktop:bottom-0 desktop:h-[550px] desktop:w-[291px]"
     >
       <Image
-        src="/iphoneMockup.png"
+        src="/devices/iphone-frame.png"
         alt="Phone Frame"
         className="pointer-events-none absolute inset-0 z-10 size-full object-contain"
         width={500}

@@ -35,7 +35,7 @@ const OperationsSolution = () => {
         {/* Hero Visual */}
         <div className="relative h-48 w-fit overflow-hidden rounded-xl border-[5px] border-green-200 bg-white shadow-xl tablet:h-80 laptop:h-[420px] desktop:h-[520px]">
           <Image
-            src="/gifs/solutions/operations-overview.png"
+            src="/screenshots/solutions/operations-overview.png"
             alt="Exelth operations dashboard overview"
             width={1920}
             height={1080}
@@ -63,7 +63,7 @@ const OperationsSolution = () => {
 
         <div className="relative h-48 w-full overflow-hidden rounded-xl border bg-gray-50 tablet:h-80">
           <Image
-            src="/gifs/solutions/department-staff-management.png"
+            src="/screenshots/solutions/department-staff-management.png"
             alt="Department and staff management"
             width={1920}
             height={1080}
@@ -90,7 +90,7 @@ const OperationsSolution = () => {
       <section className="mt-24 grid items-center gap-10 rounded-lg bg-green-50 p-8 laptop:grid-cols-2">
         <div className="relative h-48 w-full overflow-hidden rounded-xl border bg-gray-50 tablet:h-80 laptop:order-1">
           <Image
-            src="/gifs/solutions/visit-lifecycle.png"
+            src="/screenshots/solutions/visit-lifecycle.png"
             alt="Visit lifecycle management"
             width={1920}
             height={1080}
@@ -131,7 +131,7 @@ const OperationsSolution = () => {
 
         <div className="relative h-48 w-full overflow-hidden rounded-xl border bg-gray-50 tablet:h-80">
           <Image
-            src="/gifs/solutions/operations-overview.png"
+            src="/screenshots/solutions/operations-overview.png"
             alt="Admin operations dashboard"
             width={1920}
             height={1080}

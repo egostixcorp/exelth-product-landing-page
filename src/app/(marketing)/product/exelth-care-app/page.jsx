@@ -32,7 +32,7 @@ const ExelthMobileProductPage = () => {
         </div>
         <div className="h-[500px] w-full max-w-[1920px] overflow-hidden">
           <Image
-            src="/assets/mobile/feature_swipe_frame.png"
+            src="/features/mobile/swipe-frame.png"
             width={1980}
             height={1080}
             className="size-full object-contain"

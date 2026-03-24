@@ -59,28 +59,28 @@ const SolutionsClientPage = () => {
           title="Online Visibility & Patient Acquisition"
           desc="Get discovered by patients who are actively choosing where to book."
           href="/solutions/visibility"
-          image="/gifs/solutions/facility-profiles.png"
+          image="/screenshots/solutions/facility-profiles.png"
         />
 
         <SolutionImageCard
           title="Clinic & Hospital Operations"
           desc="Run daily operations with real-time control over staff and visits."
           href="/solutions/operations"
-          image="/gifs/solutions/operations-overview.png"
+          image="/screenshots/solutions/operations-overview.png"
         />
 
         <SolutionImageCard
           title="Patient Flow & Experience"
           desc="Reduce wait times and improve throughput without adding staff."
           href="/solutions/patient-flow"
-          image="/gifs/solutions/patient-flow-overview.png"
+          image="/screenshots/solutions/patient-flow-overview.png"
         />
 
         <SolutionImageCard
           title="Revenue, Clinical & Analytics Suite"
           desc="Billing, prescriptions, reports, and performance insights — all tied to visits."
           href="/solutions/revenue-clinical-analytics"
-          image="/gifs/solutions/revenue-analytics-overview.png"
+          image="/screenshots/solutions/revenue-analytics-overview.png"
         />
       </section>
     </div>

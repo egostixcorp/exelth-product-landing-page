@@ -117,7 +117,7 @@ const NavPopover = () => {
             </div>
             <div className="redd flex h-20 w-52 items-center justify-center overflow-hidden">
               <Image
-                src={"/icon/d-p.png"}
+                src={"/icons/provider-portal.png"}
                 alt=""
                 className="size-full object-cover transition-all duration-500 group-hover:scale-110"
                 width={500}

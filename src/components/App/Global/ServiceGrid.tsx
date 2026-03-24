@@ -8,25 +8,25 @@ const ServiceGrid = () => {
   const services = [
     {
       label: "Book Appointment",
-      img: "/icon/b.png",
+      img: "/icons/book-appointment.png",
       route: "/search",
       publish: true,
     },
     {
       label: "Lab & Radiology",
-      img: "/icon/l.png",
+      img: "/icons/lab-radiology.png",
       route: "/search",
       publish: true,
     },
     {
       label: "Ambulance Service",
-      img: "/icon/a.png",
+      img: "/icons/ambulance.png",
       route: "#",
       publish: false,
     },
     {
       label: "Emergency Service",
-      img: "/icon/e.png",
+      img: "/icons/emergency.png",
       route: "#",
       publish: false,
     },

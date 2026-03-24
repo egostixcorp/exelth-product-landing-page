@@ -10,14 +10,14 @@ const ProductPage = () => {
   const Products = [
     {
       label: "Exelth for Hospitals & Clinics",
-      image: "/assets/product-b2b.png",
+      image: "/product/product-b2b.png",
       route: "/product/exelth-infrastructure-platform",
       headline:
         "Coordinate care, staff, and operations — all in one powerful B2B platform.",
     },
     {
       label: "Exelth for Patients",
-      image: "/assets/product-b2c.png",
+      image: "/product/product-b2c.png",
       route: "/product/exelth-care-app",
       headline:
         "Manage appointments, records, and billing from a single, patient-first mobile app.",

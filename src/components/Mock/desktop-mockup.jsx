@@ -8,14 +8,14 @@ import { useMouse } from "@/components/hooks/useMouse"; // <-- custom hook
 import { ArrowUpRight } from "lucide-react";
 
 const images = [
-  "/mock/mock-home.png",
-  "/mock/mock-calendar.png",
-  "/mock/mock-patients.png",
-  "/mock/mock-apps.png",
-  "/mock/mock-staffs.png",
-  "/mock/mock-payments.png",
-  "/mock/mock-workflows.png",
-  "/mock/mock-analytics.png",
+  "/screenshots/b2b/home.png",
+  "/screenshots/b2b/calendar.png",
+  "/screenshots/b2b/patients.png",
+  "/screenshots/b2b/apps.png",
+  "/screenshots/b2b/staffs.png",
+  "/screenshots/b2b/payments.png",
+  "/screenshots/b2b/workflows.png",
+  "/screenshots/b2b/analytics.png",
 ];
 
 export default function DesktopMockUp() {

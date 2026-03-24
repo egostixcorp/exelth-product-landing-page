@@ -22,19 +22,19 @@ const requestMap = {
     title: "Request to Publish Doctors",
     description:
       "This facility hasn’t published their doctor list yet. Send a request to make it visible for patients.",
-    icon: "/icon/d-p-r.png",
+    icon: "/icons/doctor-publish-request.png",
   },
   department: {
     title: "Request to Publish Departments",
     description:
       "The department information is not visible. Request the facility to share their departments.",
-    icon: "/icon/dp-p-r.png",
+    icon: "/icons/department-publish-request.png",
   },
   lab_test: {
     title: "Request to Publish Lab Tests",
     description:
       "The lab tests list is currently hidden. Ask the facility to make their available tests public.",
-    icon: "/icon/l-p-r.png",
+    icon: "/icons/lab-publish-request.png",
   },
 } as const;
 

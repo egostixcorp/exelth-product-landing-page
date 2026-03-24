@@ -24,7 +24,7 @@ const patientProfileNav = [
 ];
 const profile = [
   { label: "About me", route: "/profile", icon: "/icon/" },
-  { label: "Family Sharing", route: "/profile/family", icon: "/icon/fp.png" },
+  { label: "Family Sharing", route: "/profile/family", icon: "/icons/family-sharing.png" },
 ];
 // type Patient = {
 //   full_name: string;
@@ -99,7 +99,7 @@ export default function ProfileLayout({ children }) {
           {/* Refer a Friend */}
           <div className="relative flex flex-col items-center justify-center rounded-xl border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-md">
             <Image
-              src="/icon/rf.png"
+              src="/icons/refer-friend.png"
               alt="Refer"
               width={80}
               height={80}
@@ -116,7 +116,7 @@ export default function ProfileLayout({ children }) {
               Coming Soon
             </div>
             <Image
-              src="/icon/fp.png"
+              src="/icons/family-sharing.png"
               alt="Family"
               width={80}
               height={80}

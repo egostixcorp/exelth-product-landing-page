@@ -9,11 +9,11 @@ const MobileAppLayout = () => {
   const container = useRef(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const images = [
-    "/mock/feature_home.png",
-    "/mock/feature_services.png",
-    "/mock/feature_activities.png",
-    "/mock/feature_search_centars.png",
-    "/mock/feature_profile.png",
+    "/features/mobile/home.png",
+    "/features/mobile/services.png",
+    "/features/mobile/activities.png",
+    "/features/mobile/search-centers.png",
+    "/features/mobile/profile.png",
   ];
   useLayoutEffect(() => {
     const Gctx = gsap.context(() => {

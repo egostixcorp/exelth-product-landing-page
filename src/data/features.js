@@ -4,7 +4,7 @@ export const features = [
     title: "Real-Time Communication Hub",
     bntitle: "রিয়েল-টাইম কমিউনিকেশন হাব",
     icon: <Icon.MessageSquareMore />,
-    image: "/assets/feature_inbox.png",
+    image: "/features/b2b/inbox.png",
     description:
       "Seamlessly connect departments like billing, pharmacy, nursing, and doctors for instant updates and collaboration. Ensure all stakeholders are informed about patient statuses and tasks in real time.",
     bnDesc:
@@ -20,7 +20,7 @@ export const features = [
     title: "Command Prompt Integration",
     bntitle: "কমান্ড প্রম্পট ইন্টিগ্রেশন",
     icon: <Icon.TerminalSquare />, // Or another relevant icon from your Icon set
-    image: "/assets/feature_cmd.png",
+    image: "/features/b2b/command-palette.png",
     description:
       "Enable hospital staff to quickly access patient actions, workflows, and system commands using a universal command palette. Speed up daily tasks with keyboard-first navigation and intelligent quick actions.",
     bnDesc:
@@ -30,7 +30,7 @@ export const features = [
     title: "Discharge Scheduling",
     bntitle: "ডিসচার্জ শিডিউলিং",
     icon: <Icon.CalendarSync />,
-    image: "/assets/feature_calendar.png",
+    image: "/features/b2b/calendar.png",
     description:
       "Streamline patient discharge by aligning readiness with administrative and medical clearance. Notify staff to prepare rooms for the next admission, reducing bottlenecks and improving bed turnover.",
     bnDesc:
@@ -40,7 +40,7 @@ export const features = [
     title: "Dashboard for Hospital Staff",
     bntitle: "হাসপাতালের কর্মীদের জন্য ড্যাশবোর্ড",
     icon: <Icon.LayoutDashboard />,
-    image: "/assets/feature_staff_manage.png",
+    image: "/features/b2b/staff-management.png",
     description:
       "Empower hospital staff with a centralized dashboard to monitor patient checkouts, track tasks, and resolve delays efficiently. Predict discharge times to optimize bed occupancy.",
     bnDesc:
@@ -50,7 +50,7 @@ export const features = [
     title: "Mobile App for Patients",
     bntitle: "রোগীদের জন্য মোবাইল অ্যাপ",
     icon: <Icon.TabletSmartphone />,
-    image: "/assets/feature_mobile.png",
+    image: "/features/b2b/mobile-connect.png",
     description:
       "Enable patients to track their checkout progress, view bills, get insurance updates, and make payments through a user-friendly mobile app. Simplify the patient experience with real-time updates and transparency.",
     bnDesc:
@@ -66,7 +66,7 @@ export const features = [
     title: "Data Analytics and Insights",
     bntitle: "ডেটা অ্যানালিটিক্স এবং অন্তর্দৃষ্টি",
     icon: <Icon.FileChartColumn />,
-    image: "/assets/feature_analytics.png",
+    image: "/features/b2b/analytics.png",
     description:
       "Use analytics to identify inefficiencies in hospital operations, track patient trends, and monitor financial metrics. Generate actionable reports for decision-making and process improvement.",
     bnDesc:
@@ -83,7 +83,7 @@ export const Mobilefeatures = [
     title: "Smart Appointment Scheduling",
     bntitle: "স্মার্ট অ্যাপয়েন্টমেন্ট শিডিউলিং",
     icon: <Icon.CalendarClock />,
-    image: "/assets/mobile/feature_home.png",
+    image: "/features/mobile/home.png",
     description:
       "Book, reschedule, or cancel appointments effortlessly. Stay informed with real-time queue updates and estimated wait times to minimize delays.",
     bnDesc:
@@ -93,7 +93,7 @@ export const Mobilefeatures = [
     title: "Unified Patient Inbox",
     bntitle: "ইউনিফাইড পেশেন্ট ইনবক্স",
     icon: <Icon.MailOpen />,
-    image: "/assets/mobile/feature_inbox_notify.png",
+    image: "/features/mobile/inbox-notify.png",
     description:
       "Access all your health communications in one place—appointments, lab results, prescriptions, and follow-ups—with swipe-to-manage support.",
     bnDesc:
@@ -103,7 +103,7 @@ export const Mobilefeatures = [
     title: "Discover Nearby Care Centers",
     bntitle: "নিকটস্থ কেয়ার সেন্টার আবিষ্কার করুন",
     icon: <Icon.Hospital />,
-    image: "/assets/mobile/feature_search_centers.png",
+    image: "/features/mobile/search-centers.png",
     description:
       "Easily find hospitals, clinics, and specialty care centers within the Exelth network. Get directions, services, and contact details instantly.",
     bnDesc:
@@ -113,7 +113,7 @@ export const Mobilefeatures = [
     title: "Healthcare Journey Tracker",
     bntitle: "হেলথকেয়ার জার্নি ট্র্যাকার",
     icon: <Icon.ListTodo />,
-    image: "/assets/mobile/feature_appointments.png",
+    image: "/features/mobile/appointments.png",
     description:
       "Monitor your full care experience—from appointments and room allocation to medications, meals, and medical records—all in one timeline.",
     bnDesc:
@@ -123,7 +123,7 @@ export const Mobilefeatures = [
     title: "Secure Medical Records Vault",
     bntitle: "নিরাপদ মেডিকেল রেকর্ড ভল্ট",
     icon: <Icon.FileLock />,
-    image: "/assets/mobile/feature_activities.png",
+    image: "/features/mobile/activities.png",
     description:
       "Access and manage your medical history and lab reports anytime. Protected with end-to-end encryption and privacy-first architecture.",
     bnDesc:
@@ -133,7 +133,7 @@ export const Mobilefeatures = [
     title: "Switch Between Patient & Doctor Mode",
     bntitle: "রোগী এবং ডাক্তার মোডের মধ্যে সুইচ করুন",
     icon: <Icon.User />,
-    image: "/assets/mobile/feature_switch_doctor.png",
+    image: "/features/mobile/switch-doctor.png",
     description:
       "Seamlessly toggle between patient and doctor profiles on the same mobile app. Access the right features, appointments, and tools based on your role—secure and effortless.",
     bnDesc:
@@ -142,7 +142,7 @@ export const Mobilefeatures = [
   {
     title: "Smart Search with Filters",
     bntitle: "ফিল্টার সহ স্মার্ট সার্চ",
-    image: "/assets/mobile/feature_filter_option.png",
+    image: "/features/mobile/filter-option.png",
     icon: <Icon.Filter />,
     description:
       "Quickly find doctors, departments, hospitals, or services using powerful search with filters. Sort by specialty, availability, or proximity to get what you need instantly.",
@@ -154,7 +154,7 @@ export const Mobilefeatures = [
     title: "Real-Time Health Notifications",
     bntitle: "রিয়েল-টাইম হেলথ নোটিফিকেশন",
     icon: <Icon.BellRing />,
-    image: "/assets/mobile/feature_inbox_unread.png",
+    image: "/features/mobile/inbox-unread.png",
     description:
       "Get instant alerts for every important update—from appointment reminders to new prescriptions and lab results.",
     bnDesc:
@@ -166,7 +166,7 @@ export const WebAppfeatures = [
     title: "Real-Time Communication Hub",
     bntitle: "রিয়েল-টাইম কমিউনিকেশন হাব",
     icon: <Icon.MessageSquareMore />,
-    image: "/assets/feature_inbox.png",
+    image: "/features/b2b/inbox.png",
     description:
       "Seamlessly connect departments like billing, pharmacy, nursing, and doctors for instant updates and collaboration. Ensure all stakeholders are informed about patient statuses and tasks in real time.",
     bnDesc:
@@ -182,7 +182,7 @@ export const WebAppfeatures = [
     title: "Command Prompt Integration",
     bntitle: "কমান্ড প্রম্পট ইন্টিগ্রেশন",
     icon: <Icon.TerminalSquare />, // Or another relevant icon from your Icon set
-    image: "/assets/feature_cmd.png",
+    image: "/features/b2b/command-palette.png",
     description:
       "Enable hospital staff to quickly access patient actions, workflows, and system commands using a universal command palette. Speed up daily tasks with keyboard-first navigation and intelligent quick actions.",
     bnDesc:
@@ -192,7 +192,7 @@ export const WebAppfeatures = [
     title: "Discharge Scheduling",
     bntitle: "ডিসচার্জ শিডিউলিং",
     icon: <Icon.CalendarSync />,
-    image: "/assets/feature_calendar.png",
+    image: "/features/b2b/calendar.png",
     description:
       "Streamline patient discharge by aligning readiness with administrative and medical clearance. Notify staff to prepare rooms for the next admission, reducing bottlenecks and improving bed turnover.",
     bnDesc:
@@ -202,7 +202,7 @@ export const WebAppfeatures = [
     title: "Dashboard for Hospital Staff",
     bntitle: "হাসপাতালের কর্মীদের জন্য ড্যাশবোর্ড",
     icon: <Icon.LayoutDashboard />,
-    image: "/assets/feature_staff_manage.png",
+    image: "/features/b2b/staff-management.png",
     description:
       "Empower hospital staff with a centralized dashboard to monitor patient checkouts, track tasks, and resolve delays efficiently. Predict discharge times to optimize bed occupancy.",
     bnDesc:
@@ -219,7 +219,7 @@ export const WebAppfeatures = [
     title: "Data Analytics and Insights",
     bntitle: "ডেটা অ্যানালিটিক্স এবং অন্তর্দৃষ্টি",
     icon: <Icon.FileChartColumn />,
-    image: "/assets/feature_analytics.png",
+    image: "/features/b2b/analytics.png",
     description:
       "Use analytics to identify inefficiencies in hospital operations, track patient trends, and monitor financial metrics. Generate actionable reports for decision-making and process improvement.",
     bnDesc:
@@ -236,7 +236,7 @@ export const featuresV1 = [
     title: "Facility Profile & Online Booking",
     bntitle: "ফ্যাসিলিটি প্রোফাইল ও অনলাইন বুকিং",
     icon: <Icon.Hospital />,
-    image: "/assets/features/facility_profile.png",
+    image: "/features/b2b/facility-profile.png",
     description:
       "Create a trusted public Exelth profile for your clinic or hospital. Patients can discover services, doctors, departments, and book appointments directly online.",
     bnDesc:
@@ -247,7 +247,7 @@ export const featuresV1 = [
     title: "Operational Visit Management",
     bntitle: "অপারেশনাল ভিজিট ম্যানেজমেন্ট",
     icon: <Icon.Activity />,
-    image: "/assets/features/visit_management.png",
+    image: "/features/b2b/visit-management.png",
     description:
       "Manage every patient visit from arrival to completion. Control check-ins, consultation flow, prescriptions, and visit outcomes using a structured workflow.",
     bnDesc:
@@ -258,7 +258,7 @@ export const featuresV1 = [
     title: "Live Patient Flow & Queue Control",
     bntitle: "লাইভ পেশেন্ট ফ্লো ও কিউ কন্ট্রোল",
     icon: <Icon.Users />,
-    image: "/assets/features/patient_flow.png",
+    image: "/features/b2b/patient-flow.png",
     description:
       "Track patient movement across departments in real time. Reduce waiting times and improve coordination between reception, doctors, labs, and billing.",
     bnDesc:
@@ -269,7 +269,7 @@ export const featuresV1 = [
     title: "Billing, Prescriptions & Clinical Records",
     bntitle: "বিলিং, প্রেসক্রিপশন ও ক্লিনিক্যাল রেকর্ড",
     icon: <Icon.FileText />,
-    image: "/assets/features/billing_records.png",
+    image: "/features/b2b/billing-records.png",
     description:
       "Generate visit-linked bills, prescriptions, and medical records automatically. Keep clinical data organized and accessible across departments.",
     bnDesc:
@@ -280,7 +280,7 @@ export const featuresV1 = [
     title: "Staff & Department Management",
     bntitle: "স্টাফ ও বিভাগ ম্যানেজমেন্ট",
     icon: <Icon.UsersRound />,
-    image: "/assets/features/staff_management.png",
+    image: "/features/b2b/staff-management.png",
     description:
       "Organize doctors, staff members, and departments with role-based access control. Ensure each team member has the right tools and permissions.",
     bnDesc:
@@ -291,7 +291,7 @@ export const featuresV1 = [
     title: "Command Palette & Fast Actions",
     bntitle: "কমান্ড প্যালেট ও দ্রুত অ্যাকশন",
     icon: <Icon.TerminalSquare />,
-    image: "/assets/features/command_palette.png",
+    image: "/features/b2b/command-palette.png",
     description:
       "Access patients, visits, and system actions instantly using a universal command palette. Speed up daily operations with keyboard-first navigation.",
     bnDesc:
@@ -302,7 +302,7 @@ export const featuresV1 = [
     title: "Operational Analytics & Insights",
     bntitle: "অপারেশনাল অ্যানালিটিক্স ও ইনসাইট",
     icon: <Icon.FileChartColumn />,
-    image: "/assets/features/analytics.png",
+    image: "/features/b2b/analytics.png",
     description:
       "Monitor clinic performance with real-time dashboards. Track visit volumes, patient flow efficiency, revenue metrics, and operational trends.",
     bnDesc:
@@ -313,7 +313,7 @@ export const featuresV1 = [
     title: "Patient Mobile Connectivity",
     bntitle: "পেশেন্ট মোবাইল কানেক্টিভিটি",
     icon: <Icon.Smartphone />,
-    image: "/assets/features/mobile_connect.png",
+    image: "/features/b2b/mobile-connect.png",
     description:
       "Connect your facility with the Exelth Care App so patients can book visits, receive prescriptions, view reports, and get real-time updates.",
     bnDesc:

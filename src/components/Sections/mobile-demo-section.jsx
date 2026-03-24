@@ -2,10 +2,9 @@ import React from "react";
 import MobileMock from "@/components/Mock/mobile-mockup";
 const MobileDemoSection = () => {
   const mobileMocks = [
-    "/mock/mobile-mock-home.jpg",
-    "/mock/mobile-mock-search.jpg",
-    "/mock/mobile-mock-activites.jpg",
-    // "/mock/mobile-mock-profile.jpg",
+    "/screenshots/mobile/home.jpg",
+    "/screenshots/mobile/search.jpg",
+    "/screenshots/mobile/activities.jpg",
   ];
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-start gap-5">

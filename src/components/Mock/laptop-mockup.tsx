@@ -16,7 +16,7 @@ const LaptopMockup: React.FC<LaptopMockupProps> = ({
     <div className="relative mx-auto w-full max-w-5xl">
       {/* Laptop frame */}
       <Image
-        src="/device-mbp-15-nonotch.png"
+        src="/devices/macbook-frame.png"
         alt="Laptop Frame"
         width={1280}
         height={800}

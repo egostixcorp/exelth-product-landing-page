@@ -14,14 +14,14 @@ const PhoneMockUp = ({ ref }) => {
   const cursorRef = useRef(null);
   const { x, y, isInside } = useMouse(mockRef);
   const images = [
-    "/mock/mobile-mock-home.jpg",
-    "/mock/mobile-mock-services.jpg",
-    "/mock/mobile-mock-search.jpg",
-    "/mock/mobile-mock-activites.jpg",
-    "/mock/mobile-mock-account-profile.jpg",
-    "/mock/mobile-mock-appointments.jpg",
-    "/mock/mobile-mock-booking.jpg",
-    "/mock/mobile-mock-facility-profile.jpg",
+    "/screenshots/mobile/home.jpg",
+    "/screenshots/mobile/services.jpg",
+    "/screenshots/mobile/search.jpg",
+    "/screenshots/mobile/activities.jpg",
+    "/screenshots/mobile/account-profile.jpg",
+    "/screenshots/mobile/appointments.jpg",
+    "/screenshots/mobile/booking.jpg",
+    "/screenshots/mobile/facility-profile.jpg",
   ];
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -91,7 +91,7 @@ const PhoneMockUp = ({ ref }) => {
       className="absolute -bottom-7 right-0 z-30 w-[80px] overflow-hidden tablet:-right-10 tablet:w-[190px] laptop:-bottom-5 laptop:w-[201px] desktop:-bottom-5 desktop:h-[550px] desktop:w-[291px]"
     >
       <Image
-        src="/iphoneMockup.png"
+        src="/devices/iphone-frame.png"
         alt="Phone Frame"
         className="pointer-events-none absolute inset-0 z-10 size-full object-contain"
         width={500}
