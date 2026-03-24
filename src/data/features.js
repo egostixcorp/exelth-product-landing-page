@@ -236,7 +236,8 @@ export const featuresV1 = [
     title: "Facility Profile & Online Booking",
     bntitle: "ফ্যাসিলিটি প্রোফাইল ও অনলাইন বুকিং",
     icon: <Icon.Hospital />,
-    image: "/features/b2b/facility-profile.png",
+    image: "/screenshots/solutions/facility-profiles.png",
+    href: "/solutions/visibility",
     description:
       "Create a trusted public Exelth profile for your clinic or hospital. Patients can discover services, doctors, departments, and book appointments directly online.",
     bnDesc:
@@ -247,7 +248,8 @@ export const featuresV1 = [
     title: "Operational Visit Management",
     bntitle: "অপারেশনাল ভিজিট ম্যানেজমেন্ট",
     icon: <Icon.Activity />,
-    image: "/features/b2b/visit-management.png",
+    image: "/screenshots/solutions/visit-lifecycle.png",
+    href: "/solutions/operations",
     description:
       "Manage every patient visit from arrival to completion. Control check-ins, consultation flow, prescriptions, and visit outcomes using a structured workflow.",
     bnDesc:
@@ -258,7 +260,8 @@ export const featuresV1 = [
     title: "Live Patient Flow & Queue Control",
     bntitle: "লাইভ পেশেন্ট ফ্লো ও কিউ কন্ট্রোল",
     icon: <Icon.Users />,
-    image: "/features/b2b/patient-flow.png",
+    image: "/screenshots/solutions/patient-flow-overview.png",
+    href: "/solutions/patient-flow",
     description:
       "Track patient movement across departments in real time. Reduce waiting times and improve coordination between reception, doctors, labs, and billing.",
     bnDesc:
@@ -269,7 +272,8 @@ export const featuresV1 = [
     title: "Billing, Prescriptions & Clinical Records",
     bntitle: "বিলিং, প্রেসক্রিপশন ও ক্লিনিক্যাল রেকর্ড",
     icon: <Icon.FileText />,
-    image: "/features/b2b/billing-records.png",
+    image: "/screenshots/solutions/visit-linked-billing.png",
+    href: "/solutions/revenue-clinical-analytics",
     description:
       "Generate visit-linked bills, prescriptions, and medical records automatically. Keep clinical data organized and accessible across departments.",
     bnDesc:
@@ -281,6 +285,7 @@ export const featuresV1 = [
     bntitle: "স্টাফ ও বিভাগ ম্যানেজমেন্ট",
     icon: <Icon.UsersRound />,
     image: "/features/b2b/staff-management.png",
+    href: "/solutions/operations",
     description:
       "Organize doctors, staff members, and departments with role-based access control. Ensure each team member has the right tools and permissions.",
     bnDesc:
@@ -292,6 +297,7 @@ export const featuresV1 = [
     bntitle: "কমান্ড প্যালেট ও দ্রুত অ্যাকশন",
     icon: <Icon.TerminalSquare />,
     image: "/features/b2b/command-palette.png",
+    href: "/solutions/operations",
     description:
       "Access patients, visits, and system actions instantly using a universal command palette. Speed up daily operations with keyboard-first navigation.",
     bnDesc:
@@ -303,6 +309,7 @@ export const featuresV1 = [
     bntitle: "অপারেশনাল অ্যানালিটিক্স ও ইনসাইট",
     icon: <Icon.FileChartColumn />,
     image: "/features/b2b/analytics.png",
+    href: "/solutions/revenue-clinical-analytics",
     description:
       "Monitor clinic performance with real-time dashboards. Track visit volumes, patient flow efficiency, revenue metrics, and operational trends.",
     bnDesc:
@@ -314,6 +321,7 @@ export const featuresV1 = [
     bntitle: "পেশেন্ট মোবাইল কানেক্টিভিটি",
     icon: <Icon.Smartphone />,
     image: "/features/b2b/mobile-connect.png",
+    href: "/product/exelth-care-app",
     description:
       "Connect your facility with the Exelth Care App so patients can book visits, receive prescriptions, view reports, and get real-time updates.",
     bnDesc:

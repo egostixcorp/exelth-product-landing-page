@@ -17,34 +17,39 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.exelth.com/"),
+
   title: {
     template: "%s | Exelth",
-    default: "Exelth | Centralized Digital Health Platform",
+    default:
+      "Exelth | Healthcare Infrastructure Platform for Clinics & Hospitals",
   },
+
   description:
-    "Exelth is a next-generation digital healthcare platform by Egostix Engineering. We bring together patients, doctors, and healthcare facilities into one centralized system to improve access, efficiency, and patient care.",
+    "Exelth is a unified healthcare infrastructure platform for clinics and hospitals. Manage appointments, patient flow, billing, clinical records, staff coordination, and analytics in one connected system.",
+
   keywords: [
     "Exelth",
-    "Egostix Engineering",
-    "digital health platform",
-    "healthcare technology",
-    "telemedicine",
-    "patient management",
-    "doctor availability",
-    "online doctor booking",
-    "medical records",
-    "e-prescriptions",
-    "lab tests booking",
+    "healthcare operation platform",
+    "clinic management software",
+    "hospital management system",
+    "patient flow management",
+    "visit management system",
+    "medical billing software",
+    "clinic scheduling software",
+    "hospital operations software",
+    "healthcare infrastructure platform",
   ],
+
   authors: [{ name: "Egostix Engineering", url: "https://www.egostix.com/" }],
   creator: "Egostix Engineering",
   publisher: "Exelth",
+
   openGraph: {
     type: "website",
     url: "https://www.exelth.com/",
-    title: "Exelth | Centralized Digital Health Platform",
+    title: "Exelth | Unified Healthcare Operations Platform",
     description:
-      "Exelth unifies healthcare with a centralized platform for patients, doctors, and organizations. Streamline appointments, lab tests, prescriptions, and records in one place.",
+      "Run your clinic or hospital on one system. Exelth connects operations, patient flow, billing, clinical records, and analytics to improve efficiency and control.",
     siteName: "Exelth",
   },
 };

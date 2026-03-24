@@ -31,29 +31,25 @@ const productItems = [
 const featureItems = [
   {
     title: "Facility Profile & Online Booking",
-    // href: "/features/visibility-booking",
-    href: "/features/",
+    href: "/features/visibility-booking",
     description:
       "Public Exelth profiles that let patients discover, and book clinics directly.",
   },
   {
     title: "Operational Visit Management",
-    // href: "/features/visit-management",
-    href: "/features/",
+    href: "/features/visit-management",
     description:
       "Run daily clinic and hospital operations with visit-based workflows and role control.",
   },
   {
     title: "Live Patient Flow & Queue Control",
-    // href: "/features/patient-flow",
-    href: "/features/",
+    href: "/features/patient-flow",
     description:
       "Track patient status in real time and manage queues to reduce waiting time.",
   },
   {
     title: "Billing, Clinical Records & Analytics",
-    // href: "/features/revenue-clinical-analytics",
-    href: "/features/",
+    href: "/features/revenue-clinical-analytics",
     description:
       "Visit-linked billing, prescriptions, reports, and performance insights in one system.",
   },
@@ -97,7 +93,7 @@ const DesktopNav = () => {
             <Link href={"/product"}>Products</Link>
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 grid-cols-2 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+            <ul className="grid grid-cols-2 gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
@@ -128,7 +124,7 @@ const DesktopNav = () => {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid grid-cols-3 gap-3 p-4 md:w-[500px] lg:w-[600px] lg:grid-cols-[.75fr_1fr]p">
+            <ul className="lg:grid-cols-[.75fr_1fr]p grid grid-cols-3 gap-3 p-4 md:w-[500px] lg:w-[600px]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
@@ -138,7 +134,7 @@ const DesktopNav = () => {
                     <div className="mb-2 mt-4 text-2xl font-bold text-green-500">
                       Exelth Solutions
                     </div>
-                    <p className="text-sm leading-snug text-muted-foreground line-clamp-2">
+                    <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                       Solve real clinic and hospital problems — from patient
                       discovery to daily operations, visit flow, and revenue
                       clarity.
@@ -168,13 +164,19 @@ const DesktopNav = () => {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Features</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid grid-cols-2 gap-3 p-4 md:w-[500px] lg:w-[600px]">
-              {featureItems.map((item) => (
-                <ListItem key={item.title} title={item.title} href={item.href}>
-                  {item.description}
-                </ListItem>
-              ))}
-            </ul>
+            <div className="w-[560px] p-4 lg:w-[640px]">
+              <ul className="grid grid-cols-2 gap-2">
+                {featureItems.map((item) => (
+                  <ListItem
+                    key={item.title}
+                    title={item.title}
+                    href={item.href}
+                  >
+                    {item.description}
+                  </ListItem>
+                ))}
+              </ul>
+            </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
 

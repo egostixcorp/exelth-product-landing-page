@@ -66,24 +66,17 @@ const HeroSection = () => {
           className="translate-y-[50%] text-xl font-semibold opacity-0 blur-sm tablet:text-2xl laptop:text-3xl desktop:text-5xl"
         >
           <TranslatableText
-            en="Bringing Healthcare Centers and Patients Together — Seamlessly."
-            bn="স্বাস্থ্যসেবা কেন্দ্র এবং রোগীদের একত্রিত করা — নির্বিঘ্নে।"
+            en="Infrastructure to run and grow modern healthcare facilities"
+            bn="আধুনিক স্বাস্থ্যসেবা প্রতিষ্ঠানসমূহ পরিচালনা ও সম্প্রসারণের অবকাঠামো"
           />
         </h1>
         <p
           id="desc1"
-          className="translate-y-[50%] text-xs opacity-0 blur-sm tablet:text-sm desktop:text-xl"
+          className="translate-y-[50%] px-5 text-xs opacity-0 blur-sm tablet:text-sm desktop:text-2xl"
         >
           <TranslatableText
-            en="Built for clinics and hospitals to manage
-          appointments, staff, and care coordination —
-          and for patients to book visits, track health, and
-          stay connected in real time."
-            bn="ক্লিনিক এবং হাসপাতালগুলির জন্য তৈরি করা হয়েছে
-
-অ্যাপয়েন্টমেন্ট, কর্মী এবং যত্ন সমন্বয় পরিচালনা করার জন্য —
-এবং রোগীদের ভিজিট বুক করার জন্য, স্বাস্থ্য ট্র্যাক করার জন্য এবং
-রিয়েল টাইমে সংযুক্ত থাকার জন্য।"
+            en="Coordinate operations, patient flow, billing, clinical records, and visibility — from your first patient to enterprise scale."
+            bn="আপনার প্রথম রোগী থেকে শুরু করে প্রাতিষ্ঠানিক পর্যায় পর্যন্ত—পরিচালন কার্যক্রম, রোগীর প্রবাহ, বিলিং, ক্লিনিক্যাল নথিপত্র এবং দৃশ্যমানতার সমন্বয় সাধন করুন।"
           />
         </p>
       </div>
@@ -91,11 +84,11 @@ const HeroSection = () => {
         id="action-button"
         className="flex translate-y-[50%] flex-col items-center justify-center gap-5 opacity-0 blur-sm"
       >
-        <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
           <Link href={"/search"} className="w-80">
             <SearchHeader />
           </Link>
-        </div>
+        </div> */}
 
         {/* Mobile App Button with Tooltip */}
         <div className="relative flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -114,7 +107,7 @@ const HeroSection = () => {
             <Link href="https://app.exelth.com/auth/sign-up">
               <Button
                 variant="outline"
-                className="h-11 w-72 border-green-600 text-green-700 hover:bg-green-50 tablet:w-72 hover:text-green-700 laptop:w-fit"
+                className="h-11 w-72 border-green-600 text-green-700 hover:bg-green-50 hover:text-green-700 tablet:w-72 laptop:w-fit"
               >
                 List Your Facility (Free)
               </Button>
