@@ -1,18 +1,22 @@
+"use client";
+
 import React from "react";
+import { useRouter } from "next/navigation";
 import FallBackScreen from "@/components/App/Skeleton/FallBackScreen";
 
-const page = () => {
+const RoomsBedAllocationPage = () => {
+  const router = useRouter();
   return (
-    <div>
+    <div className="w-full max-w-3xl">
       <FallBackScreen
-        icon={"home"}
-        title={"  No room or bed allocated yet."}
-        subtitle={" When admitted, your room info will appear here."}
+        icon="home"
+        title="No room or bed allocated yet."
+        subtitle="When admitted, your room and bed information will appear here."
         actionText="Refresh"
-        // onPress={() => router.back()}
+        onPress={() => router.refresh()}
       />
     </div>
   );
 };
 
-export default page;
+export default RoomsBedAllocationPage;

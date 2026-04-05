@@ -9,7 +9,9 @@
       "Bash(find /d/Documents/00_Company/exelth-product-landing-page -type f \\\\\\(-name *readme* -o -name *doc* -o -name *knowledge* -o -name *overview* -o -name *brand* -o -name *copy* -o -name *about* -o -name *product* -o -name *exelth* \\\\\\))",
       "mcp__claude_ai_Linear__list_issues",
       "Bash(python -c \"import sys,json; data=json.load\\(sys.stdin\\); text=data[0]['text']; issues=json.loads\\(text\\); print\\(json.dumps\\([{'id':i['identifier'],'title':i['title'],'team':i.get\\('team',{}\\).get\\('name',''\\),'state':i.get\\('state',{}\\).get\\('name',''\\),'completedAt':i.get\\('completedAt',''\\),'description':i.get\\('description',''\\)[:200] if i.get\\('description'\\) else ''} for i in issues], indent=2\\)\\)\")",
-      "Bash(python -c ':*)"
+      "Bash(python -c ':*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx eslint:*)"
     ]
   }
 }

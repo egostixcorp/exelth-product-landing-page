@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import dayjs from "dayjs";
 import LocalizedFormat from "dayjs/plugin/localizedFormat";
+import { toast } from "sonner";
 
 import {
   cancelAppointmentByPatient,
@@ -16,15 +17,35 @@ import {
   getPublicFacilityDetailsByID,
 } from "@/app/actions/facility";
 import { formatTimeToAMPM } from "@/lib/utils";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 dayjs.extend(LocalizedFormat);
+
+const statusColor = {
+  booked: "text-green-600",
+  rescheduled: "text-blue-500",
+  completed: "text-green-600",
+  cancelled: "text-red-500",
+};
 
 const AppointmentDetailPage = () => {
   const router = useRouter();
   const params = useParams();
   const searchParams = useSearchParams();
 
-  const appointment_id = params.appointment_id;
+  const appointment_id = Array.isArray(params.appointment_id)
+    ? params.appointment_id[0]
+    : params.appointment_id;
   const doctor_id = searchParams.get("doctor_id");
   const facility_id = searchParams.get("facility_id");
 
@@ -63,7 +84,7 @@ const AppointmentDetailPage = () => {
         }
       } catch (err) {
         console.error("Failed to load appointment details", err);
-        alert("Failed to load appointment details");
+        toast.error("Failed to load appointment details");
       } finally {
         setLoading(false);
       }
@@ -73,30 +94,26 @@ const AppointmentDetailPage = () => {
   }, [appointment_id, doctor_id, facility_id]);
 
   const handleCancel = async () => {
-    const ok = confirm("Are you sure you want to cancel this appointment?");
-    if (!ok) return;
-
     try {
       setIsCancelling(true);
       await cancelAppointmentByPatient(appointment_id);
       setAppointment((prev) => ({ ...prev, status: "cancelled" }));
+      toast.success("Appointment cancelled.");
     } catch (err) {
-      alert(err.message || "Failed to cancel appointment");
+      toast.error(err.message || "Failed to cancel appointment");
     } finally {
       setIsCancelling(false);
     }
   };
 
   const handleDelete = async () => {
-    const ok = confirm("Are you sure you want to delete this appointment?");
-    if (!ok) return;
-
     try {
       setIsDeleting(true);
       await deletePatientAppointment(appointment_id);
+      toast.success("Appointment deleted.");
       router.back();
     } catch (err) {
-      alert(err.message || "Failed to delete appointment");
+      toast.error(err.message || "Failed to delete appointment");
     } finally {
       setIsDeleting(false);
     }
@@ -116,22 +133,25 @@ const AppointmentDetailPage = () => {
   }
 
   return (
-    <div className="mx-auto max-w-xl p-6">
+    <div className="w-full max-w-xl">
       <div className="rounded-2xl border bg-white p-6 shadow-sm">
         {/* Doctor */}
         <div className="mb-6 flex items-center gap-4">
           {doctor.user?.avatar_url ? (
             <img
               src={doctor.user.avatar_url}
-              alt=""
+              alt={doctor.user?.full_name ?? "Doctor"}
               className="h-14 w-14 rounded-full object-cover"
             />
           ) : (
-            <div className="h-14 w-14 rounded-full bg-gray-200" />
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gray-100 text-lg font-semibold text-gray-600">
+              {doctor.user?.full_name?.[0] ?? "?"}
+            </div>
           )}
-
           <div>
-            <p className="text-lg font-semibold">{doctor.user?.full_name}</p>
+            <p className="text-lg font-semibold text-gray-900">
+              {doctor.user?.full_name}
+            </p>
             <p className="text-sm text-gray-500">
               {doctor.department?.name || "—"}
             </p>
@@ -144,7 +164,9 @@ const AppointmentDetailPage = () => {
           {formatTimeToAMPM(appointment.time)}
         </Detail>
 
-        <Detail label="Appointment ID">{appointment_id}</Detail>
+        <Detail label="Appointment ID">
+          <span className="font-mono text-sm">{appointment_id}</span>
+        </Detail>
 
         <Detail label="Seat Number">
           {appointmentSeat?.seat_number || "—"}
@@ -154,45 +176,50 @@ const AppointmentDetailPage = () => {
 
         <Detail label="Status">
           <span
-            className={`font-semibold capitalize ${
-              appointment.status === "cancelled"
-                ? "text-red-500"
-                : appointment.status === "completed"
-                  ? "text-green-600"
-                  : appointment.status === "upcoming"
-                    ? "text-blue-500"
-                    : "text-yellow-500"
-            }`}
+            className={`font-semibold capitalize ${statusColor[appointment.status] ?? "text-yellow-600"}`}
           >
             {appointment.status}
           </span>
         </Detail>
 
-        {/* Actions */}
-        {appointment.status !== "cancelled" && (
-          <button
-            onClick={handleCancel}
+        {/* Cancel action */}
+        {!isCancelled && (
+          <ConfirmDialog
+            title="Cancel this appointment?"
+            description="This will cancel your appointment. You can book a new one at any time."
+            confirmLabel={isCancelling ? "Cancelling..." : "Yes, cancel"}
+            confirmClassName="bg-red-600 hover:bg-red-700 text-white"
+            onConfirm={handleCancel}
             disabled={isCancelling || isCompleted}
-            className={`mt-6 w-full rounded-xl py-3 font-semibold text-white ${
-              isCancelling || isCompleted
-                ? "bg-gray-300"
-                : "bg-red-500 hover:bg-red-600"
-            }`}
           >
-            {isCancelling ? "Cancelling..." : "Cancel Appointment"}
-          </button>
+            <Button
+              variant="destructive"
+              className="mt-6 w-full"
+              disabled={isCancelling || isCompleted}
+            >
+              Cancel Appointment
+            </Button>
+          </ConfirmDialog>
         )}
 
-        {appointment.status === "cancelled" && (
-          <button
-            onClick={handleDelete}
+        {/* Delete action */}
+        {isCancelled && (
+          <ConfirmDialog
+            title="Delete this appointment?"
+            description="This will permanently remove the appointment record. This action cannot be undone."
+            confirmLabel={isDeleting ? "Deleting..." : "Yes, delete"}
+            confirmClassName="bg-red-600 hover:bg-red-700 text-white"
+            onConfirm={handleDelete}
             disabled={isDeleting}
-            className={`mt-4 w-full rounded-xl py-3 font-semibold text-white ${
-              isDeleting ? "bg-gray-300" : "bg-gray-500 hover:bg-gray-600"
-            }`}
           >
-            {isDeleting ? "Deleting..." : "Delete Appointment"}
-          </button>
+            <Button
+              variant="outline"
+              className="mt-4 w-full text-gray-700"
+              disabled={isDeleting}
+            >
+              Delete Appointment
+            </Button>
+          </ConfirmDialog>
         )}
       </div>
     </div>
@@ -201,11 +228,49 @@ const AppointmentDetailPage = () => {
 
 export default AppointmentDetailPage;
 
-/* ---------------- helpers ---------------- */
+/* ── helpers ───────────────────────────────────────────────── */
 
 const Detail = ({ label, children }) => (
-  <div className="mb-4">
-    <p className="mb-1 text-sm text-gray-500">{label}</p>
-    <p className="text-base font-medium text-gray-900">{children}</p>
+  <div className="mb-4 border-b border-gray-50 pb-4 last:border-0 last:pb-0">
+    <p className="mb-1 text-xs font-medium uppercase tracking-wide text-gray-400">
+      {label}
+    </p>
+    <div className="text-sm font-medium text-gray-900">{children}</div>
   </div>
+);
+
+const ConfirmDialog = ({
+  title,
+  description,
+  confirmLabel,
+  confirmClassName,
+  onConfirm,
+  disabled,
+  children,
+}) => (
+  <Dialog>
+    <DialogTrigger asChild>{children}</DialogTrigger>
+    <DialogContent className="max-w-sm">
+      <DialogHeader>
+        <DialogTitle>{title}</DialogTitle>
+        <DialogDescription>{description}</DialogDescription>
+      </DialogHeader>
+      <DialogFooter className="gap-2">
+        <DialogClose asChild>
+          <Button variant="outline" className="flex-1">
+            Keep it
+          </Button>
+        </DialogClose>
+        <DialogClose asChild>
+          <Button
+            className={`flex-1 ${confirmClassName}`}
+            disabled={disabled}
+            onClick={onConfirm}
+          >
+            {confirmLabel}
+          </Button>
+        </DialogClose>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
 );

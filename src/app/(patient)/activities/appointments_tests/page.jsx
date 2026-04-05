@@ -1,12 +1,16 @@
 "use client";
+
 import AppointmentCard from "@/components/App/Card/AppointmentCard";
 import FallBackScreen from "@/components/App/Skeleton/FallBackScreen";
 import React, { useEffect, useState } from "react";
 import { getPatientAppointments } from "@/app/actions/appointment";
 import { useAuth } from "@/context/AuthContext";
 import { getPatientID } from "@/app/actions/user";
+import { useRouter } from "next/navigation";
+
 const AppointmentPage = () => {
   const { user } = useAuth();
+  const router = useRouter();
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -25,6 +29,7 @@ const AppointmentPage = () => {
 
     fetchAppointments();
   }, [user?.id]);
+
   if (loading) {
     return (
       <FallBackScreen
@@ -34,27 +39,24 @@ const AppointmentPage = () => {
       />
     );
   }
+
   if (!appointments.length) {
     return (
       <FallBackScreen
-        icon={"calneder"}
-        title={"You don't have any appointment yet."}
-        subtitle={"Start by booking your first one!."}
-        actionText="Book Now"
-        // onPress={handleBookNow}
+        icon="calendar"
+        title="No appointments yet."
+        subtitle="Start by booking your first one!"
+        actionText="Refresh"
+        onPress={() => router.refresh()}
       />
     );
   }
 
   return (
-    <div className="redd flex min-h-screen w-full items-center justify-center">
-      {/* Appointment & test */}
-
-      <div className="min-h-95 mx-auto h-full max-w-3xl space-y-4 overflow-scroll p-4">
-        {appointments.map((appt) => (
-          <AppointmentCard key={appt.id} {...appt} />
-        ))}
-      </div>
+    <div className="w-full max-w-3xl space-y-4">
+      {appointments.map((appt) => (
+        <AppointmentCard key={appt.id} {...appt} />
+      ))}
     </div>
   );
 };

@@ -14,7 +14,7 @@ import BackButton from "@/components/App/Button/BackButton";
 
 const activityTabs = [
   {
-    label: "Appointments & Test Booking",
+    label: "Appointments & Tests",
     route: "/activities/appointments_tests",
     icon: FaRegCalendarCheck,
   },
@@ -47,77 +47,79 @@ const activityTabs = [
 
 export default function ActivitiesLayout({ children }) {
   const pathname = usePathname();
-  const AfterActivityHidden = pathname.startsWith("/activities/");
-  // ✅ determine current label based on route match
+
+  // On mobile/tablet, when inside a sub-route, hide the list nav so only
+  // the content (+ back button) shows. On laptop+ the sidebar always shows.
+  const isSubRoute = pathname !== "/activities";
+
   const activeTab = activityTabs.find(
     (tab) => pathname === tab.route || pathname.startsWith(`${tab.route}/`),
   );
   const currentLabel = activeTab?.label ?? "Activities";
+
   return (
-    <div className="flex min-h-screen w-full items-start justify-center bg-white px-4 md:px-8">
-      {/* Sidebar */}
-      <aside className="redd sticky top-28 hidden h-full w-80 flex-shrink-0 border-r bg-white p-6 md:flex md:flex-col">
+    <div className="flex min-h-dvh w-full items-start justify-center bg-white pb-16 laptop:pb-0">
+      {/* ── Sidebar (laptop+) ─────────────────────────────────────── */}
+      <aside className="sticky top-[155px] hidden max-h-[calc(100vh-155px)] w-72 flex-shrink-0 overflow-y-auto border-r bg-white p-6 laptop:flex laptop:flex-col xl:w-80">
         <h1 className="mb-6 text-2xl font-semibold text-gray-800">
           Activities
         </h1>
-
-        <nav className="redd redd flex flex-col gap-1">
+        <nav className="flex flex-col gap-1">
           {activityTabs.map(({ route, label, icon: Icon }) => {
             const isActive =
               pathname === route || pathname.startsWith(`${route}/`);
-
             return (
               <Link
                 key={route}
                 href={route}
                 className={clsx(
-                  "flex items-center gap-3 rounded-lg px-3 py-2 text-base font-medium transition-colors",
+                  "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
                   isActive
-                    ? "border border-green-100 text-green-700"
-                    : "text-black hover:bg-gray-100 hover:text-gray-900",
+                    ? "border border-green-100 bg-green-50 text-green-700"
+                    : "text-gray-700 hover:bg-gray-100 hover:text-gray-900",
                 )}
               >
-                {Icon && (
-                  <Icon
-                    size={20}
-                    className={clsx(
-                      "flex-shrink-0 text-green-600",
-                      isActive ? "text-green-700" : "text-gray-500",
-                    )}
-                  />
-                )}
+                <Icon
+                  size={18}
+                  className={clsx(
+                    "flex-shrink-0",
+                    isActive ? "text-green-600" : "text-gray-400",
+                  )}
+                />
                 <span>{label}</span>
               </Link>
             );
           })}
         </nav>
       </aside>
-      {AfterActivityHidden ? null : (
-        <nav className="redd flex w-full flex-col items-start justify-start gap-1 p-5 md:hidden">
+
+      {/* ── Mobile / Tablet nav list (below laptop:) ──────────────── */}
+      {!isSubRoute && (
+        <nav className="flex w-full flex-col items-start justify-start gap-2 px-4 py-5 laptop:hidden">
+          <h1 className="mb-2 px-1 text-xl font-semibold text-gray-800">
+            Activities
+          </h1>
           {activityTabs.map(({ route, label, icon: Icon }) => {
             const isActive =
               pathname === route || pathname.startsWith(`${route}/`);
-
             return (
               <Link
                 key={route}
                 href={route}
                 className={clsx(
-                  "flex w-full items-center gap-3 rounded-lg border px-3 py-2 text-base font-medium transition-colors",
+                  "flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium transition-colors",
                   isActive
-                    ? "border border-green-100 text-green-700"
-                    : "text-black hover:bg-gray-100 hover:text-gray-900",
+                    ? "border-green-200 bg-green-50 text-green-700"
+                    : "border-gray-100 bg-white text-gray-800 hover:bg-gray-50",
                 )}
               >
-                {Icon && (
-                  <Icon
-                    size={20}
-                    className={clsx(
-                      "flex-shrink-0 text-green-600",
-                      isActive ? "text-green-700" : "text-gray-500",
-                    )}
-                  />
-                )}
+                <Icon
+                  size={20}
+                  className={clsx(
+                    "flex-shrink-0",
+                    isActive ? "text-green-600" : "text-gray-400",
+                  )}
+                />
                 <span>{label}</span>
               </Link>
             );
@@ -125,17 +127,31 @@ export default function ActivitiesLayout({ children }) {
         </nav>
       )}
 
-      {/* Main content */}
-      <main className="relative flex-1 flex-col items-center justify-center overflow-y-auto p-4 md:flex md:p-8">
-        <div className="absolute left-2 top-2 block tablet:hidden">
-          <BackButton />
-        </div>
-        <h2 className="sticky mb-4 w-full pl-10 text-left text-lg font-semibold text-gray-900 md:text-xl">
-          {currentLabel}
-        </h2>
-        {children}
-      </main>
-      {/* {children} */}
+      {/* ── Main content ──────────────────────────────────────────── */}
+      {/* On laptop+: always visible alongside sidebar.
+          On mobile/tablet: only visible when inside a sub-route. */}
+      <main
+        className={clsx(
+          "flex-1 flex-col min-w-0 p-4 laptop:p-8",
+          // Sub-routes: always shown. Root: hidden on mobile/tablet, shown on laptop+.
+          isSubRoute ? "flex" : "hidden laptop:flex",
+        )}
+      >
+          {/* Page header row */}
+          <div className="mb-4 flex items-center gap-3">
+            {/* Back button: visible on sub-routes below laptop */}
+            {isSubRoute && (
+              <div className="laptop:hidden">
+                <BackButton />
+              </div>
+            )}
+            <h2 className="text-lg font-semibold text-gray-900 laptop:text-xl">
+              {currentLabel}
+            </h2>
+          </div>
+
+          {children}
+        </main>
     </div>
   );
 }

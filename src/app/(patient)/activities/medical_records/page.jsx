@@ -1,20 +1,22 @@
-import FallBackScreen from "@/components/App/Skeleton/FallBackScreen";
-import React from "react";
+"use client";
 
-const page = () => {
+import React from "react";
+import { useRouter } from "next/navigation";
+import FallBackScreen from "@/components/App/Skeleton/FallBackScreen";
+
+const MedicalRecordsPage = () => {
+  const router = useRouter();
   return (
-    <div>
+    <div className="w-full max-w-3xl">
       <FallBackScreen
-        icon={"book"}
-        title={" No medical records found."}
-        subtitle={
-          "Once your doctor uploads your medical records, they will appear here."
-        }
+        icon="book"
+        title="No medical records found."
+        subtitle="Once your doctor uploads your medical records, they will appear here."
         actionText="Refresh"
-        // onPress={() => router.back()}
+        onPress={() => router.refresh()}
       />
     </div>
   );
 };
 
-export default page;
+export default MedicalRecordsPage;

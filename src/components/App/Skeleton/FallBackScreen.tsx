@@ -1,38 +1,44 @@
-// components/FallBackScreen.tsx
 "use client";
 
 import {
   BookText,
   CalendarCheck,
   CheckCheck,
+  Coffee,
   Feather,
+  Heart,
   Home,
   Pill,
   ReceiptText,
-} from "lucide-react"; // Using lucide for consistency with shadcn/ui
+} from "lucide-react";
 import React from "react";
-import { cn } from "@/lib/utils"; // optional helper if you're using it for class merging
 
 interface FallBackScreenProps {
-  icon: keyof typeof FeatherIcons;
+  icon: keyof typeof IconMap;
   title: string;
   subtitle?: string;
   actionText?: string;
   onPress?: () => void;
 }
 
-const FeatherIcons = {
-  alertCircle: Feather,
-  wifiOff: Feather,
+const IconMap = {
+  // calendar variants (also keep old typo as alias)
+  calendar: CalendarCheck,
   calneder: CalendarCheck,
+  // document / records
   book: BookText,
+  // billing
   bill: ReceiptText,
+  // rooms
   home: Home,
+  // medicines
   pill: Pill,
+  coffee: Coffee,
+  // checkups
   checkups: CheckCheck,
-
-  // You can extend this dynamically if you prefer:
-  // e.g., import * as FeatherIcons from "react-icons/fi"
+  heart: Heart,
+  // generic fallback
+  feather: Feather,
 };
 
 export default function FallBackScreen({
@@ -42,18 +48,26 @@ export default function FallBackScreen({
   actionText,
   onPress,
 }: FallBackScreenProps) {
-  const Icon = FeatherIcons[icon] || Feather;
+  const Icon = IconMap[icon] ?? Feather;
 
   return (
-    <div className="flex flex-col items-center justify-center bg-white px-4">
-      <div className="flex w-full max-w-md flex-col items-center justify-center rounded-xl border border-gray-100 bg-gray-50 p-6 text-center shadow-sm">
-        <Icon className="h-12 w-12 text-green-600" />
-        <h2 className="mt-4 text-lg font-semibold text-gray-800">{title}</h2>
-        {subtitle && <p className="mt-2 text-sm text-gray-500">{subtitle}</p>}
+    <div className="flex min-h-[300px] w-full flex-col items-center justify-center py-8 px-4">
+      <div className="flex w-full max-w-sm flex-col items-center justify-center rounded-xl border border-gray-100 bg-gray-50 p-8 text-center shadow-sm">
+        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-green-50">
+          <Icon className="h-7 w-7 text-green-600" />
+        </div>
+        <h2 className="mt-4 text-base font-semibold text-gray-800">
+          {title.trim()}
+        </h2>
+        {subtitle && (
+          <p className="mt-2 text-sm leading-relaxed text-gray-500">
+            {subtitle.trim()}
+          </p>
+        )}
         {onPress && actionText && (
           <button
             onClick={onPress}
-            className="mt-4 rounded-lg bg-green-600 px-6 py-2 text-sm font-medium text-white transition hover:bg-green-700"
+            className="mt-5 rounded-lg bg-green-600 px-6 py-2 text-sm font-medium text-white transition hover:bg-green-700 active:scale-95"
           >
             {actionText}
           </button>
