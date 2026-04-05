@@ -4,38 +4,68 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import { Suspense } from "react";
 import Container from "@/components/Layouts/container-wrapper";
 import ChangelogTabs from "@/components/Layouts/changelog-tabs";
+import { Instrument_Serif } from "next/font/google";
 
 export const metadata = {
   title: "Changelog",
 };
 
-const PRODUCT_LABELS = {
-  "infra-platform": "Infra Platform",
-  "care-app": "Care App",
+const serif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+});
+
+const PRODUCT_META = {
+  "infra-platform": {
+    label: "Infra Platform",
+    dot: "bg-blue-500",
+    badge:
+      "bg-blue-50 text-blue-600 ring-1 ring-blue-200 dark:bg-blue-950/50 dark:text-blue-300 dark:ring-blue-800",
+  },
+  "care-app": {
+    label: "Care App",
+    dot: "bg-[#2ab95a]",
+    badge:
+      "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:ring-emerald-800",
+  },
 };
 
 const TAG_COLORS = {
-  billing: "bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300",
-  security: "bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300",
-  feature: "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300",
-  improvement: "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300",
-  fix: "bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300",
-  infrastructure: "bg-slate-100 text-slate-700 dark:bg-slate-900/40 dark:text-slate-300",
-  dx: "bg-slate-100 text-slate-700 dark:bg-slate-900/40 dark:text-slate-300",
-  prescriptions: "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300",
-  payments: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300",
-  settings: "bg-slate-100 text-slate-700 dark:bg-slate-900/40 dark:text-slate-300",
-  workflow: "bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300",
-  integrations: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/40 dark:text-cyan-300",
-  whatsapp: "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300",
-  inbox: "bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300",
-  ai: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300",
-  analytics: "bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300",
-  labs: "bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300",
+  billing:
+    "bg-violet-50 text-violet-600 ring-violet-200 dark:bg-violet-950/50 dark:text-violet-300 dark:ring-violet-800",
+  security:
+    "bg-red-50 text-red-600 ring-red-200 dark:bg-red-950/50 dark:text-red-300 dark:ring-red-800",
+  feature:
+    "bg-sky-50 text-sky-600 ring-sky-200 dark:bg-sky-950/50 dark:text-sky-300 dark:ring-sky-800",
+  improvement:
+    "bg-amber-50 text-amber-600 ring-amber-200 dark:bg-amber-950/50 dark:text-amber-300 dark:ring-amber-800",
+  fix: "bg-rose-50 text-rose-600 ring-rose-200 dark:bg-rose-950/50 dark:text-rose-300 dark:ring-rose-800",
+  infrastructure:
+    "bg-slate-100 text-slate-600 ring-slate-200 dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-700",
+  dx: "bg-slate-100 text-slate-600 ring-slate-200 dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-700",
+  prescriptions:
+    "bg-green-50 text-green-700 ring-green-200 dark:bg-green-950/50 dark:text-green-300 dark:ring-green-800",
+  payments:
+    "bg-emerald-50 text-emerald-700 ring-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:ring-emerald-800",
+  settings:
+    "bg-slate-100 text-slate-600 ring-slate-200 dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-700",
+  workflow:
+    "bg-purple-50 text-purple-600 ring-purple-200 dark:bg-purple-950/50 dark:text-purple-300 dark:ring-purple-800",
+  integrations:
+    "bg-cyan-50 text-cyan-700 ring-cyan-200 dark:bg-cyan-950/50 dark:text-cyan-300 dark:ring-cyan-800",
+  whatsapp:
+    "bg-green-50 text-green-700 ring-green-200 dark:bg-green-950/50 dark:text-green-300 dark:ring-green-800",
+  inbox:
+    "bg-sky-50 text-sky-600 ring-sky-200 dark:bg-sky-950/50 dark:text-sky-300 dark:ring-sky-800",
+  ai: "bg-indigo-50 text-indigo-600 ring-indigo-200 dark:bg-indigo-950/50 dark:text-indigo-300 dark:ring-indigo-800",
+  analytics:
+    "bg-orange-50 text-orange-600 ring-orange-200 dark:bg-orange-950/50 dark:text-orange-300 dark:ring-orange-800",
+  labs: "bg-teal-50 text-teal-700 ring-teal-200 dark:bg-teal-950/50 dark:text-teal-300 dark:ring-teal-800",
 };
 
-const DEFAULT_TAG_COLOR =
-  "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400";
+const DEFAULT_TAG =
+  "bg-neutral-100 text-neutral-600 ring-neutral-200 dark:bg-neutral-800 dark:text-neutral-400 dark:ring-neutral-700";
 
 async function getEntries(productFilter) {
   const dir = path.join(process.cwd(), "src/changelog");
@@ -56,7 +86,6 @@ async function getEntries(productFilter) {
   );
 
   const sorted = entries.sort((a, b) => new Date(b.date) - new Date(a.date));
-
   if (productFilter && productFilter !== "all") {
     return sorted.filter((e) => e.product === productFilter);
   }
@@ -68,25 +97,54 @@ const ChangelogPage = async ({ searchParams }) => {
   const entries = await getEntries(product);
 
   return (
-    <div className="min-h-screen w-full pb-24 pt-28">
-      <Container>
-        <div className="w-full text-2xl font-semibold laptop:text-3xl desktop:text-5xl">
-          Changelog
-        </div>
-        <p className="text-sm text-neutral-500">
-          What we&apos;ve shipped across Exelth Infra Platform and Care App.
-        </p>
+    <div className="min-h-screen w-full antialiased">
+      {/* Header */}
+      <div className="border-b border-neutral-100 pb-10 pt-28 dark:border-neutral-900">
+        <Container>
+          <div className="flex w-full flex-col gap-5 laptop:flex-row laptop:items-end laptop:justify-between">
+            <div className="flex flex-col gap-2">
+              <p className="text-xs font-medium uppercase tracking-widest text-neutral-400 dark:text-neutral-500">
+                Product Updates
+              </p>
+              <h1
+                className={`text-5xl leading-none text-neutral-900 dark:text-white laptop:text-6xl desktop:text-7xl`}
+                style={{ textWrap: "balance" }}
+              >
+                Changelog
+              </h1>
+              <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+                Everything we&apos;ve shipped for Exelth Infra Platform and Care
+                App.
+              </p>
+            </div>
 
-        <Suspense>
-          <ChangelogTabs />
-        </Suspense>
+            <Suspense>
+              <ChangelogTabs />
+            </Suspense>
+          </div>
+        </Container>
+      </div>
 
+      {/* Entries */}
+      <Container className="py-0">
         {entries.length === 0 ? (
-          <p className="mt-12 text-neutral-400">No entries for this product yet.</p>
+          <div className="flex h-64 items-center justify-center">
+            <p className="text-sm text-neutral-400">
+              No entries for this product yet.
+            </p>
+          </div>
         ) : (
-          <div className="mt-4 w-full">
-            {entries.map((entry) => (
-              <ChangelogEntry key={entry.slug} entry={entry} />
+          <div className="relative w-full">
+            {/* Timeline line — desktop only */}
+            <div className="absolute left-[152px] top-0 hidden h-full w-px bg-neutral-100 dark:bg-neutral-900 laptop:block" />
+
+            {entries.map((entry, index) => (
+              <ChangelogEntry
+                key={entry.slug}
+                entry={entry}
+                index={index}
+                isLast={index === entries.length - 1}
+              />
             ))}
           </div>
         )}
@@ -97,69 +155,90 @@ const ChangelogPage = async ({ searchParams }) => {
 
 export default ChangelogPage;
 
-function ChangelogEntry({ entry }) {
+function ChangelogEntry({ entry, index, isLast }) {
   const { title, date, product, tags = [], summary, content } = entry;
+  const meta = PRODUCT_META[product] ?? PRODUCT_META["care-app"];
 
-  const formattedDate = new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
+  const formatted = new Date(date).toLocaleDateString("en-US", {
+    month: "short",
     day: "numeric",
+    year: "numeric",
   });
 
-  return (
-    <div className="flex w-full gap-6 border-b py-10 last:border-b-0 laptop:gap-12">
-      {/* Left column — date + product */}
-      <div className="hidden w-44 shrink-0 flex-col items-start gap-2 pt-0.5 laptop:flex">
-        <span className="text-sm text-neutral-500">{formattedDate}</span>
-        <span
-          className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
-            product === "infra-platform"
-              ? "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300"
-              : "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300"
-          }`}
-        >
-          {PRODUCT_LABELS[product] ?? product}
-        </span>
-      </div>
+  // Cap stagger at 7 so long lists don't feel slow (40ms × 7 = 280ms max)
+  const delay = `${Math.min(index, 7) * 40}ms`;
 
-      {/* Right column — content */}
-      <div className="flex flex-1 flex-col gap-3">
-        {/* Mobile: date + product row */}
-        <div className="flex items-center gap-2 laptop:hidden">
-          <span className="text-xs text-neutral-500">{formattedDate}</span>
+  return (
+    <div className="animate-fade-up" style={{ animationDelay: delay }}>
+      <div
+        className={`flex gap-0 py-10 ${!isLast ? "border-b border-neutral-100 dark:border-neutral-900" : ""}`}
+      >
+        {/* Left column — desktop metadata */}
+        <div className="relative hidden w-[152px] shrink-0 flex-col items-end gap-2 pr-8 pt-0.5 laptop:flex">
+          <time className="font-mono text-[11px] tabular-nums text-neutral-400 dark:text-neutral-500">
+            {formatted}
+          </time>
           <span
-            className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-              product === "infra-platform"
-                ? "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300"
-                : "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300"
-            }`}
+            className={`rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ring-1 ${meta.badge}`}
           >
-            {PRODUCT_LABELS[product] ?? product}
+            {meta.label}
           </span>
+
+          {/* Timeline dot */}
+          <div
+            className={`absolute -right-[4.5px] top-1 h-2.5 w-2.5 rounded-full ring-2 ring-white dark:ring-black ${meta.dot}`}
+          />
         </div>
 
-        <h2 className="text-lg font-semibold leading-snug">{title}</h2>
-        <p className="text-sm text-neutral-500">{summary}</p>
-
-        {/* Tags */}
-        {tags.length > 0 && (
-          <div className="flex flex-wrap gap-1.5">
-            {tags.map((tag) => (
-              <span
-                key={tag}
-                className={`rounded-full px-2.5 py-0.5 text-xs font-medium capitalize ${
-                  TAG_COLORS[tag.toLowerCase()] ?? DEFAULT_TAG_COLOR
-                }`}
-              >
-                {tag}
-              </span>
-            ))}
+        {/* Right column — content */}
+        <div className="flex flex-1 flex-col gap-3 laptop:pl-8">
+          {/* Mobile: date + badge */}
+          <div className="flex flex-wrap items-center gap-2 laptop:hidden">
+            <time className="font-mono text-[11px] tabular-nums text-neutral-400 dark:text-neutral-500">
+              {formatted}
+            </time>
+            <span
+              className={`rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ring-1 ${meta.badge}`}
+            >
+              {meta.label}
+            </span>
           </div>
-        )}
 
-        {/* MDX bullet list */}
-        <div className="prose prose-sm max-w-none text-neutral-700 dark:prose-invert dark:text-neutral-300 [&_ul]:mt-2 [&_ul]:space-y-1.5 [&_li]:text-sm">
-          {content}
+          {/* Title */}
+          <h2
+            className={`text-2xl leading-snug text-neutral-900 dark:text-white laptop:text-[26px]`}
+            style={{ textWrap: "balance" }}
+          >
+            {title}
+          </h2>
+
+          {/* Summary */}
+          <p className="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+            {summary}
+          </p>
+
+          {/* Tags */}
+          {tags.length > 0 && (
+            <div className="flex flex-wrap gap-1.5">
+              {tags.map((tag) => (
+                <span
+                  key={tag}
+                  className={`rounded-full px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wide ring-1 ${
+                    TAG_COLORS[tag.toLowerCase()] ?? DEFAULT_TAG
+                  }`}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* MDX content */}
+          <div
+            className={`prose prose-sm prose-p:text-neutral-700 prose-p:leading-relaxed prose-li:text-neutral-700 prose-li:leading-relaxed prose-strong:text-neutral-900 prose-strong:font-semibold prose-ul:my-0 prose-ul:space-y-1.5 prose-ul:pl-4 dark:prose-p:text-neutral-300 dark:prose-li:text-neutral-300 dark:prose-strong:text-white max-w-none marker:text-neutral-400`}
+          >
+            {content}
+          </div>
         </div>
       </div>
     </div>
