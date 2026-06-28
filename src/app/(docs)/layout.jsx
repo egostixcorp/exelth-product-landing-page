@@ -1,45 +1,40 @@
-// app/docs/layout.tsx
-import Link from "next/link";
-import { docsList } from "@/data/docs";
+"use client";
+
+import React, { useState } from "react";
 import DocsHeader from "@/components/Docs/Header";
-import DocsPlaceholder from "@/components/Layouts/docs-placeholder";
+import DocsSidebar from "@/components/Docs/Sidebar";
 
 export default function DocsLayout({ children }) {
-  if (process.env.NODE_ENV === "production") {
-    return <DocsPlaceholder />;
-  }
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-slate-50/50">
       {/* Header */}
-      <DocsHeader />
+      <DocsHeader onMenuToggle={toggleSidebar} />
 
-      <div className="flex flex-1">
+      {/* Main Container */}
+      <div className="mx-auto flex w-full  flex-1">
         {/* Sidebar */}
-        <aside className="redd h-screen w-64 space-y-2 border-r bg-gray-50 p-4">
-          {/* <h2 className="mb-4 text-lg font-bold">Exelth Docs</h2> */}
-          {docsList.map((section) => (
-            <div key={section.title}>
-              <h3 className="mb-1 text-sm font-semibold text-neutral-800">
-                {section.title}
-              </h3>
-              <ul className="">
-                {section.pages.map((page) => (
-                  <li key={page.slug}>
-                    <Link
-                      href={`/docs/${page.slug}`}
-                      className="text-sm text-gray-500 hover:underline"
-                    >
-                      {page.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </aside>
+        <DocsSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-        {/* Main content */}
-        <main className="flex-1 p-6">{children}</main>
+        {/* Mobile Sidebar Backdrop Overlay */}
+        {sidebarOpen && (
+          <div
+            className="fixed inset-0 z-20 bg-slate-900/40 backdrop-blur-xs transition-opacity lg:hidden"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+
+        {/* Content Area */}
+        <main className="flex-1 min-w-0 p-4 sm:p-6 lg:p-8 lg:max-h-[calc(100vh-4rem)] lg:overflow-y-auto">
+          <div className="mx-auto max-w-4xl rounded-2xl border border-slate-100 bg-white p-6 shadow-sm shadow-slate-100/50 sm:p-8 md:p-10">
+            {children}
+          </div>
+        </main>
       </div>
     </div>
   );

@@ -1,67 +1,59 @@
-// docs-data/docsList.ts
+// docs-data/docsList.js
 export const docsList = [
   {
     title: "Getting Started",
+    icon: "BookOpen",
     pages: [
-      { name: "Introduction to Exelth B2B", slug: "introduction" },
-      { name: "Logging In & First Setup", slug: "login-setup" },
-      { name: "Organization Setup Guide", slug: "organization-setup" },
+      { name: "Welcome & Navigation", slug: "getting-started", file: "getting-started.md" },
+      { name: "Complete Patient Flow", slug: "complete-patient-flow", file: "complete-patient-flow.md" },
+      { name: "Marketing Profile Setup", slug: "marketing-profile-setup", file: "marketing-profile-setup.md" },
+      { name: "Your Sidebar", slug: "your-sidebar", file: "your-sidebar.md" },
     ],
   },
   {
-    title: "Appointments & Scheduling",
+    title: "Core Modules",
+    icon: "Layers",
     pages: [
-      { name: "Creating an Appointment", slug: "create-appointment" },
-      { name: "Managing Doctor Availability", slug: "doctor-availability" },
-      { name: "Cancellations & Reschedules", slug: "cancel-reschedule" },
+      { name: "Home Dashboard", slug: "feature-dashboard", file: "feature-dashboard.md" },
+      { name: "Calendar & Scheduling", slug: "feature-calendar", file: "feature-calendar.md" },
+      { name: "Reception Desk", slug: "feature-reception", file: "feature-reception.md" },
+      { name: "Electronic Health Records", slug: "feature-patients", file: "feature-patients.md" },
+      { name: "Lab Orders & Diagnostics", slug: "feature-labs", file: "feature-labs.md" },
+      { name: "Invoicing & Payments", slug: "feature-payments", file: "feature-payments.md" },
+      { name: "Tasks & Assignments", slug: "feature-tasks", file: "feature-tasks.md" },
+      { name: "Patient Wait Times", slug: "feature-workflow", file: "feature-workflow.md" },
+      { name: "WhatsApp & SMS Integrations", slug: "feature-integrations", file: "feature-integrations.md" },
+      { name: "Reports & Analytics", slug: "feature-analytics", file: "feature-analytics.md" },
+      { name: "Branch & Department Setup", slug: "feature-organization", file: "feature-organization.md" },
     ],
   },
   {
-    title: "Patient Management",
+    title: "User Roles",
+    icon: "Users",
     pages: [
-      { name: "Adding a New Patient", slug: "add-patient" },
-      { name: "Editing Patient Profiles", slug: "edit-patient" },
-      { name: "Communicating with Patients", slug: "patient-communication" },
+      { name: "Administrator Guide", slug: "user-role-admin", file: "user-role-admin.md" },
+      { name: "Doctor Guide", slug: "user-role-doctor", file: "user-role-doctor.md" },
+      { name: "Receptionist Guide", slug: "user-role-receptionist", file: "user-role-receptionist.md" },
     ],
   },
   {
-    title: "E-Prescriptions",
+    title: "Architecture & Integration",
+    icon: "Cpu",
     pages: [
-      { name: "Creating a Prescription", slug: "create-prescription" },
-      { name: "Customizing Branding", slug: "prescription-branding" },
-      { name: "Sending to Patients", slug: "send-prescription" },
+      { name: "Supabase Integration", slug: "architecture-supabase", file: "architecture-supabase.md" },
+      { name: "RBAC & OrgContext", slug: "architecture-context-rbac", file: "architecture-context-rbac.md" },
+      { name: "AI Agents & Automations", slug: "automation-ai-agents", file: "automation-ai-agents.md" },
+      { name: "Public Patient Portal", slug: "public-patient-portal", file: "public-patient-portal.md" },
     ],
   },
   {
-    title: "Billing & Payments",
+    title: "Developer Resources",
+    icon: "Terminal",
     pages: [
-      { name: "Exelth Wallet Overview", slug: "wallet-overview" },
-      { name: "Commission & Payouts", slug: "commission-payouts" },
-      { name: "Refunds & Adjustments", slug: "refunds" },
-    ],
-  },
-  {
-    title: "Reports & Analytics",
-    pages: [
-      { name: "Daily Appointment Reports", slug: "daily-reports" },
-      { name: "Revenue Tracking", slug: "revenue-tracking" },
-      { name: "Exporting Data", slug: "export-data" },
-    ],
-  },
-  {
-    title: "Organization Settings",
-    pages: [
-      { name: "Updating Facility Info", slug: "update-facility" },
-      { name: "User Roles & Permissions", slug: "roles-permissions" },
-      { name: "Branding & Logo Settings", slug: "branding-logo" },
-    ],
-  },
-  {
-    title: "FAQs & Troubleshooting",
-    pages: [
-      { name: "Common Login Issues", slug: "login-issues" },
-      { name: "Data Sync Problems", slug: "sync-problems" },
-      { name: "Contacting Support", slug: "contact-support" },
+      { name: "Local Setup & Troubleshooting", slug: "developer-troubleshooting", file: "developer-troubleshooting.md" },
+      { name: "Codebase Action Items", slug: "codebase-action-items", file: "codebase-action-items.md" },
+      { name: "Master Source Reference", slug: "documentation-source", file: "DOCUMENTATION_SOURCE.md" },
+      { name: "Feature Registry & TODOs", slug: "features-action-items", file: "FEATURES_AND_ACTION_ITEMS.md" },
     ],
   },
 ];
