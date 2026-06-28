@@ -58,7 +58,7 @@ export default function DocsPlaceholder() {
   ) {
     return (
       <div className="flex min-h-screen flex-col bg-gray-50">
-        <DocsHeader />
+        <DocsHeader onMenuToggle={() => {}} />
         <main className="flex flex-1 items-center justify-center p-6">
           <div className="max-w-lg rounded-lg border border-green-300 bg-green-50 px-6 py-6 text-center shadow-sm">
             <h2 className="flex items-center justify-center gap-5 text-lg font-semibold text-green-800">
