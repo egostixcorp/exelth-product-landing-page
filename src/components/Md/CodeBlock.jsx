@@ -366,7 +366,7 @@ export function ArchitectureVisualizer() {
             <span>Layer 1: Client Front-End UI</span>
           </h5>
           <p className="mt-1 text-xs text-slate-600">
-            Visual elements (Zustand stores, Radix components, and Tailwind styling) rendered in the user's browser.
+            Visual elements (Zustand stores, Radix components, and Tailwind styling) rendered in the {"user's"} browser.
           </p>
         </div>
 
