@@ -162,8 +162,8 @@ const PricingPage = () => {
                 ["Lab Management", "—", "—", "✓", "✓"],
                 ["Multi-Doctor Support", "Limited", "✓", "✓", "✓"],
                 ["Multi-Facility Support", "—", "—", "Limited", "✓"],
-                ["Custom Integrations", "—", "—", "—", "✓"],
-                ["Dedicated Support", "—", "—", "Priority", "SLA"],
+                ["Custom Integrations", "✓", "✓", "✓", "✓"],
+                ["Dedicated Support", "—", "✓", "Priority", "SLA"],
               ].map((row) => (
                 <tr key={row[0]} className="border-t">
                   <td className="p-3">{row[0]}</td>
